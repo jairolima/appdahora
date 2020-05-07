@@ -1,0 +1,22 @@
+
+
+https://github.com/n4kz/react-native-material-textfield/issues/249
+para o react native material textfield funfar tem que fazer o que ta no link pra ajeitar a lib
+
+As @mike-niemand mentioned as a workaround i replaced:
+
+style: Animated.Text.propTypes.style
+
+with:
+
+style: Text.propType
+
+in the following 3 files in the directory: .../node_modules/react-native-material-textfield/src/components/
+
+Affix/index.js
+Helper/index.js
+label/index.js
+
+And also import {Text} from react-native in all three files, so youll have {Animated, Text} from 'react-native'
+
+Seems to be working fine on react-native 0.62.1.
