@@ -138,14 +138,14 @@ export default function SignUp() {
               numberOfLines={3}
               ellipsizeMode="tail">
               Nos envie uma foto sua {'\n'}para identificação e {'\n'}segurança.
-              Enviar foto
+              <Text style={{color: '#e66118'}}> Enviar foto</Text>
             </Text>
           </View>
         </InputAvatar>
         <Container>
           <Body>
             <TextField
-              label="NOME"
+              label="NOME *"
               tintColor="#e66118"
               autoCorrect={false}
               keyboardType="numeric"
@@ -156,7 +156,7 @@ export default function SignUp() {
               onChangeText={setName}
             />
             <TextField
-              label="SOBRENOME"
+              label="SOBRENOME *"
               tintColor="#e66118"
               autoCorrect={false}
               keyboardType="numeric"
@@ -167,7 +167,7 @@ export default function SignUp() {
               onChangeText={setSurname}
             />
             <TextField
-              label="CPF"
+              label="CPF *"
               formatText={formatText}
               tintColor="#e66118"
               autoCorrect={false}
@@ -178,7 +178,7 @@ export default function SignUp() {
               onChangeText={setCpf}
             />
             <TextField
-              label="DATA DE NASCIMENTO"
+              label="DATA DE NASCIMENTO *"
               tintColor="#e66118"
               autoCorrect={false}
               keyboardType="numeric"
@@ -189,7 +189,7 @@ export default function SignUp() {
               onChangeText={setBirth}
             />
             <TextField
-              label="EMAIL"
+              label="EMAIL *"
               tintColor="#e66118"
               autoCorrect={false}
               keyboardType="numeric"
@@ -200,7 +200,7 @@ export default function SignUp() {
               onChangeText={setEmail}
             />
             <TextField
-              label="TELEFONE"
+              label="TELEFONE *"
               tintColor="#e66118"
               autoCorrect={false}
               keyboardType="numeric"

@@ -7,7 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 // import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-// import {useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {setNavigator} from './services/navigationService';
 
@@ -19,13 +19,13 @@ import Forgot from './pages/Unauthenticated/Forgot';
 import Privacy from './pages/Unauthenticated/SignUp/Read/Privacy';
 import Terms from './pages/Unauthenticated/SignUp/Read/Terms';
 
-// account tab path
-// import Account from './pages/Profile/Account';
+// profile tab path
+import Menu from './pages/Authenticated/Profile';
 // import Vouchers from './pages/Profile/Vouchers';
 // import Profile from './pages/Profile/Profile';
 
 // dashboard tab path
-// import Dashboard from './pages/New/Dashboard';
+import Dashboard from './pages/Authenticated/Dashboard';
 // import Detail from './pages/New/Detail';
 // import SelectQuantity from './pages/New/SelectQuantity';
 
@@ -35,23 +35,21 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 export default function Routes() {
-  // const SignedIn = useSelector((state) => state.auth.signed);
-  const SignedIn = true;
+  const SignedIn = useSelector((state) => state.auth.signed);
+  // testes const SignedIn = true;
 
   function StackAccount() {
     return (
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="Menu" component={Menu} />
       </Stack.Navigator>
     );
   }
 
   function StackDashboard() {
     return (
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Navigator screenOptions={{headerShown: false, tableShown: false}}>
+        <Stack.Screen name="Dashboard" component={Dashboard} />
       </Stack.Navigator>
     );
   }
@@ -67,8 +65,8 @@ export default function Routes() {
               tabBarIcon: () => (
                 <FontAwesome
                   reverseColor
-                  name="home"
-                  color="#3cf0c5"
+                  name="gift"
+                  color="#e66118"
                   type="font-awesome"
                   size={26}
                 />
@@ -82,8 +80,8 @@ export default function Routes() {
               tabBarIcon: () => (
                 <FontAwesome
                   reverseColor
-                  name="user"
-                  color="#3cf0c5"
+                  name="bars"
+                  color="#e66118"
                   type="font-awesome"
                   size={26}
                 />

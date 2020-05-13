@@ -6,9 +6,9 @@ import {navigate} from '~/services/navigationService';
 
 export function* signIn({payload}) {
   try {
-    const {cpf, password} = payload;
-    const response = yield call(api.post, 'auth', {
-      cpf,
+    const {email, password} = payload;
+    const response = yield call(api.post, '/api/login', {
+      email,
       password,
     });
 
@@ -18,8 +18,7 @@ export function* signIn({payload}) {
 
     yield put(signInSuccess(token, user));
 
-    navigate('Account');
-    // history.push('/dashboard');
+    navigate('Dashboard');
   } catch (err) {
     Alert.alert(
       'Falha na autenticação',

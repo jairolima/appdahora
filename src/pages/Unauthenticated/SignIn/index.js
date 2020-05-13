@@ -18,13 +18,13 @@ export default function SignIn() {
   const dispatch = useDispatch();
   const passwordRef = useRef();
 
-  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const signed = useSelector((state) => state.auth.signed);
 
   function handleSubmit() {
-    dispatch(signInRequest(cpf, password));
+    dispatch(signInRequest(email, password));
   }
 
   function navigateBack() {
@@ -53,16 +53,14 @@ export default function SignIn() {
 
         <Body>
           <TextField
-            mask="(0)999 999 99 99"
-            label="CPF"
+            label="Email"
             tintColor="#e66118"
             autoCorrect={false}
-            keyboardType="numeric"
             autoCapitalize="none"
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
-            value={cpf}
-            onChangeText={setCpf}
+            value={email}
+            onChangeText={setEmail}
           />
           <TextField
             label="Senha"
