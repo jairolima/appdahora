@@ -14,6 +14,8 @@ import {
 } from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
+// instalar essa lib
+// import Code from 'react-native-qrcode';
 import Modal from 'react-native-modal';
 // import api from '~/services/api';
 import {Container, Title, Insidebox, AwardsView} from './styles';
@@ -47,113 +49,6 @@ const DATA = [
   },
 ];
 
-const FirstRoute = () => (
-  <View>
-    <AwardsView>
-      <FlatList
-        style={{marginVertical: 10}}
-        data={DATA}
-        keyExtractor={(item) => item.id}
-        renderItem={({item}) => (
-          <TouchableOpacity>
-            <View
-              style={{
-                height: 80,
-                marginVertical: 3,
-              }}>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  padding: 0,
-                  height: 80,
-                  margin: 0,
-                }}>
-                <View
-                  style={{
-                    width: '25%',
-                    height: 80,
-                    borderRadius: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <View
-                    style={{
-                      width: 74,
-                      height: 74,
-                    }}>
-                    <Image
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        borderRadius: 10,
-                        borderWidth: 1.3,
-                        borderColor: '#f5f5f5',
-                      }}
-                      source={{
-                        uri:
-                          'https://assets.xtechcommerce.com/uploads/images/medium/277403b46c912f6bfef153812c264f2a.jpg',
-                      }}
-                    />
-                  </View>
-                </View>
-
-                <View
-                  style={{
-                    width: '55%',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    paddingHorizontal: 15,
-                    paddingVertical: 5,
-                  }}>
-                  <Text
-                    adjustsFontSizeToFit
-                    numberOfLines={2}
-                    style={{
-                      fontWeight: 'bold',
-                      color: '#303030',
-                      fontSize: 18,
-                    }}>
-                    {item.title}
-                  </Text>
-                  <Text style={{color: '#9b9b9b'}}>Ref: 89475639-5</Text>
-                </View>
-
-                <View
-                  style={{
-                    width: '20%',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <View
-                    style={{
-                      backgroundColor: '#E66221',
-                      paddingHorizontal: 12,
-                      paddingVertical: 3,
-                      borderRadius: 6,
-                    }}>
-                    <Text
-                      style={{
-                        color: '#fff',
-                        fontWeight: 'bold',
-                        fontSize: 16,
-                      }}>
-                      48
-                      <Text style={{fontSize: 12, fontWeight: '700'}}> P</Text>
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
-        )}
-      />
-    </AwardsView>
-  </View>
-);
-
-const SecondRoute = () => <View style={{backgroundColor: '#673ab7'}} />;
-
 const initialLayout = {width: Dimensions.get('window').width};
 
 export default function Dashboard() {
@@ -162,6 +57,127 @@ export default function Dashboard() {
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+
+  const [isModalVisibleQr, setModalVisibleQr] = useState(false);
+  const [modalTitle, setModalTitle] = useState('nao mudou');
+
+  const toggleModalQr = () => {
+    setModalVisibleQr(!isModalVisibleQr);
+  };
+
+  const FirstRoute = () => (
+    <View>
+      <AwardsView>
+        <FlatList
+          style={{marginVertical: 10}}
+          data={DATA}
+          keyExtractor={(item) => item.id}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              onPress={() => {
+                setModalTitle(item.title);
+                toggleModalQr();
+              }}>
+              <View
+                style={{
+                  height: 80,
+                  marginVertical: 3,
+                }}>
+                <View
+                  style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    padding: 0,
+                    height: 80,
+                    margin: 0,
+                  }}>
+                  <View
+                    style={{
+                      width: '25%',
+                      height: 80,
+                      borderRadius: 10,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <View
+                      style={{
+                        width: 74,
+                        height: 74,
+                      }}>
+                      <Image
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: 10,
+                          borderWidth: 1.3,
+                          borderColor: '#f5f5f5',
+                        }}
+                        source={{
+                          uri:
+                            'https://assets.xtechcommerce.com/uploads/images/medium/277403b46c912f6bfef153812c264f2a.jpg',
+                        }}
+                      />
+                    </View>
+                  </View>
+
+                  <View
+                    style={{
+                      width: '55%',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      paddingHorizontal: 15,
+                      paddingVertical: 5,
+                    }}>
+                    <Text
+                      adjustsFontSizeToFit
+                      numberOfLines={2}
+                      style={{
+                        fontWeight: 'bold',
+                        color: '#303030',
+                        fontSize: 18,
+                      }}>
+                      {item.title}
+                    </Text>
+                    <Text style={{color: '#9b9b9b'}}>Ref: 89475639-5</Text>
+                  </View>
+
+                  <View
+                    style={{
+                      width: '20%',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <View
+                      style={{
+                        backgroundColor: '#E66221',
+                        paddingHorizontal: 12,
+                        paddingVertical: 3,
+                        borderRadius: 6,
+                      }}>
+                      <Text
+                        style={{
+                          color: '#fff',
+                          fontWeight: 'bold',
+                          fontSize: 16,
+                        }}>
+                        48
+                        <Text style={{fontSize: 12, fontWeight: '700'}}>
+                          {' '}
+                          P
+                        </Text>
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+      </AwardsView>
+    </View>
+  );
+
+  const SecondRoute = () => <View style={{backgroundColor: '#673ab7'}} />;
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -190,6 +206,7 @@ export default function Dashboard() {
     <Background>
       <Container>
         <ScrollView>
+          <Text>{modalTitle}</Text>
           <View
             style={{
               alignItems: 'center',
@@ -246,6 +263,27 @@ export default function Dashboard() {
                         pontos
                       </Title>
 
+                      <ImageBackground
+                        source={require('../../../assets/borders.png')}
+                        style={{
+                          width: 266,
+                          height: 266,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          backgroundColor: 'white',
+                          marginHorizontal: 20,
+                        }}>
+                        <View style={{overflow: 'hidden'}}>
+                          {/* <Code
+                            value="dsds"
+                            size={180}
+                            bgColor="black"
+                            fgColor="white"
+                          /> */}
+                          <Text>lugar do code</Text>
+                        </View>
+                      </ImageBackground>
+
                       <Button title="Hide modal" onPress={toggleModal} />
                     </View>
                   </Modal>
@@ -253,6 +291,17 @@ export default function Dashboard() {
               </View>
             </Insidebox>
           </ImageBackground>
+
+          <Modal isVisible={isModalVisibleQr} style={{margin: 0}}>
+            <View style={{flex: 1, backgroundColor: 'white', padding: 20}}>
+              <Title>{modalTitle}</Title>
+
+              <Button
+                title="Hide modal"
+                onPress={() => setModalVisibleQr(!isModalVisibleQr)}
+              />
+            </View>
+          </Modal>
 
           <View style={{flex: 1, marginTop: 20}}>
             <TabView
