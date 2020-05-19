@@ -1,12 +1,12 @@
-import React, {useRef, useState} from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import {TextInputMask} from 'react-native-masked-text';
+import {TextInput} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 
-// https://github.com/n4kz/react-native-material-textfield/issues/249
-import {TextField} from 'react-native-material-textfield';
 import {signInRequest} from '~/store/modules/auth/actions';
 
 import Background from '~/components/Background';
@@ -17,7 +17,6 @@ export default function Forgot() {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();
-  const passwordRef = useRef();
 
   const [cpf, setCpf] = useState('');
 
@@ -49,16 +48,16 @@ export default function Forgot() {
         <Title>Recuperar Senha</Title>
 
         <Body>
-          <TextField
+          <TextInput
             label="CPF"
-            tintColor="#e66118"
-            autoCorrect={false}
-            keyboardType="numeric"
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => passwordRef.current.focus()}
+            style={{
+              paddingHorizontal: 0,
+              backgroundColor: 'none',
+            }}
+            theme={{colors: {primary: '#e66118'}}}
             value={cpf}
             onChangeText={setCpf}
+            render={(props) => <TextInputMask {...props} type="cpf" />}
           />
 
           <View style={{alignItems: 'center'}}>

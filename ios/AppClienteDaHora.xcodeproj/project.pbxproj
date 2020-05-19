@@ -8,18 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* AppClienteDaHoraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AppClienteDaHoraTests.m */; };
+		13A4E26BBB4449146D04DA51 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 445CAE57D5AA0298C0CB99F7 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1CEE22DF74860DF377B6350C /* libPods-AppClienteDaHora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A168EEFB03765AE00C9EC3A3 /* libPods-AppClienteDaHora.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* AppClienteDaHoraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AppClienteDaHoraTests.m */; };
 		A21A347E94401F362082B295 /* libPods-AppClienteDaHora-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAC66688224BECECFD946C8 /* libPods-AppClienteDaHora-tvOS.a */; };
 		B2983838420654784F1902E5 /* libPods-AppClienteDaHora-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D2E217B5427156D8D60CA4 /* libPods-AppClienteDaHora-tvOSTests.a */; };
-		CAA4DCE74888824E031A4159 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 869CEF3CC987F5ACE948FC5C /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a */; };
+		F362807BC95F3050847F6E60 /* libPods-AppClienteDaHora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35571E54C24668E56ABC4275 /* libPods-AppClienteDaHora.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,11 +56,11 @@
 		272F3DDACC72E9F7888A3BF7 /* Pods-AppClienteDaHora-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-tvOS.release.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-tvOS/Pods-AppClienteDaHora-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* AppClienteDaHora-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppClienteDaHora-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* AppClienteDaHora-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppClienteDaHora-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35571E54C24668E56ABC4275 /* libPods-AppClienteDaHora.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		445CAE57D5AA0298C0CB99F7 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora-AppClienteDaHoraTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69D2E217B5427156D8D60CA4 /* libPods-AppClienteDaHora-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CAC66688224BECECFD946C8 /* libPods-AppClienteDaHora-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D94D28F6CB50B0CACCA8606 /* Pods-AppClienteDaHora-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-tvOSTests/Pods-AppClienteDaHora-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		869CEF3CC987F5ACE948FC5C /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora-AppClienteDaHoraTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A168EEFB03765AE00C9EC3A3 /* libPods-AppClienteDaHora.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17B58BF21DB7E3DCEF7B0CB /* Pods-AppClienteDaHora.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora.release.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora/Pods-AppClienteDaHora.release.xcconfig"; sourceTree = "<group>"; };
 		CDC874D9E189F9A71510BD0A /* Pods-AppClienteDaHora-AppClienteDaHoraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-AppClienteDaHoraTests.release.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-AppClienteDaHoraTests/Pods-AppClienteDaHora-AppClienteDaHoraTests.release.xcconfig"; sourceTree = "<group>"; };
 		D3B6EC10162C6C5032698900 /* Pods-AppClienteDaHora-AppClienteDaHoraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-AppClienteDaHoraTests.debug.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-AppClienteDaHoraTests/Pods-AppClienteDaHora-AppClienteDaHoraTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAA4DCE74888824E031A4159 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a in Frameworks */,
+				13A4E26BBB4449146D04DA51 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CEE22DF74860DF377B6350C /* libPods-AppClienteDaHora.a in Frameworks */,
+				F362807BC95F3050847F6E60 /* libPods-AppClienteDaHora.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,8 +143,8 @@
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				6CAC66688224BECECFD946C8 /* libPods-AppClienteDaHora-tvOS.a */,
 				69D2E217B5427156D8D60CA4 /* libPods-AppClienteDaHora-tvOSTests.a */,
-				A168EEFB03765AE00C9EC3A3 /* libPods-AppClienteDaHora.a */,
-				869CEF3CC987F5ACE948FC5C /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a */,
+				35571E54C24668E56ABC4275 /* libPods-AppClienteDaHora.a */,
+				445CAE57D5AA0298C0CB99F7 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -209,7 +209,7 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				684966E393915CEE653F9BC5 /* [CP] Copy Pods Resources */,
+				A697BEFE732C2CB37F07D799 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,7 +231,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				27DC402A74388EC48999A4C3 /* [CP] Copy Pods Resources */,
+				5810F2CE2FAC67B9E8696607 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -399,7 +399,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		27DC402A74388EC48999A4C3 /* [CP] Copy Pods Resources */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		5810F2CE2FAC67B9E8696607 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -447,21 +461,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppClienteDaHora/Pods-AppClienteDaHora-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+		856D6F76969AB1BDB326D7CF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Bundle React Native Code And Images";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppClienteDaHora-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
-		684966E393915CEE653F9BC5 /* [CP] Copy Pods Resources */ = {
+		A697BEFE732C2CB37F07D799 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -507,28 +529,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppClienteDaHora-AppClienteDaHoraTests/Pods-AppClienteDaHora-AppClienteDaHoraTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		856D6F76969AB1BDB326D7CF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AppClienteDaHora-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D42C25DC4CC65A84E86CD451 /* [CP] Check Pods Manifest.lock */ = {

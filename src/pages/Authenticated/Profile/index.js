@@ -103,7 +103,7 @@ export default function Menu() {
                 paddingHorizontal: 30,
               }}>
               <Text style={{fontFamily: 'Arial', fontSize: 16}}>
-                Meus cartões
+                Meus pontos
               </Text>
             </Icon.Button>
           </MenuItem>

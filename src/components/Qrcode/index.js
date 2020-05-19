@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {View, Text, ImageBackground, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Modal from 'react-native-modal';
+// import Code from 'react-native-qrcode';
 import PropTypes from 'prop-types';
 
 export default function Qrcode({size, color}) {

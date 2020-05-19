@@ -6,23 +6,23 @@ import {navigate} from '~/services/navigationService';
 
 export function* signIn({payload}) {
   try {
-    const {email, password} = payload;
-    const response = yield call(api.post, '/api/login', {
-      email,
+    const {cpf, password} = payload;
+    const response = yield call(api.post, '/auth', {
+      cpf,
       password,
     });
 
-    const {token, user} = response.data;
+    const {token} = response.data;
 
     api.defaults.headers.Authorization = `Baerer ${token}`;
 
-    yield put(signInSuccess(token, user));
+    yield put(signInSuccess(token));
 
     navigate('Dashboard');
   } catch (err) {
     Alert.alert(
       'Falha na autenticação',
-      'Houve um erro no login, verifique seu email/senha',
+      'Houve um erro no login, verifique seu cpf/senha',
     );
     yield put(signFailure());
   }

@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-// import React, {useEffect, useState} from 'react';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -13,41 +12,12 @@ import {
 } from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
-// instalar essa lib
-// import Code from 'react-native-qrcode';
 import Modal from 'react-native-modal';
-// import api from '~/services/api';
+import api from '~/services/api';
 import {Container, Title, Insidebox, AwardsView} from './styles';
 
 import Background from '~/components/Background';
 import Qrcode from '~/components/Qrcode';
-
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Capa Para Almofada Belchior',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Lustre Pendente Aramado Duplo',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad23abb28ba',
-    title: 'Fourth Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd61aa95f63',
-    title: 'Fifth Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-gd96-145571229d72',
-    title: 'Sixth Item',
-  },
-];
 
 const initialLayout = {width: Dimensions.get('window').width};
 
@@ -61,12 +31,24 @@ export default function Dashboard() {
     setModalVisibleQr(!isModalVisibleQr);
   };
 
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    async function loadItems() {
+      const response = await api.get('/data');
+
+      setItems(response.data);
+    }
+
+    loadItems();
+  }, []);
+
   const FirstRoute = () => (
     <View>
       <AwardsView>
         <FlatList
           style={{marginVertical: 10}}
-          data={DATA}
+          data={items}
           keyExtractor={(item) => item.id}
           renderItem={({item}) => (
             <TouchableOpacity
@@ -178,7 +160,7 @@ export default function Dashboard() {
       <AwardsView>
         <FlatList
           style={{marginVertical: 10}}
-          data={DATA}
+          data={items}
           keyExtractor={(item) => item.id}
           renderItem={({item}) => (
             <TouchableOpacity
@@ -294,18 +276,6 @@ export default function Dashboard() {
     first: FirstRoute,
     second: SecondRoute,
   });
-
-  // const [items, setItems] = useState([]);
-
-  // useEffect(() => {
-  //   async function loadItems() {
-  //     const response = await api.get('/api/unknown');
-
-  //     setItems(response.data);
-  //   }
-
-  //   loadItems();
-  // }, []);
 
   function rescue() {
     setModalVisibleQr(!isModalVisibleQr);

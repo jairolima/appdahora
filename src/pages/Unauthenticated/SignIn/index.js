@@ -1,11 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, {useRef, useState} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {TextInputMask} from 'react-native-masked-text';
+import {TextInput} from 'react-native-paper';
 
 import {useDispatch, useSelector} from 'react-redux';
 
-import {TextField} from 'react-native-material-textfield';
 import {signInRequest} from '~/store/modules/auth/actions';
 
 import Background from '~/components/Background';
@@ -18,13 +20,13 @@ export default function SignIn() {
   const dispatch = useDispatch();
   const passwordRef = useRef();
 
-  const [email, setEmail] = useState('');
+  const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
 
   const signed = useSelector((state) => state.auth.signed);
 
   function handleSubmit() {
-    dispatch(signInRequest(email, password));
+    dispatch(signInRequest(cpf, password));
   }
 
   function navigateBack() {
@@ -34,6 +36,16 @@ export default function SignIn() {
   function navigateToForgot() {
     navigation.navigate('Forgot');
   }
+
+  // function formatText(text) {
+  //   text = text.replace(/[^\d]/g, '');
+  //   return text.replace(/(\d)(\d)/, '$1.$2');
+  //   return text.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+  // }
+
+  // function _hasErrors() {
+  //   return email.includes('@');
+  // }
 
   return (
     <Background>
@@ -52,25 +64,31 @@ export default function SignIn() {
         <Title>Login</Title>
 
         <Body>
-          <TextField
-            label="Email"
-            tintColor="#e66118"
-            autoCorrect={false}
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => passwordRef.current.focus()}
-            value={email}
-            onChangeText={setEmail}
+          <TextInput
+            label="CPF"
+            style={{
+              paddingHorizontal: 0,
+              backgroundColor: 'none',
+            }}
+            theme={{colors: {primary: '#e66118'}}}
+            value={cpf}
+            onChangeText={setCpf}
+            render={(props) => <TextInputMask {...props} type="cpf" />}
           />
-          <TextField
+
+          <TextInput
             label="Senha"
-            tintColor="#e66118"
-            secureTextEntry
-            returnKeyType="send"
+            style={{
+              paddingHorizontal: 0,
+              backgroundColor: 'none',
+            }}
+            theme={{colors: {primary: '#e66118'}}}
             ref={passwordRef}
-            onSubmitEditing={handleSubmit}
             value={password}
             onChangeText={setPassword}
+            secureTextEntry
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
           />
 
           <TouchableOpacity

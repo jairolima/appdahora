@@ -1,12 +1,14 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, {useRef, useState} from 'react';
 import {Text, View, TouchableOpacity, ScrollView, Switch} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {TextInputMask} from 'react-native-masked-text';
+import {TextInput, HelperText} from 'react-native-paper';
 
 import {useDispatch, useSelector} from 'react-redux';
 
 // https://github.com/n4kz/react-native-material-textfield/issues/249
-import {TextField} from 'react-native-material-textfield';
 import {signInRequest} from '~/store/modules/auth/actions';
 
 import Background from '~/components/Background';
@@ -24,7 +26,20 @@ export default function SignUp() {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();
+  const birthRef = useRef();
+  const surnameRef = useRef();
+  const cpfRef = useRef();
+  const emailRef = useRef();
+  const phoneRef = useRef();
   const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+  const cepRef = useRef();
+  const streetRef = useRef();
+  const neighborRef = useRef();
+  const numberRef = useRef();
+  const complementRef = useRef();
+  const cityRef = useRef();
+  const userstateRef = useRef();
 
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
@@ -33,6 +48,7 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [cep, setCep] = useState('');
   const [neighbor, setNeighbor] = useState('');
   const [street, setStreet] = useState('');
@@ -82,10 +98,6 @@ export default function SignUp() {
     setIsEnabledPrivacy((previousState) => !previousState);
   const toggleSwitchTerms = () =>
     setIsEnabledTerms((previousState) => !previousState);
-
-  const formatText = (text) => {
-    return text.replace(/[^\d]+/g, '');
-  };
 
   return (
     <Background>
@@ -144,169 +156,306 @@ export default function SignUp() {
         </InputAvatar>
         <Container>
           <Body>
-            <TextField
+            <TextInput
               label="NOME *"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => surnameRef.current.focus()}
               value={name}
               onChangeText={setName}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Nome invalido
+            </HelperText>
+            <TextInput
               label="SOBRENOME *"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => cpfRef.current.focus()}
               value={surname}
               onChangeText={setSurname}
             />
-            <TextField
-              label="CPF *"
-              formatText={formatText}
-              tintColor="#e66118"
-              autoCorrect={false}
-              autoCapitalize="none"
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Sobrenome invalido
+            </HelperText>
+            <TextInput
+              label="CPF"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => birthRef.current.focus()}
               value={cpf}
               onChangeText={setCpf}
+              render={(props) => <TextInputMask {...props} type="cpf" />}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              CPF invalido
+            </HelperText>
+            <TextInput
               label="DATA DE NASCIMENTO *"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => emailRef.current.focus()}
               value={birth}
               onChangeText={setBirth}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Data de nascimento invalido
+            </HelperText>
+            <TextInput
               label="EMAIL *"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => phoneRef.current.focus()}
               value={email}
               onChangeText={setEmail}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Email invalido
+            </HelperText>
+
+            <TextInput
               label="TELEFONE *"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
               onSubmitEditing={() => passwordRef.current.focus()}
               value={phone}
               onChangeText={setPhone}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Telefone invalido
+            </HelperText>
+            <TextInput
               label="SENHA *"
-              tintColor="#e66118"
-              secureTextEntry
-              returnKeyType="send"
-              ref={passwordRef}
-              onSubmitEditing={handleSubmit}
-              value={password}
-              onChangeText={setPassword}
-            />
-            <TextField
-              label="CONFIRMAR SENHA *"
-              tintColor="#e66118"
-              secureTextEntry
-              returnKeyType="send"
-              ref={passwordRef}
-              onSubmitEditing={handleSubmit}
-              value={password}
-              onChangeText={setPassword}
-            />
-            <TextField
-              label="CEP"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => confirmPasswordRef.current.focus()}
+              value={password}
+              onChangeText={setPassword}
+            />
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Senha invalido
+            </HelperText>
+            <TextInput
+              label="CONFIRMAR SENHA *"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
+              returnKeyType="next"
+              onSubmitEditing={() => cepRef.current.focus()}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+            />
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Confirmar Senha invalido
+            </HelperText>
+            <TextInput
+              label="CEP"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
+              returnKeyType="next"
+              onSubmitEditing={() => streetRef.current.focus()}
               value={cep}
               onChangeText={setCep}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              CEP invalido
+            </HelperText>
+            <TextInput
               label="RUA"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => neighborRef.current.focus()}
               value={street}
               onChangeText={setStreet}
             />
-            <TextField
-              label="Bairro"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              RUA invalido
+            </HelperText>
+            <TextInput
+              label="BAIRRO"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => numberRef.current.focus()}
               value={neighbor}
               onChangeText={setNeighbor}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              BAIRRO invalido
+            </HelperText>
+            <TextInput
               label="NUMERO"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => complementRef.current.focus()}
               value={number}
               onChangeText={setNumber}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Numero invalido
+            </HelperText>
+            <TextInput
               label="COMPLEMENTO"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => cityRef.current.focus()}
               value={complement}
               onChangeText={setComplement}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Complemento invalido
+            </HelperText>
+            <TextInput
               label="CIDADE"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              onSubmitEditing={() => userstateRef.current.focus()}
               value={city}
               onChangeText={setCity}
             />
-            <TextField
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Cidade invalido
+            </HelperText>
+            <TextInput
               label="ESTADO"
-              tintColor="#e66118"
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => passwordRef.current.focus()}
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              theme={{colors: {primary: '#e66118'}}}
               value={userstate}
               onChangeText={setUserstate}
             />
+            <HelperText
+              style={{
+                paddingHorizontal: 0,
+              }}
+              type="error"
+              visible={false}>
+              Cidade invalido
+            </HelperText>
 
             <TouchableOpacity
               style={{marginTop: '10%', alignItems: 'center'}}
