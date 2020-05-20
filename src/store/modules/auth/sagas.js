@@ -12,11 +12,11 @@ export function* signIn({payload}) {
       password,
     });
 
-    const {token} = response.data;
+    const {token, user} = response.data;
 
     api.defaults.headers.Authorization = `Baerer ${token}`;
 
-    yield put(signInSuccess(token));
+    yield put(signInSuccess(token, user));
 
     navigate('Dashboard');
   } catch (err) {

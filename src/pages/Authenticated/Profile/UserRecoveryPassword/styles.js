@@ -4,7 +4,6 @@
 import styled from 'styled-components/native';
 import {Platform} from 'react-native';
 
-import Input from '~/components/Input';
 import Button from '~/components/Button';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
@@ -12,9 +11,9 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   behavior: 'padding',
 })`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  padding: 0 30px;
+  justify-content: space-between;
+  padding: 20px;
+  min-height: 200px;
 `;
 
 export const Header = styled.View`
@@ -24,25 +23,27 @@ export const Header = styled.View`
   padding-horizontal: 30px;
 `;
 
-export const Form = styled.View`
-  align-self: stretch;
-  margin-top: 50px;
-  margin-bottom: 10px;
+export const Title = styled.Text`
+  font-size: 32px;
+  font-weight: bold;
+  color: #000;
+  padding-horizontal: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
 `;
 
-export const FormInput = styled(Input)`
-  margin-bottom: 10px;
+export const Body = styled.View`
+  flex: 1;
+  padding: 20px;
+  min-height: 200px;
+`;
+
+export const Footer = styled.View`
+  padding: 20px;
 `;
 
 export const SubmitButton = styled(Button)`
   margin-top: 5px;
-`;
-
-export const SignLink = styled.TouchableOpacity`
-  margin-top: 20px;
-`;
-export const SignLinkText = styled.Text`
-  color: #fff;
-  font-weight: bold;
-  align-self: center;
+  height: 70px;
 `;

@@ -5,7 +5,6 @@ import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useSelector} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -21,13 +20,12 @@ import Terms from './pages/Unauthenticated/SignUp/Read/Terms';
 
 // profile tab path
 import Menu from './pages/Authenticated/Profile';
-// import Vouchers from './pages/Profile/Vouchers';
-// import Profile from './pages/Profile/Profile';
+import UserUpdate from './pages/Authenticated/Profile/UserUpdate';
+import UserPointsHistory from './pages/Authenticated/Profile/UserPointsHistory';
+import UserRecoveryPassword from './pages/Authenticated/Profile/UserRecoveryPassword';
 
 // dashboard tab path
 import Dashboard from './pages/Authenticated/Dashboard';
-// import Detail from './pages/New/Detail';
-// import SelectQuantity from './pages/New/SelectQuantity';
 
 FontAwesome.loadFont();
 
@@ -42,6 +40,13 @@ export default function Routes() {
     return (
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="UserUpdate" component={UserUpdate} />
+        <Stack.Screen name="UserPointsHistory" component={UserPointsHistory} />
+        <Stack.Screen name="Privacy" component={Privacy} />
+        <Stack.Screen
+          name="UserRecoveryPassword"
+          component={UserRecoveryPassword}
+        />
       </Stack.Navigator>
     );
   }
@@ -57,7 +62,10 @@ export default function Routes() {
   return (
     <NavigationContainer ref={setNavigator}>
       {SignedIn ? (
-        <Tab.Navigator>
+        <Tab.Navigator
+          tabBarOptions={{
+            showLabel: false,
+          }}>
           <Tab.Screen
             name="Dashboard"
             component={StackDashboard}
@@ -76,6 +84,7 @@ export default function Routes() {
           <Tab.Screen
             name="Account"
             component={StackAccount}
+            tabBarOptions={{showLabel: false}}
             options={{
               tabBarIcon: () => (
                 <FontAwesome

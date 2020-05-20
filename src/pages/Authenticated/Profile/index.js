@@ -5,6 +5,7 @@ import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
 // import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import {signOut} from '~/store/modules/auth/actions';
 
 import Background from '~/components/Background';
@@ -13,11 +14,29 @@ import Qrcode from '~/components/Qrcode';
 import {Container, MenuItem, ButtonCircle} from './styles';
 
 export default function Menu() {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   function handleLogout() {
     dispatch(signOut());
   }
+
+  function navigateToUserUpdate() {
+    navigation.navigate('UserUpdate');
+  }
+
+  function navigateToUserPointsHistory() {
+    navigation.navigate('UserPointsHistory');
+  }
+
+  function navigateToPrivacy() {
+    navigation.navigate('Privacy');
+  }
+
+  function navigateToUserRecoveryPassword() {
+    navigation.navigate('UserRecoveryPassword');
+  }
+
   return (
     <Background>
       <Container>
@@ -76,37 +95,87 @@ export default function Menu() {
               </Text>
             </TouchableOpacity>
           </View>
-
-          <MenuItem>
-            <Icon.Button
-              iconStyle={{color: '#000', marginRight: 20}}
-              name="user"
-              backgroundColor="#fff"
-              style={{
-                height: 64,
-                alignItems: 'center',
-                paddingHorizontal: 30,
-              }}>
-              <Text style={{fontFamily: 'Arial', fontSize: 16}}>
-                Meus dados
-              </Text>
-            </Icon.Button>
-          </MenuItem>
-          <MenuItem>
-            <Icon.Button
-              iconStyle={{color: '#000', marginRight: 20}}
-              name="user"
-              backgroundColor="#fff"
-              style={{
-                height: 64,
-                alignItems: 'center',
-                paddingHorizontal: 30,
-              }}>
-              <Text style={{fontFamily: 'Arial', fontSize: 16}}>
-                Meus pontos
-              </Text>
-            </Icon.Button>
-          </MenuItem>
+          <View style={{paddingHorizontal: 20}}>
+            <MenuItem>
+              <Icon.Button
+                onPress={navigateToUserUpdate}
+                iconStyle={{color: '#000', marginRight: 20}}
+                name="user"
+                backgroundColor="#fff"
+                style={{
+                  height: 64,
+                  alignItems: 'center',
+                  paddingHorizontal: 30,
+                }}>
+                <Text style={{fontFamily: 'Arial', fontSize: 16}}>
+                  Meus dados
+                </Text>
+              </Icon.Button>
+            </MenuItem>
+            <MenuItem>
+              <Icon.Button
+                onPress={navigateToUserPointsHistory}
+                iconStyle={{color: '#000', marginRight: 20}}
+                name="bitcoin"
+                backgroundColor="#fff"
+                style={{
+                  height: 64,
+                  alignItems: 'center',
+                  paddingHorizontal: 30,
+                }}>
+                <Text style={{fontFamily: 'Arial', fontSize: 16}}>
+                  Meus pontos
+                </Text>
+              </Icon.Button>
+            </MenuItem>
+            <MenuItem>
+              <Icon.Button
+                onPress={navigateToPrivacy}
+                iconStyle={{color: '#000', marginRight: 20}}
+                name="shield"
+                backgroundColor="#fff"
+                style={{
+                  height: 64,
+                  alignItems: 'center',
+                  paddingHorizontal: 30,
+                }}>
+                <Text style={{fontFamily: 'Arial', fontSize: 16}}>
+                  Política de Privacidade
+                </Text>
+              </Icon.Button>
+            </MenuItem>
+            <MenuItem>
+              <Icon.Button
+                onPress={navigateToUserRecoveryPassword}
+                iconStyle={{color: '#000', marginRight: 20}}
+                name="key"
+                backgroundColor="#fff"
+                style={{
+                  height: 64,
+                  alignItems: 'center',
+                  paddingHorizontal: 30,
+                }}>
+                <Text style={{fontFamily: 'Arial', fontSize: 16}}>
+                  Alterar Senha
+                </Text>
+              </Icon.Button>
+            </MenuItem>
+            <MenuItem>
+              <Icon.Button
+                iconStyle={{color: '#e66118', marginRight: 20}}
+                name="wifi"
+                backgroundColor="#fff"
+                style={{
+                  height: 64,
+                  alignItems: 'center',
+                  paddingHorizontal: 30,
+                }}>
+                <Text style={{fontFamily: 'Arial', fontSize: 16}}>
+                  Conectado
+                </Text>
+              </Icon.Button>
+            </MenuItem>
+          </View>
         </ScrollView>
       </Container>
     </Background>

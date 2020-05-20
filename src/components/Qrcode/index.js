@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {View, Text, ImageBackground, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Modal from 'react-native-modal';
-// import Code from 'react-native-qrcode';
+import QRCode from 'react-native-qrcode-svg';
 import PropTypes from 'prop-types';
 
 export default function Qrcode({size, color}) {
@@ -52,7 +52,12 @@ export default function Qrcode({size, color}) {
                             bgColor="black"
                             fgColor="white"
                           /> */}
-              <Text>lugar do code</Text>
+              <QRCode
+                value="00000000000"
+                size={180}
+                logoSize={30}
+                logoBackgroundColor="transparent"
+              />
             </View>
           </ImageBackground>
 

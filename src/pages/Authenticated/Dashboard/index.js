@@ -286,7 +286,7 @@ export default function Dashboard() {
     <Background>
       <Container>
         <ScrollView>
-          <Text>{modalTitle}</Text>
+          {/* <Text>{modalTitle}</Text> */}
           <View
             style={{
               alignItems: 'center',
