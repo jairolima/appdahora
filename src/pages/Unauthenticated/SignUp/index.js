@@ -1,15 +1,23 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {useRef, useState} from 'react';
-import {Text, View, TouchableOpacity, ScrollView, Switch} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Switch,
+  Alert,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TextInputMask} from 'react-native-masked-text';
 import {TextInput, HelperText} from 'react-native-paper';
+import ImagePicker from 'react-native-image-picker';
 
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
-// https://github.com/n4kz/react-native-material-textfield/issues/249
-import {signInRequest} from '~/store/modules/auth/actions';
+import {signUpRequest} from '~/store/modules/auth/actions';
 
 import Background from '~/components/Background';
 
@@ -26,58 +34,73 @@ export default function SignUp() {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();
-  const birthRef = useRef();
-  const surnameRef = useRef();
+  const birthdayRef = useRef();
+  const last_nameRef = useRef();
   const cpfRef = useRef();
   const emailRef = useRef();
   const phoneRef = useRef();
   const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
-  const cepRef = useRef();
-  const streetRef = useRef();
-  const neighborRef = useRef();
+  const password_confirmationRef = useRef();
+  const zipcodeRef = useRef();
+  const addressRef = useRef();
+  const neighborhoodRef = useRef();
   const numberRef = useRef();
   const complementRef = useRef();
   const cityRef = useRef();
-  const userstateRef = useRef();
+  const stateRef = useRef();
 
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
+  const [avatar, setAvatar] = useState('null');
+  const [first_name, setFirst_name] = useState('');
+  const [last_name, setLast_name] = useState('');
   const [cpf, setCpf] = useState('');
-  const [birth, setBirth] = useState('');
+  const [birthday, setBirthday] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [cep, setCep] = useState('');
-  const [neighbor, setNeighbor] = useState('');
-  const [street, setStreet] = useState('');
+  const [password_confirmation, setPassword_confirmation] = useState('');
+  const [zipcode, setZipcode] = useState('');
+  const [neighborhood, setNeighborhood] = useState('');
+  const [address, setAddress] = useState('');
   const [number, setNumber] = useState('');
   const [complement, setComplement] = useState('');
   const [city, setCity] = useState('');
-  const [userstate, setUserstate] = useState('');
+  const [state, setState] = useState('');
 
-  const signed = useSelector((state) => state.auth.signed);
+  const [isEnabledPrivacy, setIsEnabledPrivacy] = useState(false);
+  const [isEnabledTerms, setIsEnabledTerms] = useState(false);
+  const toggleSwitchPrivacy = () =>
+    setIsEnabledPrivacy((previousState) => !previousState);
+  const toggleSwitchTerms = () =>
+    setIsEnabledTerms((previousState) => !previousState);
 
   function handleSubmit() {
-    dispatch(
-      signInRequest(
-        name,
-        surname,
-        cpf,
-        birth,
-        email,
-        phone,
-        password,
-        cep,
-        neighbor,
-        street,
-        number,
-        complement,
-        city,
-        userstate,
-      ),
-    );
+    if (isEnabledPrivacy && isEnabledTerms) {
+      dispatch(
+        signUpRequest(
+          avatar,
+          first_name,
+          last_name,
+          cpf,
+          birthday,
+          email,
+          phone,
+          password,
+          password_confirmation,
+          zipcode,
+          neighborhood,
+          address,
+          number,
+          complement,
+          city,
+          state,
+        ),
+      );
+    } else {
+      return Alert.alert(
+        'Erro!',
+        'É necessário aceitar os termos de uso e politica de privacidade para continuar!',
+      );
+    }
   }
 
   function navigateBack() {
@@ -92,12 +115,47 @@ export default function SignUp() {
     navigation.navigate('Terms');
   }
 
-  const [isEnabledPrivacy, setIsEnabledPrivacy] = useState(false);
-  const [isEnabledTerms, setIsEnabledTerms] = useState(false);
-  const toggleSwitchPrivacy = () =>
-    setIsEnabledPrivacy((previousState) => !previousState);
-  const toggleSwitchTerms = () =>
-    setIsEnabledTerms((previousState) => !previousState);
+  /**
+   * The first arg is the options object for customization (it can also be null or omitted for default options),
+   * The second arg is the callback which sends object: response (more info in the API Reference)
+   */
+
+  async function setImage() {
+    try {
+      await ImagePicker.showImagePicker(
+        {
+          title: 'Selecionar Avatar',
+          storageOptions: {
+            skipBackup: true,
+            path: 'images',
+          },
+        },
+        (response) => {
+          if (response.didCancel) {
+            console.tron.log('User cancelled image picker');
+          } else if (response.error) {
+            console.tron.log('ImagePicker Error: ', response.error);
+          } else if (response.customButton) {
+            console.tron.log(
+              'User tapped custom button: ',
+              response.customButton,
+            );
+          } else {
+            const source = {
+              // uri: 'data:image/jpeg;base64,' + response.data,
+              uri: response.uri,
+              type: 'image/jpeg',
+              name: response.fileName,
+            };
+
+            setAvatar(source);
+          }
+        },
+      );
+    } catch (e) {
+      console.tron.log(e);
+    }
+  }
 
   return (
     <Background>
@@ -112,12 +170,11 @@ export default function SignUp() {
             type="font-awesome"
             size={70}
           />
-          <Text>{signed}</Text>
         </TouchableOpacity>
 
         <Title>Cadastrar</Title>
 
-        <InputAvatar>
+        <InputAvatar onPress={setImage}>
           <View
             style={{
               paddingHorizontal: 60,
@@ -126,24 +183,40 @@ export default function SignUp() {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <View
-              style={{
-                height: 100,
-                width: 100,
-                borderRadius: 50,
-                backgroundColor: '#484848',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <FontAwesome
-                reverseColor
-                name="camera"
-                label="Nos envie uma foto sua para identificação e segurança."
-                color="#fff"
-                type="font-awesome"
-                size={23}
-              />
-            </View>
+            {avatar === 'null' ? (
+              <View
+                style={{
+                  height: 100,
+                  width: 100,
+                  borderRadius: 50,
+                  backgroundColor: '#484848',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <FontAwesome
+                  reverseColor
+                  name="camera"
+                  label="Nos envie uma foto sua para identificação e segurança."
+                  color="#fff"
+                  type="font-awesome"
+                  size={23}
+                />
+              </View>
+            ) : (
+              // <Image
+              //   source={avatar}
+              //   style={{
+              //     height: 100,
+              //     width: 100,
+              //     borderRadius: 50,
+              //     backgroundColor: '#484848',
+              //     alignItems: 'center',
+              //     justifyContent: 'center',
+              //   }}
+              // />
+              <Text>{avatar.uri}</Text>
+            )}
+
             <Text
               style={{paddingLeft: 12, fontSize: 16}}
               adjustsFontSizeToFit
@@ -164,9 +237,9 @@ export default function SignUp() {
               }}
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => surnameRef.current.focus()}
-              value={name}
-              onChangeText={setName}
+              onSubmitEditing={() => last_nameRef.current.focus()}
+              value={first_name}
+              onChangeText={setFirst_name}
             />
             <HelperText
               style={{
@@ -178,6 +251,7 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="SOBRENOME *"
+              ref={last_nameRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
@@ -185,8 +259,8 @@ export default function SignUp() {
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
               onSubmitEditing={() => cpfRef.current.focus()}
-              value={surname}
-              onChangeText={setSurname}
+              value={last_name}
+              onChangeText={setLast_name}
             />
             <HelperText
               style={{
@@ -198,13 +272,14 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="CPF"
+              ref={cpfRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => birthRef.current.focus()}
+              onSubmitEditing={() => birthdayRef.current.focus()}
               value={cpf}
               onChangeText={setCpf}
               render={(props) => <TextInputMask {...props} type="cpf" />}
@@ -219,6 +294,7 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="DATA DE NASCIMENTO *"
+              ref={birthdayRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
@@ -226,8 +302,8 @@ export default function SignUp() {
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
               onSubmitEditing={() => emailRef.current.focus()}
-              value={birth}
-              onChangeText={setBirth}
+              value={birthday}
+              onChangeText={setBirthday}
             />
             <HelperText
               style={{
@@ -239,6 +315,7 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="EMAIL *"
+              ref={emailRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
@@ -260,6 +337,7 @@ export default function SignUp() {
 
             <TextInput
               label="TELEFONE *"
+              ref={phoneRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
@@ -280,13 +358,14 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="SENHA *"
+              ref={passwordRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => confirmPasswordRef.current.focus()}
+              onSubmitEditing={() => password_confirmationRef.current.focus()}
               value={password}
               onChangeText={setPassword}
             />
@@ -300,15 +379,16 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="CONFIRMAR SENHA *"
+              ref={password_confirmationRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => cepRef.current.focus()}
-              value={confirmPassword}
-              onChangeText={setConfirmPassword}
+              onSubmitEditing={() => zipcodeRef.current.focus()}
+              value={password_confirmation}
+              onChangeText={setPassword_confirmation}
             />
             <HelperText
               style={{
@@ -320,15 +400,16 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="CEP"
+              ref={zipcodeRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => streetRef.current.focus()}
-              value={cep}
-              onChangeText={setCep}
+              onSubmitEditing={() => addressRef.current.focus()}
+              value={zipcode}
+              onChangeText={setZipcode}
             />
             <HelperText
               style={{
@@ -340,15 +421,16 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="RUA"
+              ref={addressRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => neighborRef.current.focus()}
-              value={street}
-              onChangeText={setStreet}
+              onSubmitEditing={() => neighborhoodRef.current.focus()}
+              value={address}
+              onChangeText={setAddress}
             />
             <HelperText
               style={{
@@ -360,6 +442,7 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="BAIRRO"
+              ref={neighborhoodRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
@@ -367,8 +450,8 @@ export default function SignUp() {
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
               onSubmitEditing={() => numberRef.current.focus()}
-              value={neighbor}
-              onChangeText={setNeighbor}
+              value={neighborhood}
+              onChangeText={setNeighborhood}
             />
             <HelperText
               style={{
@@ -380,6 +463,7 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="NUMERO"
+              ref={numberRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
@@ -400,6 +484,7 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="COMPLEMENTO"
+              ref={complementRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
@@ -420,13 +505,14 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="CIDADE"
+              ref={cityRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
               returnKeyType="next"
-              onSubmitEditing={() => userstateRef.current.focus()}
+              onSubmitEditing={() => stateRef.current.focus()}
               value={city}
               onChangeText={setCity}
             />
@@ -440,13 +526,15 @@ export default function SignUp() {
             </HelperText>
             <TextInput
               label="ESTADO"
+              returnKeyType="send"
+              ref={stateRef}
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              value={userstate}
-              onChangeText={setUserstate}
+              value={state}
+              onChangeText={setState}
             />
             <HelperText
               style={{

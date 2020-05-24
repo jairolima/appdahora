@@ -30,18 +30,45 @@ export function* signIn({payload}) {
 
 export function* signUp({payload}) {
   try {
-    const {username, email, password, phone, cpf} = payload;
-
-    yield call(api.post, 'users', {
-      username,
-      email,
-      password,
-      phone,
+    const {
+      avatar,
+      first_name,
+      last_name,
       cpf,
+      birthday,
+      email,
+      phone,
+      password,
+      password_confirmation,
+      zipcode,
+      neighborhood,
+      address,
+      number,
+      complement,
+      city,
+      state,
+    } = payload;
+
+    yield call(api.post, '/clients', {
+      avatar,
+      first_name,
+      last_name,
+      cpf,
+      birthday,
+      email,
+      phone,
+      password,
+      password_confirmation,
+      zipcode,
+      neighborhood,
+      address,
+      number,
+      complement,
+      city,
+      state,
     });
     Alert.alert('Cadastro de Usuário', 'Cadastradado com sucesso!');
     navigate('SignIn');
-    // history.push('/');
   } catch (err) {
     console.tron.log('erro no cadastro', err);
     Alert.alert('Falha no cadastro', 'verifique seus dados');

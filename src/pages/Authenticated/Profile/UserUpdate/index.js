@@ -18,21 +18,23 @@ export default function UserUpdate() {
 
   const navigation = useNavigation();
 
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [birth, setBirth] = useState('');
+  const [first_name, setFirst_name] = useState('');
+  const [last_name, setLast_name] = useState('');
+  const [birthday, setBirthday] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  const surnameRef = useRef();
-  const birthRef = useRef();
+  const last_nameRef = useRef();
+  const birthdayRef = useRef();
   const emailRef = useRef();
   const phoneRef = useRef();
 
   const dispatch = useDispatch();
 
   function handleSubmit() {
-    dispatch(updateProfileRequest(name, surname, birth, email, phone));
+    dispatch(
+      updateProfileRequest(first_name, last_name, birthday, email, phone),
+    );
   }
 
   function navigateBack() {
@@ -94,9 +96,9 @@ export default function UserUpdate() {
             }}
             theme={{colors: {primary: '#e66118'}}}
             returnKeyType="next"
-            onSubmitEditing={() => surnameRef.current.focus()}
-            value={user.name}
-            onChangeText={setName}
+            onSubmitEditing={() => last_nameRef.current.focus()}
+            value={user.first_name}
+            onChangeText={setFirst_name}
           />
           <HelperText
             style={{
@@ -114,9 +116,9 @@ export default function UserUpdate() {
             }}
             theme={{colors: {primary: '#e66118'}}}
             returnKeyType="next"
-            onSubmitEditing={() => birthRef.current.focus()}
-            value={user.surname}
-            onChangeText={setSurname}
+            onSubmitEditing={() => birthdayRef.current.focus()}
+            value={user.last_name}
+            onChangeText={setLast_name}
           />
           <HelperText
             style={{
@@ -135,8 +137,8 @@ export default function UserUpdate() {
             theme={{colors: {primary: '#e66118'}}}
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
-            value={user.birth}
-            onChangeText={setBirth}
+            value={user.birthday}
+            onChangeText={setBirthday}
           />
           <HelperText
             style={{
