@@ -2,11 +2,10 @@
 import React, {useRef, useState} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TextInputMask} from 'react-native-masked-text';
 import {TextInput} from 'react-native-paper';
-
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import {Arrow} from '~/components/icons/Arrow';
 
 import {signInRequest} from '~/store/modules/auth/actions';
 
@@ -23,8 +22,6 @@ export default function SignIn() {
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
 
-  const signed = useSelector((state) => state.auth.signed);
-
   function handleSubmit() {
     dispatch(signInRequest(cpf, password));
   }
@@ -37,12 +34,6 @@ export default function SignIn() {
     navigation.navigate('Forgot');
   }
 
-  // function formatText(text) {
-  //   text = text.replace(/[^\d]/g, '');
-  //   return text.replace(/(\d)(\d)/, '$1.$2');
-  //   return text.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-  // }
-
   // function _hasErrors() {
   //   return email.includes('@');
   // }
@@ -51,14 +42,7 @@ export default function SignIn() {
     <Background>
       <Container>
         <TouchableOpacity style={{marginTop: '10%'}} onPress={navigateBack}>
-          <FontAwesome
-            reverseColor
-            name="long-arrow-left"
-            color="#ccc"
-            type="font-awesome"
-            size={70}
-          />
-          <Text>{signed}</Text>
+          <Arrow />
         </TouchableOpacity>
 
         <Title>Login</Title>

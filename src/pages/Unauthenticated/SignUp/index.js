@@ -14,8 +14,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TextInputMask} from 'react-native-masked-text';
 import {TextInput, HelperText} from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
-
 import {useDispatch} from 'react-redux';
+import {Arrow} from '~/components/icons/Arrow';
 
 import {signUpRequest} from '~/store/modules/auth/actions';
 
@@ -161,15 +161,9 @@ export default function SignUp() {
     <Background>
       <ScrollView>
         <TouchableOpacity
-          style={{marginTop: '10%', paddingHorizontal: 20}}
+          style={{marginTop: '20%', marginBottom: '10%', paddingHorizontal: 20}}
           onPress={navigateBack}>
-          <FontAwesome
-            reverseColor
-            name="long-arrow-left"
-            color="#ccc"
-            type="font-awesome"
-            size={70}
-          />
+          <Arrow />
         </TouchableOpacity>
 
         <Title>Cadastrar</Title>
@@ -304,6 +298,15 @@ export default function SignUp() {
               onSubmitEditing={() => emailRef.current.focus()}
               value={birthday}
               onChangeText={setBirthday}
+              render={(props) => (
+                <TextInputMask
+                  {...props}
+                  type="custom"
+                  options={{
+                    mask: '99/99/9999',
+                  }}
+                />
+              )}
             />
             <HelperText
               style={{
@@ -347,6 +350,17 @@ export default function SignUp() {
               onSubmitEditing={() => passwordRef.current.focus()}
               value={phone}
               onChangeText={setPhone}
+              render={(props) => (
+                <TextInputMask
+                  {...props}
+                  type="cel-phone"
+                  options={{
+                    maskType: 'BRL',
+                    withDDD: true,
+                    dddMask: '(99) ',
+                  }}
+                />
+              )}
             />
             <HelperText
               style={{

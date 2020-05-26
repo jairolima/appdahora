@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import api from '~/services/api';
 import {Container, Title, Insidebox, AwardsView} from './styles';
@@ -20,6 +20,8 @@ import Background from '~/components/Background';
 import Qrcode from '~/components/Qrcode';
 
 const initialLayout = {width: Dimensions.get('window').width};
+
+Icon.loadFont();
 
 export default function Dashboard() {
   const [isModalVisibleRescue, setModalVisibleRescue] = useState(false);
@@ -454,6 +456,7 @@ export default function Dashboard() {
                   activeColor="#000"
                   inactiveColor="#ccc"
                   indicatorStyle={{backgroundColor: 'orange'}}
+                  getLabelText={({route}) => route.title}
                   style={{
                     elevation: 0,
                     shadowOpacity: 0,

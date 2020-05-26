@@ -5,10 +5,10 @@ import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useSelector} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {setNavigator} from './services/navigationService';
+import {BurguerIcon, BoxIcon} from '~/components/icons';
 
 // starter path
 import SignIn from './pages/Unauthenticated/SignIn';
@@ -26,8 +26,6 @@ import UserRecoveryPassword from './pages/Authenticated/Profile/UserRecoveryPass
 
 // dashboard tab path
 import Dashboard from './pages/Authenticated/Dashboard';
-
-FontAwesome.loadFont();
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -65,37 +63,36 @@ export default function Routes() {
         <Tab.Navigator
           tabBarOptions={{
             showLabel: false,
-          }}>
+          }}
+          screenOptions={({route}) => ({
+            tabBarIcon: ({focused}) => {
+              let iconColor;
+
+              if (route.name === 'Dashboard') {
+                iconColor = focused ? '#E66118' : '#E6611866';
+                return <BoxIcon fill={iconColor} />;
+              }
+              if (route.name === 'Account') {
+                iconColor = focused ? '#E66118' : '#E6611866';
+                return <BurguerIcon fill={iconColor} />;
+              }
+              return false;
+            },
+          })}>
           <Tab.Screen
             name="Dashboard"
             component={StackDashboard}
-            options={{
-              tabBarIcon: () => (
-                <FontAwesome
-                  reverseColor
-                  name="gift"
-                  color="#e66118"
-                  type="font-awesome"
-                  size={26}
-                />
-              ),
-            }}
+            // options={{
+            //   tabBarIcon: () => <BoxIcon fill="#E66118" />,
+            // }}
           />
           <Tab.Screen
             name="Account"
             component={StackAccount}
             tabBarOptions={{showLabel: false}}
-            options={{
-              tabBarIcon: () => (
-                <FontAwesome
-                  reverseColor
-                  name="bars"
-                  color="#e66118"
-                  type="font-awesome"
-                  size={26}
-                />
-              ),
-            }}
+            // options={{
+            //   tabBarIcon: () => <BurguerIcon />,
+            // }}
           />
         </Tab.Navigator>
       ) : (

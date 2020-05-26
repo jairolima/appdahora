@@ -19,8 +19,6 @@ export const Title = styled.Text`
   font-size: 32px;
   font-weight: bold;
   padding-horizontal: 20px;
-  margin-top: 0px;
-  margin-bottom: 0px;
   justify-content: center;
 `;
 
@@ -41,7 +39,7 @@ export const InputAvatar = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   padding-horizontal: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
 `;
 
 export const SubmitButton = styled(Button)`
