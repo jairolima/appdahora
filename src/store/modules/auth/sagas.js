@@ -16,6 +16,8 @@ export function* signIn({payload}) {
 
     api.defaults.headers.Authorization = `Baerer ${token}`;
 
+    // yield delay(7000) and also import delay from redux-saga/effects;
+
     yield put(signInSuccess(token, user));
 
     navigate('Dashboard');

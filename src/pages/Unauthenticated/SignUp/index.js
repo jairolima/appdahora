@@ -8,6 +8,7 @@ import {
   ScrollView,
   Switch,
   Alert,
+  Image,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -171,7 +172,7 @@ export default function SignUp() {
         <InputAvatar onPress={setImage}>
           <View
             style={{
-              paddingHorizontal: 60,
+              paddingHorizontal: 0,
               flex: 1,
               flexDirection: 'row',
               alignItems: 'center',
@@ -180,10 +181,10 @@ export default function SignUp() {
             {avatar === 'null' ? (
               <View
                 style={{
-                  height: 100,
-                  width: 100,
+                  height: 80,
+                  width: 80,
                   borderRadius: 50,
-                  backgroundColor: '#484848',
+                  backgroundColor: '#babdc2',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
@@ -197,22 +198,22 @@ export default function SignUp() {
                 />
               </View>
             ) : (
-              // <Image
-              //   source={avatar}
-              //   style={{
-              //     height: 100,
-              //     width: 100,
-              //     borderRadius: 50,
-              //     backgroundColor: '#484848',
-              //     alignItems: 'center',
-              //     justifyContent: 'center',
-              //   }}
-              // />
-              <Text>{avatar.uri}</Text>
+              <Image
+                source={avatar}
+                style={{
+                  height: 80,
+                  width: 80,
+                  borderRadius: 50,
+                  backgroundColor: '#484848',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              />
+              // <Text>{avatar.uri}</Text>
             )}
 
             <Text
-              style={{paddingLeft: 12, fontSize: 16}}
+              style={{paddingLeft: 35, fontSize: 16}}
               adjustsFontSizeToFit
               numberOfLines={3}
               ellipsizeMode="tail">
@@ -225,12 +226,13 @@ export default function SignUp() {
           <Body>
             <TextInput
               label="NOME *"
+              fontSize="12"
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => last_nameRef.current.focus()}
               value={first_name}
               onChangeText={setFirst_name}
@@ -251,8 +253,8 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
-              onSubmitEditing={() => cpfRef.current.focus()}
+              returnKeyType="done"
+              // onSubmitEditing={() => cpfRef.current.focus()}
               value={last_name}
               onChangeText={setLast_name}
             />
@@ -272,8 +274,8 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
-              onSubmitEditing={() => birthdayRef.current.focus()}
+              returnKeyType="done"
+              // onSubmitEditing={() => birthdayRef.current.focus()}
               value={cpf}
               onChangeText={setCpf}
               render={(props) => <TextInputMask {...props} type="cpf" />}
@@ -294,7 +296,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => emailRef.current.focus()}
               value={birthday}
               onChangeText={setBirthday}
@@ -324,8 +326,8 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
-              onSubmitEditing={() => phoneRef.current.focus()}
+              returnKeyType="done"
+              // onSubmitEditing={() => phoneRef.current.focus()}
               value={email}
               onChangeText={setEmail}
             />
@@ -346,7 +348,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => passwordRef.current.focus()}
               value={phone}
               onChangeText={setPhone}
@@ -378,7 +380,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => password_confirmationRef.current.focus()}
               value={password}
               onChangeText={setPassword}
@@ -399,7 +401,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => zipcodeRef.current.focus()}
               value={password_confirmation}
               onChangeText={setPassword_confirmation}
@@ -420,7 +422,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => addressRef.current.focus()}
               value={zipcode}
               onChangeText={setZipcode}
@@ -441,7 +443,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => neighborhoodRef.current.focus()}
               value={address}
               onChangeText={setAddress}
@@ -462,7 +464,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => numberRef.current.focus()}
               value={neighborhood}
               onChangeText={setNeighborhood}
@@ -483,7 +485,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => complementRef.current.focus()}
               value={number}
               onChangeText={setNumber}
@@ -504,7 +506,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => cityRef.current.focus()}
               value={complement}
               onChangeText={setComplement}
@@ -525,7 +527,7 @@ export default function SignUp() {
                 backgroundColor: 'none',
               }}
               theme={{colors: {primary: '#e66118'}}}
-              returnKeyType="next"
+              returnKeyType="done"
               onSubmitEditing={() => stateRef.current.focus()}
               value={city}
               onChangeText={setCity}

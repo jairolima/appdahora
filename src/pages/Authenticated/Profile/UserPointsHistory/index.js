@@ -3,8 +3,8 @@ import React, {useEffect, useState} from 'react';
 
 import {TouchableOpacity, ScrollView, Text, View, FlatList} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import api from '~/services/api';
+import {Arrow} from '~/components/icons/Arrow';
 
 import Background from '~/components/Background';
 
@@ -33,15 +33,13 @@ export default function UserPointsHistory() {
       <Container>
         <ScrollView>
           <TouchableOpacity
-            style={{marginTop: '10%', paddingHorizontal: 20}}
+            style={{
+              marginTop: '20%',
+              marginBottom: '10%',
+              paddingHorizontal: 20,
+            }}
             onPress={navigateBack}>
-            <FontAwesome
-              reverseColor
-              name="long-arrow-left"
-              color="#ccc"
-              type="font-awesome"
-              size={70}
-            />
+            <Arrow />
           </TouchableOpacity>
           <Title>Histórico</Title>
 

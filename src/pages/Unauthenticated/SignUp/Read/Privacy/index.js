@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {Arrow} from '~/components/icons/Arrow';
 
 import Background from '~/components/Background';
 
@@ -17,14 +17,13 @@ export default function Privacy() {
     <Background>
       <Container>
         <ScrollView>
-          <TouchableOpacity style={{marginTop: '10%'}} onPress={navigateBack}>
-            <FontAwesome
-              reverseColor
-              name="long-arrow-left"
-              color="#ccc"
-              type="font-awesome"
-              size={70}
-            />
+          <TouchableOpacity
+            style={{
+              marginTop: '20%',
+              marginBottom: '10%',
+            }}
+            onPress={navigateBack}>
+            <Arrow />
           </TouchableOpacity>
 
           <Title>Privacidade</Title>

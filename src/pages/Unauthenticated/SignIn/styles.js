@@ -12,7 +12,6 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 })`
   flex: 1;
   justify-content: space-between;
-  padding: 20px;
   min-height: 200px;
 `;
 
@@ -46,4 +45,5 @@ export const Footer = styled.View`
 export const SubmitButton = styled(Button)`
   margin-top: 5px;
   height: 70px;
+  border-radius: 12px;
 `;

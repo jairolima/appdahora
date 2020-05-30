@@ -46,7 +46,7 @@ export default function Menu() {
               alignItems: 'center',
               flexDirection: 'row',
               justifyContent: 'space-between',
-              marginTop: 80,
+              marginTop: 40,
               marginBottom: 80,
               paddingHorizontal: 40,
             }}>
@@ -160,7 +160,7 @@ export default function Menu() {
                 </Text>
               </Icon.Button>
             </MenuItem>
-            <MenuItem>
+            <MenuItem style={{marginBottom: 80}}>
               <Icon.Button
                 iconStyle={{color: '#e66118', marginRight: 20}}
                 name="wifi"

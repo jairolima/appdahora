@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, {useState} from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {Text, TouchableOpacity, View, SafeAreaView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TextInput} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
+import {Arrow} from '~/components/icons/Arrow';
 
-import {signInRequest} from '~/store/modules/auth/actions';
+import {updatePasswordRequest} from '~/store/modules/user/actions';
 
 import Background from '~/components/Background';
 
@@ -16,14 +16,16 @@ export default function UserRecoveryPassword() {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();
+  const password_confirmationRef = useRef();
 
   const [password, setPassword] = useState('');
+  const [password_confirmation, setPassword_confirmation] = useState('');
 
   const signed = useSelector((state) => state.auth.signed);
 
   // TODO FORGOT REQUEST
   function handleSubmit() {
-    dispatch(signInRequest(password));
+    dispatch(updatePasswordRequest(password, password_confirmation));
   }
 
   function navigateBack() {
@@ -32,52 +34,56 @@ export default function UserRecoveryPassword() {
 
   return (
     <Background>
-      <Container>
-        <TouchableOpacity style={{marginTop: '10%'}} onPress={navigateBack}>
-          <FontAwesome
-            reverseColor
-            name="long-arrow-left"
-            color="#ccc"
-            type="font-awesome"
-            size={70}
-          />
+      <SafeAreaView style={{flex: 1}}>
+        <Container>
+          <TouchableOpacity
+            style={{
+              marginTop: '10%',
+              paddingHorizontal: 20,
+            }}
+            onPress={navigateBack}>
+            <Arrow />
+          </TouchableOpacity>
           <Text>{signed}</Text>
-        </TouchableOpacity>
 
-        <Title>Alterar Senha</Title>
+          <Title>Alterar Senha</Title>
 
-        <Body>
-          <TextInput
-            label="SENHA"
-            style={{
-              paddingHorizontal: 0,
-              backgroundColor: 'none',
-            }}
-            secureTextEntry
-            theme={{colors: {primary: '#e66118'}}}
-            value={password}
-            onChangeText={setPassword}
-          />
-          <TextInput
-            label="CONFIRMAR SENHA"
-            style={{
-              marginTop: 20,
-              paddingHorizontal: 0,
-              backgroundColor: 'none',
-            }}
-            secureTextEntry
-            theme={{colors: {primary: '#e66118'}}}
-            value={password}
-            onChangeText={setPassword}
-          />
-        </Body>
+          <Body>
+            <TextInput
+              label="SENHA"
+              style={{
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              secureTextEntry
+              theme={{colors: {primary: '#e66118'}}}
+              onSubmitEditing={() => password_confirmationRef.current.focus()}
+              value={password}
+              onChangeText={setPassword}
+            />
+            <TextInput
+              label="CONFIRMAR SENHA"
+              ref={password_confirmationRef}
+              style={{
+                marginTop: 20,
+                paddingHorizontal: 0,
+                backgroundColor: 'none',
+              }}
+              secureTextEntry
+              theme={{colors: {primary: '#e66118'}}}
+              value={password_confirmation}
+              onChangeText={setPassword_confirmation}
+            />
+          </Body>
 
-        <Footer>
-          <SubmitButton onPress={handleSubmit}>
-            <Text>Confirmar</Text>
-          </SubmitButton>
-        </Footer>
-      </Container>
+          <Footer>
+            <SubmitButton onPress={handleSubmit}>
+              <Text>Confirmar</Text>
+            </SubmitButton>
+          </Footer>
+          <View style={{flex: 1}} />
+        </Container>
+      </SafeAreaView>
     </Background>
   );
 }

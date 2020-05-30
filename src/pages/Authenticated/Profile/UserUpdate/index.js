@@ -8,6 +8,7 @@ import {TextInput, HelperText} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Background from '~/components/Background';
+import {Arrow} from '~/components/icons/Arrow';
 
 import {updateProfileRequest} from '~/store/modules/user/actions';
 
@@ -46,14 +47,14 @@ export default function UserUpdate() {
       <ScrollView>
         <HeaderAvatar>
           <View style={{alignSelf: 'flex-start', marginLeft: 20}}>
-            <TouchableOpacity style={{marginTop: '10%'}} onPress={navigateBack}>
-              <FontAwesome
-                reverseColor
-                name="long-arrow-left"
-                color="#ccc"
-                type="font-awesome"
-                size={70}
-              />
+            <TouchableOpacity
+              style={{
+                marginTop: '20%',
+                marginBottom: '10%',
+                paddingHorizontal: 20,
+              }}
+              onPress={navigateBack}>
+              <Arrow />
             </TouchableOpacity>
           </View>
           <View

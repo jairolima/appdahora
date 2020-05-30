@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, {useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {Text, TouchableOpacity, View, Keyboard} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TextInputMask} from 'react-native-masked-text';
 import {TextInput} from 'react-native-paper';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import {Arrow} from '~/components/icons/Arrow';
 
 import {signInRequest} from '~/store/modules/auth/actions';
 
@@ -20,12 +20,32 @@ export default function Forgot() {
 
   const [cpf, setCpf] = useState('');
 
-  const signed = useSelector((state) => state.auth.signed);
-
   // TODO FORGOT REQUEST
   function handleSubmit() {
     dispatch(signInRequest(cpf));
   }
+
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true); // or some other action
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false); // or some other action
+      },
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
 
   function navigateBack() {
     navigation.goBack();
@@ -34,18 +54,20 @@ export default function Forgot() {
   return (
     <Background>
       <Container>
-        <TouchableOpacity style={{marginTop: '10%'}} onPress={navigateBack}>
-          <FontAwesome
-            reverseColor
-            name="long-arrow-left"
-            color="#ccc"
-            type="font-awesome"
-            size={70}
-          />
-          <Text>{signed}</Text>
+        <TouchableOpacity
+          style={{
+            marginTop: '10%',
+            marginBottom: '10%',
+          }}
+          onPress={navigateBack}>
+          <Arrow />
         </TouchableOpacity>
 
-        <Title>Recuperar Senha</Title>
+        {isKeyboardVisible ? (
+          <Title style={{fontSize: 20, marginTop: 0}}>Recuperar Senha</Title>
+        ) : (
+          <Title>Recuperar Senha</Title>
+        )}
 
         <Body>
           <TextInput

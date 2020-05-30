@@ -11,7 +11,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   behavior: 'padding',
 })`
   flex: 1;
-  padding: 20px;
+  padding: 0px;
   min-height: 200px;
 `;
 
@@ -34,8 +34,8 @@ export const Footer = styled.View`
 
 export const InputAvatar = styled.TouchableOpacity`
   flex: 1;
-  min-height: 200px;
-  background-color: #ccc;
+  min-height: 140px;
+  background-color: #e8ebf2;
   justify-content: center;
   align-items: center;
   padding-horizontal: 20px;

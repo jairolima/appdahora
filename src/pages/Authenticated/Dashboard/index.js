@@ -14,6 +14,7 @@ import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import api from '~/services/api';
+import {BoxIcon} from '~/components/icons';
 import {Container, Title, Insidebox, AwardsView} from './styles';
 
 import Background from '~/components/Background';
@@ -28,245 +29,288 @@ export default function Dashboard() {
 
   const [isModalVisibleQr, setModalVisibleQr] = useState(false);
   const [modalTitle, setModalTitle] = useState('nao mudou');
+  const [modalBody, setModalBody] = useState('Modal body content');
+  const [modalCode, setModalCode] = useState('Modal code');
+  const [modalPoints, setModalPoints] = useState('Modal points');
+  const [modalThumbnail, setModalThumbnail] = useState('Modal thumbnail');
 
   const toggleModalQr = () => {
     setModalVisibleQr(!isModalVisibleQr);
   };
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState('empty');
 
   useEffect(() => {
     async function loadItems() {
-      const response = await api.get('/data');
-
+      const response = await api.get('/awards');
       setItems(response.data);
     }
 
     loadItems();
   }, []);
 
+  const [itemsHistories, setItemsHistories] = useState([]);
+
+  useEffect(() => {
+    async function loadHistories() {
+      const response = await api.get('/awards/histories');
+
+      setItemsHistories(response.data);
+    }
+
+    loadHistories();
+  }, []);
+
   const FirstRoute = () => (
-    <View>
-      <AwardsView>
-        <FlatList
-          style={{marginVertical: 10}}
-          data={items}
-          keyExtractor={(item) => item.id}
-          renderItem={({item}) => (
-            <TouchableOpacity
-              onPress={() => {
-                setModalTitle(item.title);
-                toggleModalQr();
-              }}>
-              <View
-                style={{
-                  height: 80,
-                  marginVertical: 3,
-                }}>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    padding: 0,
-                    height: 80,
-                    margin: 0,
+    <>
+      {items.message === 'Requisição feita com sucesso!' ? (
+        <View>
+          <AwardsView style={{height: 200}}>
+            <BoxIcon fill="#E66118" />
+            <Text style={{marginTop: 20}}>Não há prêmios cadastrados</Text>
+          </AwardsView>
+        </View>
+      ) : (
+        <View>
+          <AwardsView>
+            <FlatList
+              style={{marginVertical: 10}}
+              data={items.data}
+              keyExtractor={(item) => item.id}
+              renderItem={({item}) => (
+                <TouchableOpacity
+                  onPress={() => {
+                    setModalTitle(item.name);
+                    setModalBody(item.body);
+                    setModalCode(item.code);
+                    setModalPoints(item.points);
+                    setModalThumbnail(item.thumbnail);
+
+                    toggleModalQr();
                   }}>
                   <View
                     style={{
-                      width: '25%',
                       height: 80,
-                      borderRadius: 10,
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      marginVertical: 3,
                     }}>
                     <View
                       style={{
-                        width: 74,
-                        height: 74,
+                        flex: 1,
+                        flexDirection: 'row',
+                        padding: 0,
+                        height: 80,
+                        margin: 0,
                       }}>
-                      <Image
+                      <View
                         style={{
-                          width: '100%',
-                          height: '100%',
+                          width: '25%',
+                          height: 80,
                           borderRadius: 10,
-                          borderWidth: 1.3,
-                          borderColor: '#f5f5f5',
-                        }}
-                        source={{
-                          uri:
-                            'https://assets.xtechcommerce.com/uploads/images/medium/277403b46c912f6bfef153812c264f2a.jpg',
-                        }}
-                      />
-                    </View>
-                  </View>
-
-                  <View
-                    style={{
-                      width: '55%',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      paddingHorizontal: 15,
-                      paddingVertical: 5,
-                    }}>
-                    <Text
-                      adjustsFontSizeToFit
-                      numberOfLines={2}
-                      style={{
-                        fontWeight: 'bold',
-                        color: '#303030',
-                        fontSize: 18,
-                      }}>
-                      {item.title}
-                    </Text>
-                    <Text style={{color: '#9b9b9b'}}>Ref: 89475639-5</Text>
-                  </View>
-
-                  <View
-                    style={{
-                      width: '20%',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    <View
-                      style={{
-                        backgroundColor: '#E66221',
-                        paddingHorizontal: 12,
-                        paddingVertical: 3,
-                        borderRadius: 6,
-                      }}>
-                      <Text
-                        style={{
-                          color: '#fff',
-                          fontWeight: 'bold',
-                          fontSize: 16,
+                          alignItems: 'center',
+                          justifyContent: 'center',
                         }}>
-                        48
-                        <Text style={{fontSize: 12, fontWeight: '700'}}>
-                          {' '}
-                          P
+                        <View
+                          style={{
+                            width: 74,
+                            height: 74,
+                          }}>
+                          <Image
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              borderRadius: 10,
+                              borderWidth: 1.3,
+                              borderColor: '#f5f5f5',
+                            }}
+                            source={{
+                              uri: `https://clientedahora.com.br${item.thumbnail}`,
+                            }}
+                          />
+                        </View>
+                      </View>
+
+                      <View
+                        style={{
+                          width: '55%',
+                          flexDirection: 'column',
+                          justifyContent: 'space-between',
+                          paddingHorizontal: 15,
+                          paddingVertical: 5,
+                        }}>
+                        <Text
+                          adjustsFontSizeToFit
+                          numberOfLines={2}
+                          style={{
+                            fontWeight: '700',
+                            color: '#303030',
+                            fontSize: 18,
+                          }}>
+                          {item.name}
                         </Text>
-                      </Text>
+                        <Text style={{color: '#9b9b9b'}}>Ref: {item.code}</Text>
+                      </View>
+
+                      <View
+                        style={{
+                          width: '20%',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}>
+                        <View
+                          style={{
+                            backgroundColor: '#E66221',
+                            flex: 1,
+                            width: 50,
+                            maxHeight: 25,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: 6,
+                          }}>
+                          <Text
+                            style={{
+                              color: '#fff',
+                              fontWeight: '700',
+                              fontSize: 16,
+                            }}>
+                            {item.points}
+                            <Text style={{fontSize: 12, fontWeight: '700'}} />
+                          </Text>
+                        </View>
+                      </View>
                     </View>
                   </View>
-                </View>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
-      </AwardsView>
-    </View>
+                </TouchableOpacity>
+              )}
+            />
+          </AwardsView>
+        </View>
+      )}
+    </>
   );
 
   const SecondRoute = () => (
-    <View>
-      <AwardsView>
-        <FlatList
-          style={{marginVertical: 10}}
-          data={items}
-          keyExtractor={(item) => item.id}
-          renderItem={({item}) => (
-            <TouchableOpacity
-              onPress={() => {
-                setModalTitle(item.title);
-                toggleModalQr();
-              }}>
-              <View
-                style={{
-                  height: 80,
-                  marginVertical: 3,
-                }}>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    padding: 0,
-                    height: 80,
-                    margin: 0,
+    <>
+      {itemsHistories.message !== 'Requisição feita com sucesso!' ? (
+        <View>
+          <AwardsView style={{height: 200}}>
+            <BoxIcon fill="#9B9B9B" />
+            <Text style={{marginTop: 20}}>
+              Você ainda não resgatou nenhum prêmio
+            </Text>
+          </AwardsView>
+        </View>
+      ) : (
+        <View>
+          <AwardsView>
+            <FlatList
+              style={{marginVertical: 10}}
+              data={itemsHistories}
+              keyExtractor={(item) => item.id}
+              renderItem={({item}) => (
+                <TouchableOpacity
+                  onPress={() => {
+                    setModalTitle(item.title);
+                    toggleModalQr();
                   }}>
                   <View
                     style={{
-                      width: '25%',
                       height: 80,
-                      borderRadius: 10,
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      marginVertical: 3,
                     }}>
                     <View
                       style={{
-                        width: 74,
-                        height: 74,
+                        flex: 1,
+                        flexDirection: 'row',
+                        padding: 0,
+                        height: 80,
+                        margin: 0,
                       }}>
-                      <Image
+                      <View
                         style={{
-                          width: '100%',
-                          height: '100%',
+                          width: '25%',
+                          height: 80,
                           borderRadius: 10,
-                          borderWidth: 1.3,
-                          borderColor: '#f5f5f5',
-                        }}
-                        source={{
-                          uri:
-                            'https://assets.xtechcommerce.com/uploads/images/medium/277403b46c912f6bfef153812c264f2a.jpg',
-                        }}
-                      />
-                    </View>
-                  </View>
-
-                  <View
-                    style={{
-                      width: '55%',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      paddingHorizontal: 15,
-                      paddingVertical: 5,
-                    }}>
-                    <Text
-                      adjustsFontSizeToFit
-                      numberOfLines={2}
-                      style={{
-                        fontWeight: 'bold',
-                        color: '#303030',
-                        fontSize: 18,
-                      }}>
-                      {item.title}
-                    </Text>
-                    <Text style={{color: '#9b9b9b'}}>Ref: 89475639-5</Text>
-                  </View>
-
-                  <View
-                    style={{
-                      width: '20%',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    <View
-                      style={{
-                        backgroundColor: '#9b9b9b',
-                        paddingHorizontal: 12,
-                        paddingVertical: 3,
-                        borderRadius: 6,
-                      }}>
-                      <Text
-                        style={{
-                          color: '#fff',
-                          fontWeight: 'bold',
-                          fontSize: 16,
+                          alignItems: 'center',
+                          justifyContent: 'center',
                         }}>
-                        48
-                        <Text style={{fontSize: 12, fontWeight: '700'}}>
-                          {' '}
-                          P
+                        <View
+                          style={{
+                            width: 74,
+                            height: 74,
+                          }}>
+                          <Image
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              borderRadius: 10,
+                              borderWidth: 1.3,
+                              borderColor: '#f5f5f5',
+                            }}
+                            source={{
+                              uri:
+                                'https://assets.xtechcommerce.com/uploads/images/medium/277403b46c912f6bfef153812c264f2a.jpg',
+                            }}
+                          />
+                        </View>
+                      </View>
+
+                      <View
+                        style={{
+                          width: '55%',
+                          flexDirection: 'column',
+                          justifyContent: 'space-between',
+                          paddingHorizontal: 15,
+                          paddingVertical: 5,
+                        }}>
+                        <Text
+                          adjustsFontSizeToFit
+                          numberOfLines={2}
+                          style={{
+                            fontWeight: 'bold',
+                            color: '#303030',
+                            fontSize: 18,
+                          }}>
+                          {item.title}
                         </Text>
-                      </Text>
+                        <Text style={{color: '#9b9b9b'}}>Ref: {item.code}</Text>
+                      </View>
+
+                      <View
+                        style={{
+                          width: '20%',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}>
+                        <View
+                          style={{
+                            backgroundColor: '#9b9b9b',
+                            paddingHorizontal: 12,
+                            paddingVertical: 3,
+                            borderRadius: 6,
+                          }}>
+                          <Text
+                            style={{
+                              color: '#fff',
+                              fontWeight: 'bold',
+                              fontSize: 16,
+                            }}>
+                            48
+                            <Text style={{fontSize: 12, fontWeight: '700'}}>
+                              {' '}
+                              P
+                            </Text>
+                          </Text>
+                        </View>
+                      </View>
                     </View>
                   </View>
-                </View>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
-      </AwardsView>
-    </View>
+                </TouchableOpacity>
+              )}
+            />
+          </AwardsView>
+        </View>
+      )}
+    </>
   );
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -351,6 +395,7 @@ export default function Dashboard() {
                 borderRadius: 10,
                 backgroundColor: 'white',
                 padding: 20,
+                maxHeight: 600,
                 justifyContent: 'space-between',
               }}>
               <View>
@@ -367,18 +412,14 @@ export default function Dashboard() {
                     alignSelf: 'center',
                   }}
                   source={{
-                    uri:
-                      'https://assets.xtechcommerce.com/uploads/images/medium/277403b46c912f6bfef153812c264f2a.jpg',
+                    uri: `https://clientedahora.com.br${modalThumbnail}`,
                   }}
                 />
               </View>
               <Text style={{fontWeight: 'bold', fontSize: 16}}>
                 {modalTitle}
               </Text>
-              <Text>
-                A Capa de Almofada Belchior Design é descolada com modernas e
-                divertidas estampas que estão no auge da moda.
-              </Text>
+              <Text>{modalBody}</Text>
 
               <View
                 style={{
@@ -386,9 +427,9 @@ export default function Dashboard() {
                   alignItems: 'flex-end',
                   justifyContent: 'space-between',
                 }}>
-                <Text style={{color: '#9b9b9b'}}>Ref. 89475639-5</Text>
+                <Text style={{color: '#9b9b9b'}}>Ref. {modalCode}</Text>
                 <Text style={{color: '#e66118', fontWeight: 'bold'}}>
-                  145 P
+                  {modalPoints}
                 </Text>
               </View>
 
@@ -444,7 +485,13 @@ export default function Dashboard() {
 
           <View style={{flex: 1, marginTop: 20}}>
             <TabView
+              lazy
               navigationState={{index, routes}}
+              renderLazyPlaceholder={() => (
+                <View style={{backgroundColor: '#425241'}}>
+                  <Text>loading</Text>
+                </View>
+              )}
               renderScene={renderScene}
               onIndexChange={setIndex}
               initialLayout={initialLayout}
@@ -453,10 +500,14 @@ export default function Dashboard() {
               ) => (
                 <TabBar
                   {...props}
+                  lazy
                   activeColor="#000"
                   inactiveColor="#ccc"
-                  indicatorStyle={{backgroundColor: 'orange'}}
+                  indicatorStyle={{
+                    backgroundColor: 'orange',
+                  }}
                   getLabelText={({route}) => route.title}
+                  labelStyle={{fontWeight: 'bold'}}
                   style={{
                     elevation: 0,
                     shadowOpacity: 0,
