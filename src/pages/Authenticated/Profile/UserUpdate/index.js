@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, {useRef, useState} from 'react';
 
-import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
+import {View, ScrollView, Text, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {TextInput, HelperText} from 'react-native-paper';
-import {useDispatch, useSelector} from 'react-redux';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {useDispatch} from 'react-redux';
 import Background from '~/components/Background';
 import {Arrow} from '~/components/icons/Arrow';
 
@@ -15,7 +14,22 @@ import {updateProfileRequest} from '~/store/modules/user/actions';
 import {Container, SubmitButton, HeaderAvatar, Footer} from './styles';
 
 export default function UserUpdate() {
-  const user = useSelector((state) => state.user.profile);
+  // const user = useSelector((state) => state.user.profile);
+
+  const user = {
+    id: 10,
+    slug: 'jairo-lima',
+    name: 'Jairo Lima',
+    first_name: 'Jairo',
+    last_name: 'Lima',
+    phone: '83998620082',
+    sexo: 0,
+    email: 'msgjairo@gmail.com',
+    cpf: '07726192470',
+    avatar: 'https://clientedahora.com.br/assets/images/faces/default.png',
+    birthday: '22/11/1990',
+    salt_points: '0P',
+  };
 
   const navigation = useNavigation();
 
@@ -50,32 +64,19 @@ export default function UserUpdate() {
             <TouchableOpacity
               style={{
                 marginTop: '20%',
-                marginBottom: '10%',
                 paddingHorizontal: 20,
               }}
               onPress={navigateBack}>
               <Arrow />
             </TouchableOpacity>
           </View>
-          <View
-            style={{
-              height: 100,
-              width: 100,
-              borderRadius: 50,
-              backgroundColor: '#484848',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: 8,
-            }}>
-            <FontAwesome
-              reverseColor
-              name="camera"
-              label="Nos envie uma foto sua para identificação e segurança."
-              color="#fff"
-              type="font-awesome"
-              size={23}
-            />
-          </View>
+          <Image
+            style={{height: 80, width: 80}}
+            source={{
+              uri:
+                'https://clientedahora.com.br/assets/images/faces/default.png',
+            }}
+          />
           <TouchableOpacity>
             <Text
               style={{
@@ -83,6 +84,7 @@ export default function UserUpdate() {
                 fontSize: 14,
                 textAlign: 'center',
                 marginBottom: 24,
+                marginTop: 5,
               }}>
               Alterar foto de perfil
             </Text>

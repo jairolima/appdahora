@@ -46,3 +46,8 @@ export const SubmitButton = styled(Button)`
   margin-top: 5px;
   height: 70px;
 `;
+
+export const Row = styled.View`
+  flex-direction: row;
+  width: 100%;
+`;

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
+import {Text, View, TouchableOpacity, ScrollView, Image} from 'react-native';
 // import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch} from 'react-redux';
@@ -65,9 +65,13 @@ export default function Menu() {
             </View>
 
             <View style={{alignItems: 'center'}}>
-              <ButtonCircle style={{height: 100, width: 100, borderRadius: 50}}>
-                <Icon name="camera" size={24} color="#000" />
-              </ButtonCircle>
+              <Image
+                style={{height: 80, width: 80}}
+                source={{
+                  uri:
+                    'https://clientedahora.com.br/assets/images/faces/default.png',
+                }}
+              />
               <Text style={{fontSize: 22}}>Jocelyn K.</Text>
               <Text
                 style={{

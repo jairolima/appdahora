@@ -28,9 +28,73 @@ export default function UserPointsHistory() {
 
     loadItems();
   }, []);
+
+  const itemsFake = [
+    {
+      id: 1,
+      date: new Date(),
+      point: 110,
+      validade: new Date(),
+    },
+    {
+      id: 2,
+      date: new Date(),
+      point: 45,
+      validade: new Date(),
+    },
+    {
+      id: 3,
+      date: new Date(),
+      point: 30,
+      validade: new Date(),
+    },
+    {
+      id: 4,
+      date: new Date(),
+      point: 10,
+      validade: new Date(),
+    },
+    {
+      id: 5,
+      date: new Date(),
+      point: 20,
+      validade: new Date(),
+    },
+    {
+      id: 6,
+      date: new Date(),
+      point: 20,
+      validade: new Date(),
+    },
+    {
+      id: 7,
+      date: new Date(),
+      point: 20,
+      validade: new Date(),
+    },
+    {
+      id: 8,
+      date: new Date(),
+      point: 20,
+      validade: new Date(),
+    },
+    {
+      id: 9,
+      date: new Date(),
+      point: 20,
+      validade: new Date(),
+    },
+    {
+      id: 10,
+      date: new Date(),
+      point: 20,
+      validade: new Date(),
+    },
+  ];
   return (
     <Background>
       <Container>
+        {items}
         <ScrollView>
           <TouchableOpacity
             style={{
@@ -45,7 +109,7 @@ export default function UserPointsHistory() {
 
           <FlatList
             style={{marginVertical: 10}}
-            data={items}
+            data={itemsFake}
             keyExtractor={(item) => item.id}
             renderItem={({item}) => (
               <View

@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {useEffect, useState} from 'react';
 import {
@@ -13,9 +14,11 @@ import {
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
+import Lottie from 'lottie-react-native';
 import api from '~/services/api';
 import {BoxIcon} from '~/components/icons';
 import {Container, Title, Insidebox, AwardsView} from './styles';
+import lazyload from '~/assets/lazyload';
 
 import Background from '~/components/Background';
 import Qrcode from '~/components/Qrcode';
@@ -39,6 +42,7 @@ export default function Dashboard() {
   };
 
   const [items, setItems] = useState('empty');
+  const [apiLoad, setApiLoad] = useState(false);
 
   useEffect(() => {
     async function loadItems() {
@@ -73,12 +77,27 @@ export default function Dashboard() {
       ) : (
         <View>
           <AwardsView>
+            {apiLoad ? null : (
+              <Lottie
+                style={{
+                  marginTop: -40,
+                  width: '160%',
+                  alignSelf: 'center',
+                }}
+                source={lazyload}
+                resizeMode="contain"
+                autoPlay
+                loop
+              />
+            )}
             <FlatList
               style={{marginVertical: 10}}
+              legacyImplementation
               data={items.data}
               keyExtractor={(item) => item.id}
               renderItem={({item}) => (
                 <TouchableOpacity
+                  onLoad={setApiLoad(true)}
                   onPress={() => {
                     setModalTitle(item.name);
                     setModalBody(item.body);
@@ -181,6 +200,8 @@ export default function Dashboard() {
                   </View>
                 </TouchableOpacity>
               )}
+              // https://github.com/filipemerker/flatlist-performance-tips
+              // Performance settings
             />
           </AwardsView>
         </View>
@@ -209,7 +230,11 @@ export default function Dashboard() {
               renderItem={({item}) => (
                 <TouchableOpacity
                   onPress={() => {
-                    setModalTitle(item.title);
+                    setModalTitle(item.name);
+                    setModalBody(item.body);
+                    setModalCode(item.code);
+                    setModalPoints(item.points);
+                    setModalThumbnail(item.thumbnail);
                     toggleModalQr();
                   }}>
                   <View
@@ -270,7 +295,7 @@ export default function Dashboard() {
                             color: '#303030',
                             fontSize: 18,
                           }}>
-                          {item.title}
+                          {item.name}
                         </Text>
                         <Text style={{color: '#9b9b9b'}}>Ref: {item.code}</Text>
                       </View>
@@ -312,6 +337,7 @@ export default function Dashboard() {
       )}
     </>
   );
+
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'first', title: 'Prêmios'},
@@ -486,12 +512,8 @@ export default function Dashboard() {
           <View style={{flex: 1, marginTop: 20}}>
             <TabView
               lazy
+              renderLazyPlaceholder={() => <Text>Loading...</Text>}
               navigationState={{index, routes}}
-              renderLazyPlaceholder={() => (
-                <View style={{backgroundColor: '#425241'}}>
-                  <Text>loading</Text>
-                </View>
-              )}
               renderScene={renderScene}
               onIndexChange={setIndex}
               initialLayout={initialLayout}
@@ -500,7 +522,6 @@ export default function Dashboard() {
               ) => (
                 <TabBar
                   {...props}
-                  lazy
                   activeColor="#000"
                   inactiveColor="#ccc"
                   indicatorStyle={{
