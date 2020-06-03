@@ -16,12 +16,12 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TextInputMask} from 'react-native-masked-text';
 import {TextInput, HelperText} from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
-// import {useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {Arrow} from '~/components/icons/Arrow';
 
-// import {signUpRequest} from '~/store/modules/auth/actions';
+import {signUpRequest} from '~/store/modules/auth/actions';
 
 import Background from '~/components/Background';
 import Check from '~/components/Check';
@@ -39,7 +39,7 @@ import {
 export default function SignUp() {
   const navigation = useNavigation();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const birthdayRef = useRef(null);
   const last_nameRef = useRef(null);
   const cpfRef = useRef(null);
@@ -79,36 +79,6 @@ export default function SignUp() {
   const toggleSwitchTerms = () =>
     setIsEnabledTerms((previousState) => !previousState);
 
-  // function handleSubmit() {
-  //   if (isEnabledPrivacy && isEnabledTerms) {
-  //     dispatch(
-  //       signUpRequest(
-  //         avatar,
-  //         first_name,
-  //         last_name,
-  //         cpf,
-  //         birthday,
-  //         email,
-  //         phone,
-  //         password,
-  //         password_confirmation,
-  //         zipcode,
-  //         neighborhood,
-  //         address,
-  //         number,
-  //         complement,
-  //         city,
-  //         state,
-  //       ),
-  //     );
-  //   } else {
-  //     return Alert.alert(
-  //       'Erro!',
-  //       'É necessário aceitar os termos de uso e politica de privacidade para continuar!',
-  //     );
-  //   }
-  // }
-
   function navigateBack() {
     navigation.goBack();
   }
@@ -146,27 +116,13 @@ export default function SignUp() {
     password_confirmation: Yup.string()
       .required('Campo obrigatório')
       .min(8, 'Digite pelo menos 8 caracteres'),
-    zipcode: Yup.string()
-      .required('Campo obrigatório')
-      .min(8, 'Digite pelo menos 8 caracteres'),
-    neighborhood: Yup.string()
-      .required('Campo obrigatório')
-      .min(2, 'Digite pelo menos 2 caracteres'),
-    address: Yup.string()
-      .required('Campo obrigatório')
-      .min(4, 'Digite pelo menos 4 caracteres'),
-    number: Yup.string()
-      .required('Campo obrigatório')
-      .min(1, 'Digite pelo menos 1 caracteres'),
-    complement: Yup.string()
-      .required('Campo obrigatório')
-      .min(3, 'Digite pelo menos 3 caracteres'),
-    city: Yup.string()
-      .required('Campo obrigatório')
-      .min(3, 'Digite pelo menos 3 caracteres'),
-    state: Yup.string()
-      .required('Campo obrigatório')
-      .min(3, 'Digite pelo menos 3 caracteres'),
+    zipcode: Yup.string().min(8, 'Digite pelo menos 8 caracteres'),
+    neighborhood: Yup.string().min(2, 'Digite pelo menos 2 caracteres'),
+    address: Yup.string().min(4, 'Digite pelo menos 4 caracteres'),
+    number: Yup.string().min(1, 'Digite pelo menos 1 caracteres'),
+    complement: Yup.string().min(3, 'Digite pelo menos 3 caracteres'),
+    city: Yup.string().min(3, 'Digite pelo menos 3 caracteres'),
+    state: Yup.string().min(3, 'Digite pelo menos 3 caracteres'),
   });
 
   // const [errorFirstName, setErrorFirstName] = useState(false);
@@ -250,7 +206,15 @@ export default function SignUp() {
             state: '',
           }}
           onSubmit={(values) => {
-            Alert.alert('Sucesso!');
+            // Alert.alert('Sucesso!');
+            if (isEnabledPrivacy && isEnabledTerms) {
+              dispatch(signUpRequest(values));
+            } else {
+              return Alert.alert(
+                'Erro!',
+                'É necessário aceitar os termos de uso e politica de privacidade para continuar!',
+              );
+            }
 
             console.tron.log(values);
           }}

@@ -14,6 +14,7 @@ import {Container, Body, Footer, SubmitButton, Title} from './styles';
 
 export default function UserRecoveryPassword() {
   const navigation = useNavigation();
+  const access_token = useSelector((state) => state.auth.token.access_token);
 
   const dispatch = useDispatch();
   const password_confirmationRef = useRef();
@@ -25,7 +26,9 @@ export default function UserRecoveryPassword() {
 
   // TODO FORGOT REQUEST
   function handleSubmit() {
-    dispatch(updatePasswordRequest(password, password_confirmation));
+    dispatch(
+      updatePasswordRequest(password, password_confirmation, access_token),
+    );
   }
 
   function navigateBack() {
@@ -50,7 +53,7 @@ export default function UserRecoveryPassword() {
 
           <Body>
             <TextInput
-              label="SENHA"
+              label="NOVA SENHA *"
               style={{
                 paddingHorizontal: 0,
                 backgroundColor: 'none',
@@ -62,7 +65,7 @@ export default function UserRecoveryPassword() {
               onChangeText={setPassword}
             />
             <TextInput
-              label="CONFIRMAR SENHA"
+              label="CONFIRMAR NOVA SENHA *"
               ref={password_confirmationRef}
               style={{
                 marginTop: 20,

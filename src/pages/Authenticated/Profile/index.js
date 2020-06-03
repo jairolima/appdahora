@@ -4,7 +4,8 @@ import React from 'react';
 import {Text, View, TouchableOpacity, ScrollView, Image} from 'react-native';
 // import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {useDispatch} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+
 import {useNavigation} from '@react-navigation/native';
 import {signOut} from '~/store/modules/auth/actions';
 
@@ -14,6 +15,8 @@ import Qrcode from '~/components/Qrcode';
 import {Container, MenuItem, ButtonCircle} from './styles';
 
 export default function Menu() {
+  const user = useSelector((state) => state.user.profile);
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -72,14 +75,16 @@ export default function Menu() {
                     'https://clientedahora.com.br/assets/images/faces/default.png',
                 }}
               />
-              <Text style={{fontSize: 22}}>Jocelyn K.</Text>
+              <Text style={{fontSize: 22}}>
+                {user.first_name} {user.last_name.substring(1, 0)}.
+              </Text>
               <Text
                 style={{
                   fontSize: 11,
                   textAlign: 'center',
                   color: 'rgba(0,0,0,0.5)',
                 }}>
-                096.948.304-59
+                {user.cpf}
               </Text>
             </View>
 

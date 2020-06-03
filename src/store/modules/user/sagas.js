@@ -1,49 +1,59 @@
 import {takeLatest, call, put, all} from 'redux-saga/effects';
 import {Alert} from 'react-native';
 import api from '~/services/api';
-import {
-  updateProfileSuccess,
-  updateProfilefailure,
-  updatePasswordSuccess,
-  updatePasswordfailure,
-} from './actions';
+import {updateProfileSuccess, updateProfilefailure} from './actions';
+import {navigate} from '~/services/navigationService';
 
 export function* updateProfile({payload}) {
   try {
-    const {phone} = payload.data;
+    const {phone, email, first_name, last_name, access_token} = payload;
 
     const profile = {
       phone,
+      email,
+      first_name,
+      last_name,
+      access_token,
     };
 
-    const response = yield call(api.put, '/clients/update', profile);
+    const response = yield call(api.put, '/clients/update', profile, {
+      headers: {Authorization: `Bearer ${access_token}`},
+    });
 
     Alert.alert('Sucesso!', 'Perfil atualizado com sucesso!');
 
-    yield put(updateProfileSuccess(response.data));
+    yield put(updateProfileSuccess(response.data.data));
+    navigate('Menu');
   } catch (error) {
     Alert.alert('Erro!', 'Erro ao atualizar Perfil');
+
     yield put(updateProfilefailure());
+    navigate('Menu');
   }
 }
 
 export function* updatePassword({payload}) {
   try {
-    const {password, password_confirmation} = payload.data;
+    const {password, password_confirmation, access_token} = payload;
 
     const profile = {
       password,
       password_confirmation,
+      access_token,
     };
 
-    const response = yield call(api.put, 'clients/password', profile);
+    yield call(api.put, '/clients/password', profile, {
+      headers: {Authorization: `Bearer ${access_token}`},
+    });
 
     Alert.alert('Sucesso!', 'Senha atualizada com sucesso!');
-
-    yield put(updatePasswordSuccess(response.data));
+    navigate('Menu');
   } catch (error) {
-    Alert.alert('Erro!', 'Erro ao atualizar Senha');
-    yield put(updatePasswordfailure());
+    Alert.alert(
+      'Erro!',
+      'Erro ao atualizar Senha, a senha deve conter pelo menos 6 digitos',
+    );
+    navigate('Menu');
   }
 }
 

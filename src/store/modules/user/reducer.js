@@ -19,10 +19,6 @@ export default function user(state = INITIAL_STATE, action) {
         draft.profile = null;
         break;
       }
-      case '@user/UPDATE_PASSWORD_SUCCESS': {
-        draft.profile = action.payload.profile;
-        break;
-      }
       default:
     }
   });

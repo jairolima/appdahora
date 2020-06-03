@@ -11,6 +11,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
@@ -28,6 +29,8 @@ const initialLayout = {width: Dimensions.get('window').width};
 Icon.loadFont();
 
 export default function Dashboard() {
+  const user = useSelector((state) => state.user.profile);
+
   const [isModalVisibleRescue, setModalVisibleRescue] = useState(false);
 
   const [isModalVisibleQr, setModalVisibleQr] = useState(false);
@@ -192,7 +195,13 @@ export default function Dashboard() {
                               fontSize: 16,
                             }}>
                             {item.points}
-                            <Text style={{fontSize: 12, fontWeight: '700'}} />
+                            <Text
+                              style={{
+                                fontSize: 12,
+                                fontWeight: '700',
+                              }}>
+                              P
+                            </Text>
                           </Text>
                         </View>
                       </View>
@@ -382,7 +391,8 @@ export default function Dashboard() {
             <Insidebox>
               <View>
                 <Text style={{fontSize: 44, color: '#fff', fontWeight: 'bold'}}>
-                  115<Text style={{fontSize: 16}}>P</Text>
+                  {user.salt_points}
+                  <Text style={{fontSize: 16}}>P</Text>
                 </Text>
                 <Text
                   style={{
@@ -456,6 +466,13 @@ export default function Dashboard() {
                 <Text style={{color: '#9b9b9b'}}>Ref. {modalCode}</Text>
                 <Text style={{color: '#e66118', fontWeight: 'bold'}}>
                   {modalPoints}
+                  <Text
+                    style={{
+                      fontSize: 12,
+                      fontWeight: '700',
+                    }}>
+                    P
+                  </Text>
                 </Text>
               </View>
 

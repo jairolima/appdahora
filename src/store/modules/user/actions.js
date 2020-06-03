@@ -1,7 +1,13 @@
-export function updateProfileRequest(data) {
+export function updateProfileRequest(
+  first_name,
+  last_name,
+  email,
+  phone,
+  access_token,
+) {
   return {
     type: '@user/UPDATE_PROFILE_REQUEST',
-    payload: {data},
+    payload: {first_name, last_name, email, phone, access_token},
   };
 }
 
@@ -18,22 +24,13 @@ export function updateProfilefailure() {
   };
 }
 
-export function updatePasswordRequest(data) {
+export function updatePasswordRequest(
+  password,
+  password_confirmation,
+  access_token,
+) {
   return {
-    type: '@user/UPDATE_PROFILE_REQUEST',
-    payload: {data},
-  };
-}
-
-export function updatePasswordSuccess(profile) {
-  return {
-    type: '@user/UPDATE_PROFILE_SUCCESS',
-    payload: {profile},
-  };
-}
-
-export function updatePasswordfailure() {
-  return {
-    type: '@user/UPDATE_PROFILE_FAILURE',
+    type: '@user/UPDATE_PASSWORD_REQUEST',
+    payload: {password, password_confirmation, access_token},
   };
 }

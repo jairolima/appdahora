@@ -12,43 +12,11 @@ export function signInSuccess(token, user) {
   };
 }
 
-export function signUpRequest(
-  avatar,
-  first_name,
-  last_name,
-  cpf,
-  birthday,
-  email,
-  phone,
-  password,
-  password_confirmation,
-  zipcode,
-  neighborhood,
-  address,
-  number,
-  complement,
-  city,
-  state,
-) {
+export function signUpRequest(values) {
   return {
     type: '@auth/SIGN_UP_REQUEST',
     payload: {
-      avatar,
-      first_name,
-      last_name,
-      cpf,
-      birthday,
-      email,
-      phone,
-      password,
-      password_confirmation,
-      zipcode,
-      neighborhood,
-      address,
-      number,
-      complement,
-      city,
-      state,
+      values,
     },
   };
 }

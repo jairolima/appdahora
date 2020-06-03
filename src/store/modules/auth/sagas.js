@@ -32,42 +32,12 @@ export function* signIn({payload}) {
 
 export function* signUp({payload}) {
   try {
-    const {
-      avatar,
-      first_name,
-      last_name,
-      cpf,
-      birthday,
-      email,
-      phone,
-      password,
-      password_confirmation,
-      zipcode,
-      neighborhood,
-      address,
-      number,
-      complement,
-      city,
-      state,
-    } = payload;
+    const {first_name, last_name, ...rest} = payload.values;
 
     yield call(api.post, '/clients', {
-      avatar,
       first_name,
       last_name,
-      cpf,
-      birthday,
-      email,
-      phone,
-      password,
-      password_confirmation,
-      zipcode,
-      neighborhood,
-      address,
-      number,
-      complement,
-      city,
-      state,
+      ...rest,
     });
     Alert.alert('Cadastro de Usuário', 'Cadastradado com sucesso!');
     navigate('SignIn');

@@ -6,7 +6,11 @@ import Modal from 'react-native-modal';
 import QRCode from 'react-native-qrcode-svg';
 import PropTypes from 'prop-types';
 
+import {useSelector} from 'react-redux';
+
 export default function Qrcode({size, color}) {
+  const user = useSelector((state) => state.user.profile);
+
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -46,14 +50,8 @@ export default function Qrcode({size, color}) {
               marginHorizontal: 20,
             }}>
             <View style={{overflow: 'hidden'}}>
-              {/* <Code
-                            value="dsds"
-                            size={180}
-                            bgColor="black"
-                            fgColor="white"
-                          /> */}
               <QRCode
-                value="00000000000"
+                value={user.cpf}
                 size={180}
                 logoSize={30}
                 logoBackgroundColor="transparent"

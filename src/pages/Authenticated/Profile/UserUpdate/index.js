@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 import React, {useRef, useState} from 'react';
 
@@ -5,7 +6,8 @@ import {View, ScrollView, Text, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {TextInput, HelperText} from 'react-native-paper';
-import {useDispatch} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {TextInputMask} from 'react-native-masked-text';
 import Background from '~/components/Background';
 import {Arrow} from '~/components/icons/Arrow';
 
@@ -14,41 +16,27 @@ import {updateProfileRequest} from '~/store/modules/user/actions';
 import {Container, SubmitButton, HeaderAvatar, Footer} from './styles';
 
 export default function UserUpdate() {
-  // const user = useSelector((state) => state.user.profile);
-
-  const user = {
-    id: 10,
-    slug: 'jairo-lima',
-    name: 'Jairo Lima',
-    first_name: 'Jairo',
-    last_name: 'Lima',
-    phone: '83998620082',
-    sexo: 0,
-    email: 'msgjairo@gmail.com',
-    cpf: '07726192470',
-    avatar: 'https://clientedahora.com.br/assets/images/faces/default.png',
-    birthday: '22/11/1990',
-    salt_points: '0P',
-  };
+  const user = useSelector((state) => state.user.profile);
+  const access_token = useSelector((state) => state.auth.token.access_token);
 
   const navigation = useNavigation();
 
-  const [first_name, setFirst_name] = useState('');
-  const [last_name, setLast_name] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [first_name, setFirst_name] = useState(user.first_name);
+  const [last_name, setLast_name] = useState(user.last_name);
+  // const [birthday, setBirthday] = useState('');
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone);
 
   const last_nameRef = useRef();
   const birthdayRef = useRef();
-  const emailRef = useRef();
+  // const emailRef = useRef();
   const phoneRef = useRef();
 
   const dispatch = useDispatch();
 
   function handleSubmit() {
     dispatch(
-      updateProfileRequest(first_name, last_name, birthday, email, phone),
+      updateProfileRequest(first_name, last_name, email, phone, access_token),
     );
   }
 
@@ -60,6 +48,8 @@ export default function UserUpdate() {
     <Background>
       <ScrollView>
         <HeaderAvatar>
+          {/* <Text>{JSON.stringify(user)}</Text> */}
+          {/* <Text>{JSON.stringify(access_token)}</Text> */}
           <View style={{alignSelf: 'flex-start', marginLeft: 20}}>
             <TouchableOpacity
               style={{
@@ -100,7 +90,7 @@ export default function UserUpdate() {
             theme={{colors: {primary: '#e66118'}}}
             returnKeyType="next"
             onSubmitEditing={() => last_nameRef.current.focus()}
-            value={user.first_name}
+            value={first_name}
             onChangeText={setFirst_name}
           />
           <HelperText
@@ -120,7 +110,7 @@ export default function UserUpdate() {
             theme={{colors: {primary: '#e66118'}}}
             returnKeyType="next"
             onSubmitEditing={() => birthdayRef.current.focus()}
-            value={user.last_name}
+            value={last_name}
             onChangeText={setLast_name}
           />
           <HelperText
@@ -131,7 +121,7 @@ export default function UserUpdate() {
             visible={false}>
             Sobrenome invalido
           </HelperText>
-          <TextInput
+          {/* <TextInput
             label="NASCIMENTO"
             style={{
               paddingHorizontal: 0,
@@ -140,7 +130,8 @@ export default function UserUpdate() {
             theme={{colors: {primary: '#e66118'}}}
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
-            value={user.birthday}
+            placeholder={user.birthday}
+            disabled
             onChangeText={setBirthday}
           />
           <HelperText
@@ -150,7 +141,7 @@ export default function UserUpdate() {
             type="error"
             visible={false}>
             Email invalido
-          </HelperText>
+          </HelperText> */}
           <TextInput
             label="EMAIL"
             style={{
@@ -160,7 +151,7 @@ export default function UserUpdate() {
             theme={{colors: {primary: '#e66118'}}}
             returnKeyType="next"
             onSubmitEditing={() => phoneRef.current.focus()}
-            value={user.email}
+            value={email}
             onChangeText={setEmail}
           />
           <HelperText
@@ -178,8 +169,19 @@ export default function UserUpdate() {
               backgroundColor: 'none',
             }}
             theme={{colors: {primary: '#e66118'}}}
-            value={user.phone}
+            value={phone}
             onChangeText={setPhone}
+            render={(props) => (
+              <TextInputMask
+                {...props}
+                type="cel-phone"
+                options={{
+                  maskType: 'BRL',
+                  withDDD: true,
+                  dddMask: '(99) ',
+                }}
+              />
+            )}
           />
           <HelperText
             style={{
