@@ -47,13 +47,6 @@ export default function SignUp() {
   const phoneRef = useRef(null);
   const passwordRef = useRef(null);
   const password_confirmationRef = useRef(null);
-  const zipcodeRef = useRef(null);
-  const addressRef = useRef(null);
-  const neighborhoodRef = useRef(null);
-  const numberRef = useRef(null);
-  const complementRef = useRef(null);
-  const cityRef = useRef(null);
-  const stateRef = useRef(null);
 
   const [avatar, setAvatar] = useState('null');
   // const [first_name, setFirst_name] = useState('');
@@ -116,13 +109,6 @@ export default function SignUp() {
     password_confirmation: Yup.string()
       .required('Campo obrigatório')
       .min(8, 'Digite pelo menos 8 caracteres'),
-    zipcode: Yup.string().min(8, 'Digite pelo menos 8 caracteres'),
-    neighborhood: Yup.string().min(2, 'Digite pelo menos 2 caracteres'),
-    address: Yup.string().min(4, 'Digite pelo menos 4 caracteres'),
-    number: Yup.string().min(1, 'Digite pelo menos 1 caracteres'),
-    complement: Yup.string().min(3, 'Digite pelo menos 3 caracteres'),
-    city: Yup.string().min(3, 'Digite pelo menos 3 caracteres'),
-    state: Yup.string().min(3, 'Digite pelo menos 3 caracteres'),
   });
 
   // const [errorFirstName, setErrorFirstName] = useState(false);
@@ -197,13 +183,6 @@ export default function SignUp() {
             phone: '',
             password: '',
             password_confirmation: '',
-            zipcode: '',
-            neighborhood: '',
-            address: '',
-            number: '',
-            complement: '',
-            city: '',
-            state: '',
           }}
           onSubmit={(values) => {
             // Alert.alert('Sucesso!');
@@ -407,43 +386,6 @@ export default function SignUp() {
                       <Text>{errors.birthday}</Text>
                     )}
                   </HelperText>
-                  {/* <Row>
-                    <TextInput
-                      label="DATA DE NASCIMENTO *"
-                      ref={birthdayRef}
-                      style={{
-                        flex: 1,
-                        paddingHorizontal: 0,
-                        backgroundColor: 'none',
-                      }}
-                      theme={{colors: {primary: '#e66118'}}}
-                      returnKeyType="done"
-                      onSubmitEditing={() => emailRef.current.focus()}
-                      value={values.birthday}
-                      onChangeText={handleChange('birthday')}
-                      onBlur={() => setFieldTouched('birthday', true)}
-                      render={(props) => (
-                        <TextInputMask
-                          {...props}
-                          type="custom"
-                          options={{
-                            mask: '99/99/9999',
-                          }}
-                        />
-                      )}
-                    />
-                    {!errors.birthday && touched.birthday && <Check />}
-                  </Row>
-                  <HelperText
-                    style={{
-                      paddingHorizontal: 0,
-                    }}
-                    type="error"
-                    visible>
-                    {errors.brithday && touched.birthday && (
-                      <Text>{errors.birthday}</Text>
-                    )}
-                  </HelperText> */}
                   <Row>
                     <TextInput
                       label="EMAIL *"
@@ -555,8 +497,8 @@ export default function SignUp() {
                       }}
                       secureTextEntry
                       theme={{colors: {primary: '#e66118'}}}
-                      returnKeyType="done"
-                      onSubmitEditing={() => zipcodeRef.current.focus()}
+                      returnKeyType="send"
+                      onSubmitEditing={handleSubmit}
                       value={values.password_confirmation}
                       onChangeText={handleChange('password_confirmation')}
                       onBlur={() =>
@@ -576,200 +518,6 @@ export default function SignUp() {
                       touched.password_confirmation && (
                         <Text>{errors.password_confirmation}</Text>
                       )}
-                  </HelperText>
-                  <Row>
-                    <TextInput
-                      label="CEP"
-                      ref={zipcodeRef}
-                      style={{
-                        flex: 1,
-                        paddingHorizontal: 0,
-                        backgroundColor: 'none',
-                      }}
-                      theme={{colors: {primary: '#e66118'}}}
-                      returnKeyType="done"
-                      onSubmitEditing={() => addressRef.current.focus()}
-                      value={values.zipcode}
-                      onChangeText={handleChange('zipcode')}
-                      onBlur={() => setFieldTouched('zipcode', true)}
-                    />
-                    {!errors.zipcode && touched.zipcode && <Check />}
-                  </Row>
-                  <HelperText
-                    style={{
-                      paddingHorizontal: 0,
-                    }}
-                    type="error"
-                    visible>
-                    {errors.zipcode && touched.zipcode && (
-                      <Text>{errors.zipcode}</Text>
-                    )}
-                  </HelperText>
-
-                  <Row>
-                    <TextInput
-                      label="RUA"
-                      ref={addressRef}
-                      style={{
-                        flex: 1,
-                        paddingHorizontal: 0,
-                        backgroundColor: 'none',
-                      }}
-                      theme={{colors: {primary: '#e66118'}}}
-                      returnKeyType="done"
-                      onSubmitEditing={() => neighborhoodRef.current.focus()}
-                      value={values.address}
-                      onChangeText={handleChange('address')}
-                      onBlur={() => setFieldTouched('address', true)}
-                    />
-                    {!errors.address && touched.address && <Check />}
-                  </Row>
-                  <HelperText
-                    style={{
-                      paddingHorizontal: 0,
-                    }}
-                    type="error"
-                    visible>
-                    {errors.address && touched.address && (
-                      <Text>{errors.address}</Text>
-                    )}
-                  </HelperText>
-                  <Row>
-                    <TextInput
-                      label="BAIRRO"
-                      ref={neighborhoodRef}
-                      style={{
-                        flex: 1,
-                        paddingHorizontal: 0,
-                        backgroundColor: 'none',
-                      }}
-                      theme={{colors: {primary: '#e66118'}}}
-                      returnKeyType="done"
-                      onSubmitEditing={() => numberRef.current.focus()}
-                      value={values.neighborhood}
-                      onChangeText={handleChange('neighborhood')}
-                      onBlur={() => setFieldTouched('neighborhood', true)}
-                    />
-                    {!errors.neighborhood && touched.neighborhood && <Check />}
-                  </Row>
-                  <HelperText
-                    style={{
-                      paddingHorizontal: 0,
-                    }}
-                    type="error"
-                    visible>
-                    {errors.neighborhood && touched.neighborhood && (
-                      <Text>{errors.neighborhood}</Text>
-                    )}
-                  </HelperText>
-                  <Row>
-                    <TextInput
-                      label="NUMERO"
-                      ref={numberRef}
-                      style={{
-                        flex: 1,
-                        paddingHorizontal: 0,
-                        backgroundColor: 'none',
-                      }}
-                      theme={{colors: {primary: '#e66118'}}}
-                      returnKeyType="done"
-                      onSubmitEditing={() => complementRef.current.focus()}
-                      value={values.number}
-                      onChangeText={handleChange('number')}
-                      onBlur={() => setFieldTouched('number', true)}
-                    />
-                    {!errors.number && touched.number && <Check />}
-                  </Row>
-                  <HelperText
-                    style={{
-                      paddingHorizontal: 0,
-                    }}
-                    type="error"
-                    visible>
-                    {errors.number && touched.number && (
-                      <Text>{errors.number}</Text>
-                    )}
-                  </HelperText>
-                  <Row>
-                    <TextInput
-                      label="COMPLEMENTO"
-                      ref={complementRef}
-                      style={{
-                        flex: 1,
-                        paddingHorizontal: 0,
-                        backgroundColor: 'none',
-                      }}
-                      theme={{colors: {primary: '#e66118'}}}
-                      returnKeyType="done"
-                      onSubmitEditing={() => cityRef.current.focus()}
-                      value={values.complement}
-                      onChangeText={handleChange('complement')}
-                      onBlur={() => setFieldTouched('complement', true)}
-                    />
-                    {!errors.complement && touched.complement && <Check />}
-                  </Row>
-                  <HelperText
-                    style={{
-                      paddingHorizontal: 0,
-                    }}
-                    type="error"
-                    visible>
-                    {errors.complement && touched.complement && (
-                      <Text>{errors.complement}</Text>
-                    )}
-                  </HelperText>
-                  <Row>
-                    <TextInput
-                      label="CIDADE"
-                      ref={cityRef}
-                      style={{
-                        flex: 1,
-                        paddingHorizontal: 0,
-                        backgroundColor: 'none',
-                      }}
-                      theme={{colors: {primary: '#e66118'}}}
-                      returnKeyType="done"
-                      onSubmitEditing={() => stateRef.current.focus()}
-                      value={values.city}
-                      onChangeText={handleChange('city')}
-                      onBlur={() => setFieldTouched('city', true)}
-                    />
-                    {!errors.city && touched.city && <Check />}
-                  </Row>
-                  <HelperText
-                    style={{
-                      paddingHorizontal: 0,
-                    }}
-                    type="error"
-                    visible>
-                    {errors.city && touched.city && <Text>{errors.city}</Text>}
-                  </HelperText>
-                  <Row>
-                    <TextInput
-                      label="ESTADO"
-                      returnKeyType="send"
-                      ref={stateRef}
-                      style={{
-                        flex: 1,
-                        paddingHorizontal: 0,
-                        backgroundColor: 'none',
-                      }}
-                      theme={{colors: {primary: '#e66118'}}}
-                      value={values.state}
-                      onChangeText={handleChange('state')}
-                      onBlur={() => setFieldTouched('state', true)}
-                    />
-                    {!errors.state && touched.state && <Check />}
-                  </Row>
-                  <HelperText
-                    style={{
-                      paddingHorizontal: 0,
-                    }}
-                    type="error"
-                    visible>
-                    {errors.state && touched.state && (
-                      <Text>{errors.state}</Text>
-                    )}
                   </HelperText>
 
                   <TouchableOpacity

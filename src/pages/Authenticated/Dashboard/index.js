@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {useEffect, useState} from 'react';
@@ -30,6 +31,7 @@ Icon.loadFont();
 
 export default function Dashboard() {
   const user = useSelector((state) => state.user.profile);
+  const access_token = useSelector((state) => state.auth.token.access_token);
 
   const [isModalVisibleRescue, setModalVisibleRescue] = useState(false);
 
@@ -39,6 +41,7 @@ export default function Dashboard() {
   const [modalCode, setModalCode] = useState('Modal code');
   const [modalPoints, setModalPoints] = useState('Modal points');
   const [modalThumbnail, setModalThumbnail] = useState('Modal thumbnail');
+  const [modalButton, setModalButton] = useState(null);
 
   const toggleModalQr = () => {
     setModalVisibleQr(!isModalVisibleQr);
@@ -56,16 +59,18 @@ export default function Dashboard() {
     loadItems();
   }, []);
 
-  const [itemsHistories, setItemsHistories] = useState([]);
+  const [itemsClientsAwardsHistories, setClientsAwardsHistories] = useState([]);
 
   useEffect(() => {
-    async function loadHistories() {
-      const response = await api.get('/awards/histories');
+    async function loadClientsAwardsHistories() {
+      const response = await api.get('/clients/awards/histories', {
+        headers: {Authorization: `Bearer ${access_token}`},
+      });
 
-      setItemsHistories(response.data);
+      setClientsAwardsHistories(response.data);
     }
 
-    loadHistories();
+    loadClientsAwardsHistories();
   }, []);
 
   const FirstRoute = () => (
@@ -107,6 +112,7 @@ export default function Dashboard() {
                     setModalCode(item.code);
                     setModalPoints(item.points);
                     setModalThumbnail(item.thumbnail);
+                    setModalButton(null);
 
                     toggleModalQr();
                   }}>
@@ -220,7 +226,7 @@ export default function Dashboard() {
 
   const SecondRoute = () => (
     <>
-      {itemsHistories.message !== 'Requisição feita com sucesso!' ? (
+      {itemsClientsAwardsHistories.message === '' ? (
         <View>
           <AwardsView style={{height: 200}}>
             <BoxIcon fill="#9B9B9B" />
@@ -234,7 +240,8 @@ export default function Dashboard() {
           <AwardsView>
             <FlatList
               style={{marginVertical: 10}}
-              data={itemsHistories}
+              legacyImplementation
+              data={itemsClientsAwardsHistories.data}
               keyExtractor={(item) => item.id}
               renderItem={({item}) => (
                 <TouchableOpacity
@@ -244,6 +251,7 @@ export default function Dashboard() {
                     setModalCode(item.code);
                     setModalPoints(item.points);
                     setModalThumbnail(item.thumbnail);
+                    setModalButton(item.created_at);
                     toggleModalQr();
                   }}>
                   <View
@@ -281,8 +289,7 @@ export default function Dashboard() {
                               borderColor: '#f5f5f5',
                             }}
                             source={{
-                              uri:
-                                'https://assets.xtechcommerce.com/uploads/images/medium/277403b46c912f6bfef153812c264f2a.jpg',
+                              uri: `https://clientedahora.com.br${item.thumbnail}`,
                             }}
                           />
                         </View>
@@ -476,16 +483,33 @@ export default function Dashboard() {
                 </Text>
               </View>
 
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#e66118',
-                  paddingHorizontal: '40%',
-                  paddingVertical: 20,
-                  borderRadius: 10,
-                }}
-                onPress={rescue}>
-                <Text style={{color: '#fff'}}>Resgatar</Text>
-              </TouchableOpacity>
+              {modalButton !== null ? (
+                <View
+                  style={{
+                    backgroundColor: '#9b9b9b',
+                    alignSelf: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    paddingVertical: 20,
+                    borderRadius: 10,
+                  }}
+                  onPress={rescue}>
+                  <Text style={{color: '#fff'}}>Resgatado {modalButton}</Text>
+                </View>
+              ) : (
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: '#e66118',
+                    alignSelf: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    paddingVertical: 20,
+                    borderRadius: 10,
+                  }}
+                  onPress={rescue}>
+                  <Text style={{color: '#fff'}}>Resgatar</Text>
+                </TouchableOpacity>
+              )}
             </View>
           </Modal>
 
