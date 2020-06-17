@@ -2,12 +2,11 @@
 import React, {useState, useEffect} from 'react';
 import {Text, TouchableOpacity, View, Keyboard} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {TextInputMask} from 'react-native-masked-text';
 import {TextInput} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
 import {Arrow} from '~/components/icons/Arrow';
 
-import {signInRequest} from '~/store/modules/auth/actions';
+import {forgotRequest} from '~/store/modules/auth/actions';
 
 import Background from '~/components/Background';
 
@@ -18,11 +17,11 @@ export default function Forgot() {
 
   const dispatch = useDispatch();
 
-  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
 
   // TODO FORGOT REQUEST
   function handleSubmit() {
-    dispatch(signInRequest(cpf));
+    dispatch(forgotRequest(email));
   }
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
@@ -71,20 +70,19 @@ export default function Forgot() {
 
         <Body>
           <TextInput
-            label="CPF"
+            label="EMAIL"
             style={{
               paddingHorizontal: 0,
               backgroundColor: 'none',
             }}
             theme={{colors: {primary: '#e66118'}}}
-            value={cpf}
-            onChangeText={setCpf}
-            render={(props) => <TextInputMask {...props} type="cpf" />}
+            value={email}
+            onChangeText={setEmail}
           />
 
           <View style={{alignItems: 'center'}}>
             <Text style={{color: '#484848', marginTop: '10%'}}>
-              Informe o CPF que você usou no cadastro
+              Informe o EMAIL que você usou no cadastro
             </Text>
           </View>
         </Body>

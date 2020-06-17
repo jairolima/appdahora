@@ -5,10 +5,10 @@ export function signInRequest(cpf, password) {
   };
 }
 
-export function signInSuccess(token, user) {
+export function signInSuccess(token, user, rescue) {
   return {
     type: '@auth/SIGN_IN_SUCCESS',
-    payload: {token, user},
+    payload: {token, user, rescue},
   };
 }
 
@@ -32,3 +32,23 @@ export function signOut() {
     type: '@auth/SIGN_OUT',
   };
 }
+
+export function forgotRequest(email) {
+  return {
+    type: '@auth/FORGOT_REQUEST',
+    payload: {email},
+  };
+}
+
+// export function forgotSuccess(email) {
+//   return {
+//     type: '@auth/FORGOT_SUCCESS',
+//     payload: {email},
+//   };
+// }
+
+// export function forgotFailure() {
+//   return {
+//     type: '@auth/FORGOT_FAILURE',
+//   };
+// }

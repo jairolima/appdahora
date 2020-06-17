@@ -20,3 +20,11 @@ For IOS add this to ios/projectname/Info.plist
         <string>SimpleLineIcons.ttf</string>
         <string>Zocial.ttf</string>
     </array>
+
+
+
+For Android: 
+
+    Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

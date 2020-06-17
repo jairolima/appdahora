@@ -6,7 +6,7 @@ export default (reducers) => {
     {
       key: 'clientedahora',
       storage: AsyncStorage,
-      whitelist: ['auth', 'user'],
+      whitelist: ['auth', 'user', ''],
     },
     reducers,
   );

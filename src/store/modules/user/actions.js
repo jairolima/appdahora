@@ -24,6 +24,16 @@ export function updateProfilefailure() {
   };
 }
 
+export function storeAwardsRequest(modalId, access_token) {
+  return {
+    type: '@user/STORE_AWARDS_REQUEST',
+    payload: {
+      modalId,
+      access_token,
+    },
+  };
+}
+
 export function updatePasswordRequest(
   password,
   password_confirmation,
@@ -32,5 +42,19 @@ export function updatePasswordRequest(
   return {
     type: '@user/UPDATE_PASSWORD_REQUEST',
     payload: {password, password_confirmation, access_token},
+  };
+}
+
+export function updateAwardsSuccess(profile) {
+  return {
+    type: '@user/UPDATE_PROFILE_SUCCESS',
+    payload: {profile},
+  };
+}
+
+export function updateRescueSuccess(rescue) {
+  return {
+    type: '@user/UPDATE_RESCUE_SUCCESS',
+    payload: {rescue},
   };
 }

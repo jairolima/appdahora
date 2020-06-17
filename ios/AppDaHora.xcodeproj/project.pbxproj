@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* AppClienteDaHoraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AppClienteDaHoraTests.m */; };
-		13A4E26BBB4449146D04DA51 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 445CAE57D5AA0298C0CB99F7 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a */; };
+		00E356F31AD99517003FC87E /* AppDaHoraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AppDaHoraTests.m */; };
+		054421BEAB3EA2E74F8EB222 /* libPods-AppDaHora-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F145B991E63A1FF9FC10199 /* libPods-AppDaHora-tvOS.a */; };
+		083D6374A9B85F67EC3A26DE /* libPods-AppDaHora-AppDaHoraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2545E165E6B433CA0917C54F /* libPods-AppDaHora-AppDaHoraTests.a */; };
+		0C0C9B88C683BD2CF23ADCF6 /* libPods-AppDaHora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D62C126DEBCE828C28F16E /* libPods-AppDaHora.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -16,10 +18,8 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* AppClienteDaHoraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AppClienteDaHoraTests.m */; };
-		A21A347E94401F362082B295 /* libPods-AppClienteDaHora-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAC66688224BECECFD946C8 /* libPods-AppClienteDaHora-tvOS.a */; };
-		B2983838420654784F1902E5 /* libPods-AppClienteDaHora-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D2E217B5427156D8D60CA4 /* libPods-AppClienteDaHora-tvOSTests.a */; };
-		F362807BC95F3050847F6E60 /* libPods-AppClienteDaHora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35571E54C24668E56ABC4275 /* libPods-AppClienteDaHora.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* AppDaHoraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AppDaHoraTests.m */; };
+		55563D6A3E9921CB5D4AE8B6 /* libPods-AppDaHora-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DDE206AC4B957D034EDB6DC /* libPods-AppDaHora-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,43 +28,43 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = AppClienteDaHora;
+			remoteInfo = AppDaHora;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "AppClienteDaHora-tvOS";
+			remoteInfo = "AppDaHora-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* AppClienteDaHoraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppClienteDaHoraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* AppDaHoraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppDaHoraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* AppClienteDaHoraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppClienteDaHoraTests.m; sourceTree = "<group>"; };
-		089CB4A23912795657F5D45C /* Pods-AppClienteDaHora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora.debug.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora/Pods-AppClienteDaHora.debug.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* AppClienteDaHora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppClienteDaHora.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AppClienteDaHora/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = AppClienteDaHora/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* AppDaHoraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDaHoraTests.m; sourceTree = "<group>"; };
+		02B0F7FCE99D0EC0A55D44F7 /* Pods-AppDaHora-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDaHora-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AppDaHora-tvOSTests/Pods-AppDaHora-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* AppDaHora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDaHora.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AppDaHora/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = AppDaHora/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AppClienteDaHora/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AppClienteDaHora/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AppClienteDaHora/main.m; sourceTree = "<group>"; };
-		1D3A725D353ADBA32919576D /* Pods-AppClienteDaHora-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-tvOSTests/Pods-AppClienteDaHora-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		272F3DDACC72E9F7888A3BF7 /* Pods-AppClienteDaHora-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-tvOS.release.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-tvOS/Pods-AppClienteDaHora-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* AppClienteDaHora-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppClienteDaHora-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* AppClienteDaHora-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppClienteDaHora-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		35571E54C24668E56ABC4275 /* libPods-AppClienteDaHora.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		445CAE57D5AA0298C0CB99F7 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora-AppClienteDaHoraTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		69D2E217B5427156D8D60CA4 /* libPods-AppClienteDaHora-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CAC66688224BECECFD946C8 /* libPods-AppClienteDaHora-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppClienteDaHora-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D94D28F6CB50B0CACCA8606 /* Pods-AppClienteDaHora-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-tvOSTests/Pods-AppClienteDaHora-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A17B58BF21DB7E3DCEF7B0CB /* Pods-AppClienteDaHora.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora.release.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora/Pods-AppClienteDaHora.release.xcconfig"; sourceTree = "<group>"; };
-		CDC874D9E189F9A71510BD0A /* Pods-AppClienteDaHora-AppClienteDaHoraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-AppClienteDaHoraTests.release.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-AppClienteDaHoraTests/Pods-AppClienteDaHora-AppClienteDaHoraTests.release.xcconfig"; sourceTree = "<group>"; };
-		D3B6EC10162C6C5032698900 /* Pods-AppClienteDaHora-AppClienteDaHoraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-AppClienteDaHoraTests.debug.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-AppClienteDaHoraTests/Pods-AppClienteDaHora-AppClienteDaHoraTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D3E08BB96B0F853EEBD40CA2 /* Pods-AppClienteDaHora-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppClienteDaHora-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-AppClienteDaHora-tvOS/Pods-AppClienteDaHora-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AppDaHora/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AppDaHora/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AppDaHora/main.m; sourceTree = "<group>"; };
+		1843F86C52CDC19AE25AAF3D /* Pods-AppDaHora-AppDaHoraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDaHora-AppDaHoraTests.release.xcconfig"; path = "Target Support Files/Pods-AppDaHora-AppDaHoraTests/Pods-AppDaHora-AppDaHoraTests.release.xcconfig"; sourceTree = "<group>"; };
+		2545E165E6B433CA0917C54F /* libPods-AppDaHora-AppDaHoraTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppDaHora-AppDaHoraTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* AppDaHora-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppDaHora-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* AppDaHora-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppDaHora-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45139621EC6BE7BD742734BE /* Pods-AppDaHora-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDaHora-tvOS.release.xcconfig"; path = "Target Support Files/Pods-AppDaHora-tvOS/Pods-AppDaHora-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		4AAAA6924D3664741D785BD8 /* Pods-AppDaHora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDaHora.debug.xcconfig"; path = "Target Support Files/Pods-AppDaHora/Pods-AppDaHora.debug.xcconfig"; sourceTree = "<group>"; };
+		5DEC335F4F416C6753B123CA /* Pods-AppDaHora.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDaHora.release.xcconfig"; path = "Target Support Files/Pods-AppDaHora/Pods-AppDaHora.release.xcconfig"; sourceTree = "<group>"; };
+		68A7166D6EDB1C9F062A76F3 /* Pods-AppDaHora-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDaHora-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-AppDaHora-tvOSTests/Pods-AppDaHora-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		6DDE206AC4B957D034EDB6DC /* libPods-AppDaHora-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppDaHora-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F145B991E63A1FF9FC10199 /* libPods-AppDaHora-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppDaHora-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F9490C5F7666E3A130A52CA /* Pods-AppDaHora-AppDaHoraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDaHora-AppDaHoraTests.debug.xcconfig"; path = "Target Support Files/Pods-AppDaHora-AppDaHoraTests/Pods-AppDaHora-AppDaHoraTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D6D62C126DEBCE828C28F16E /* libPods-AppDaHora.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppDaHora.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4BD20A4924D6C1E6C542156 /* Pods-AppDaHora-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDaHora-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-AppDaHora-tvOS/Pods-AppDaHora-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13A4E26BBB4449146D04DA51 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a in Frameworks */,
+				083D6374A9B85F67EC3A26DE /* libPods-AppDaHora-AppDaHoraTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F362807BC95F3050847F6E60 /* libPods-AppClienteDaHora.a in Frameworks */,
+				0C0C9B88C683BD2CF23ADCF6 /* libPods-AppDaHora.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A21A347E94401F362082B295 /* libPods-AppClienteDaHora-tvOS.a in Frameworks */,
+				054421BEAB3EA2E74F8EB222 /* libPods-AppDaHora-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +98,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2983838420654784F1902E5 /* libPods-AppClienteDaHora-tvOSTests.a in Frameworks */,
+				55563D6A3E9921CB5D4AE8B6 /* libPods-AppDaHora-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* AppClienteDaHoraTests */ = {
+		00E356EF1AD99517003FC87E /* AppDaHoraTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* AppClienteDaHoraTests.m */,
+				00E356F21AD99517003FC87E /* AppDaHoraTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = AppClienteDaHoraTests;
+			path = AppDaHoraTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -122,7 +122,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* AppClienteDaHora */ = {
+		13B07FAE1A68108700A75B9A /* AppDaHora */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -133,7 +133,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = AppClienteDaHora;
+			name = AppDaHora;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -141,12 +141,28 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				6CAC66688224BECECFD946C8 /* libPods-AppClienteDaHora-tvOS.a */,
-				69D2E217B5427156D8D60CA4 /* libPods-AppClienteDaHora-tvOSTests.a */,
-				35571E54C24668E56ABC4275 /* libPods-AppClienteDaHora.a */,
-				445CAE57D5AA0298C0CB99F7 /* libPods-AppClienteDaHora-AppClienteDaHoraTests.a */,
+				D6D62C126DEBCE828C28F16E /* libPods-AppDaHora.a */,
+				2545E165E6B433CA0917C54F /* libPods-AppDaHora-AppDaHoraTests.a */,
+				9F145B991E63A1FF9FC10199 /* libPods-AppDaHora-tvOS.a */,
+				6DDE206AC4B957D034EDB6DC /* libPods-AppDaHora-tvOSTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2EF24E1A76A887C99FACBBE4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4AAAA6924D3664741D785BD8 /* Pods-AppDaHora.debug.xcconfig */,
+				5DEC335F4F416C6753B123CA /* Pods-AppDaHora.release.xcconfig */,
+				9F9490C5F7666E3A130A52CA /* Pods-AppDaHora-AppDaHoraTests.debug.xcconfig */,
+				1843F86C52CDC19AE25AAF3D /* Pods-AppDaHora-AppDaHoraTests.release.xcconfig */,
+				E4BD20A4924D6C1E6C542156 /* Pods-AppDaHora-tvOS.debug.xcconfig */,
+				45139621EC6BE7BD742734BE /* Pods-AppDaHora-tvOS.release.xcconfig */,
+				02B0F7FCE99D0EC0A55D44F7 /* Pods-AppDaHora-tvOSTests.debug.xcconfig */,
+				68A7166D6EDB1C9F062A76F3 /* Pods-AppDaHora-tvOSTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -159,12 +175,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* AppClienteDaHora */,
+				13B07FAE1A68108700A75B9A /* AppDaHora */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* AppClienteDaHoraTests */,
+				00E356EF1AD99517003FC87E /* AppDaHoraTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				FEE3FB0763E40E1FE729072A /* Pods */,
+				2EF24E1A76A887C99FACBBE4 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -174,79 +190,63 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* AppClienteDaHora.app */,
-				00E356EE1AD99517003FC87E /* AppClienteDaHoraTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* AppClienteDaHora-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* AppClienteDaHora-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* AppDaHora.app */,
+				00E356EE1AD99517003FC87E /* AppDaHoraTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* AppDaHora-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* AppDaHora-tvOSTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		FEE3FB0763E40E1FE729072A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				089CB4A23912795657F5D45C /* Pods-AppClienteDaHora.debug.xcconfig */,
-				A17B58BF21DB7E3DCEF7B0CB /* Pods-AppClienteDaHora.release.xcconfig */,
-				D3B6EC10162C6C5032698900 /* Pods-AppClienteDaHora-AppClienteDaHoraTests.debug.xcconfig */,
-				CDC874D9E189F9A71510BD0A /* Pods-AppClienteDaHora-AppClienteDaHoraTests.release.xcconfig */,
-				D3E08BB96B0F853EEBD40CA2 /* Pods-AppClienteDaHora-tvOS.debug.xcconfig */,
-				272F3DDACC72E9F7888A3BF7 /* Pods-AppClienteDaHora-tvOS.release.xcconfig */,
-				7D94D28F6CB50B0CACCA8606 /* Pods-AppClienteDaHora-tvOSTests.debug.xcconfig */,
-				1D3A725D353ADBA32919576D /* Pods-AppClienteDaHora-tvOSTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* AppClienteDaHoraTests */ = {
+		00E356ED1AD99517003FC87E /* AppDaHoraTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AppClienteDaHoraTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AppDaHoraTests" */;
 			buildPhases = (
-				163513FAD9238CF961D7E8A8 /* [CP] Check Pods Manifest.lock */,
+				D379BD08287154AA2E9D16C2 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				A697BEFE732C2CB37F07D799 /* [CP] Copy Pods Resources */,
+				49D4BEACA637E55855E74B40 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = AppClienteDaHoraTests;
-			productName = AppClienteDaHoraTests;
-			productReference = 00E356EE1AD99517003FC87E /* AppClienteDaHoraTests.xctest */;
+			name = AppDaHoraTests;
+			productName = AppDaHoraTests;
+			productReference = 00E356EE1AD99517003FC87E /* AppDaHoraTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* AppClienteDaHora */ = {
+		13B07F861A680F5B00A75B9A /* AppDaHora */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AppClienteDaHora" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AppDaHora" */;
 			buildPhases = (
-				D42C25DC4CC65A84E86CD451 /* [CP] Check Pods Manifest.lock */,
+				940B5556EC309E6B0B242C57 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				5810F2CE2FAC67B9E8696607 /* [CP] Copy Pods Resources */,
+				750EA47FC5620B0CF0BD8735 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = AppClienteDaHora;
-			productName = AppClienteDaHora;
-			productReference = 13B07F961A680F5B00A75B9A /* AppClienteDaHora.app */;
+			name = AppDaHora;
+			productName = AppDaHora;
+			productReference = 13B07F961A680F5B00A75B9A /* AppDaHora.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* AppClienteDaHora-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* AppDaHora-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppClienteDaHora-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppDaHora-tvOS" */;
 			buildPhases = (
-				856D6F76969AB1BDB326D7CF /* [CP] Check Pods Manifest.lock */,
+				DD633A0E5A6F7A2BAFE59A80 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -257,16 +257,16 @@
 			);
 			dependencies = (
 			);
-			name = "AppClienteDaHora-tvOS";
-			productName = "AppClienteDaHora-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* AppClienteDaHora-tvOS.app */;
+			name = "AppDaHora-tvOS";
+			productName = "AppDaHora-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* AppDaHora-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* AppClienteDaHora-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* AppDaHora-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppClienteDaHora-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppDaHora-tvOSTests" */;
 			buildPhases = (
-				D8E582F3D48E35108958DDF4 /* [CP] Check Pods Manifest.lock */,
+				29CE45EE775214BA82CC3D2B /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -276,9 +276,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "AppClienteDaHora-tvOSTests";
-			productName = "AppClienteDaHora-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* AppClienteDaHora-tvOSTests.xctest */;
+			name = "AppDaHora-tvOSTests";
+			productName = "AppDaHora-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* AppDaHora-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -307,7 +307,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "AppClienteDaHora" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "AppDaHora" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -320,10 +320,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* AppClienteDaHora */,
-				00E356ED1AD99517003FC87E /* AppClienteDaHoraTests */,
-				2D02E47A1E0B4A5D006451C7 /* AppClienteDaHora-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* AppClienteDaHora-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* AppDaHora */,
+				00E356ED1AD99517003FC87E /* AppDaHoraTests */,
+				2D02E47A1E0B4A5D006451C7 /* AppDaHora-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* AppDaHora-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -377,7 +377,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		163513FAD9238CF961D7E8A8 /* [CP] Check Pods Manifest.lock */ = {
+		29CE45EE775214BA82CC3D2B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,7 +392,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AppClienteDaHora-AppClienteDaHoraTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AppDaHora-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -413,13 +413,13 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		5810F2CE2FAC67B9E8696607 /* [CP] Copy Pods Resources */ = {
+		49D4BEACA637E55855E74B40 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppClienteDaHora/Pods-AppClienteDaHora-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AppDaHora-AppDaHoraTests/Pods-AppDaHora-AppDaHoraTests-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -458,38 +458,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppClienteDaHora/Pods-AppClienteDaHora-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppDaHora-AppDaHoraTests/Pods-AppDaHora-AppDaHoraTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		856D6F76969AB1BDB326D7CF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AppClienteDaHora-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A697BEFE732C2CB37F07D799 /* [CP] Copy Pods Resources */ = {
+		750EA47FC5620B0CF0BD8735 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppClienteDaHora-AppClienteDaHoraTests/Pods-AppClienteDaHora-AppClienteDaHoraTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AppDaHora/Pods-AppDaHora-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -528,10 +506,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppClienteDaHora-AppClienteDaHoraTests/Pods-AppClienteDaHora-AppClienteDaHoraTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppDaHora/Pods-AppDaHora-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D42C25DC4CC65A84E86CD451 /* [CP] Check Pods Manifest.lock */ = {
+		940B5556EC309E6B0B242C57 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -546,14 +524,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AppClienteDaHora-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AppDaHora-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D8E582F3D48E35108958DDF4 /* [CP] Check Pods Manifest.lock */ = {
+		D379BD08287154AA2E9D16C2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -568,7 +546,29 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AppClienteDaHora-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AppDaHora-AppDaHoraTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD633A0E5A6F7A2BAFE59A80 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppDaHora-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -620,7 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* AppClienteDaHoraTests.m in Sources */,
+				00E356F31AD99517003FC87E /* AppDaHoraTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,7 +646,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* AppClienteDaHoraTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* AppDaHoraTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,12 +655,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* AppClienteDaHora */;
+			target = 13B07F861A680F5B00A75B9A /* AppDaHora */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* AppClienteDaHora-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* AppDaHora-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -672,7 +672,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = AppClienteDaHora;
+			path = AppDaHora;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -680,14 +680,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3B6EC10162C6C5032698900 /* Pods-AppClienteDaHora-AppClienteDaHoraTests.debug.xcconfig */;
+			baseConfigurationReference = 9F9490C5F7666E3A130A52CA /* Pods-AppDaHora-AppDaHoraTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = AppClienteDaHoraTests/Info.plist;
+				INFOPLIST_FILE = AppDaHoraTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -697,17 +697,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppClienteDaHora.app/AppClienteDaHora";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppDaHora.app/AppDaHora";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDC874D9E189F9A71510BD0A /* Pods-AppClienteDaHora-AppClienteDaHoraTests.release.xcconfig */;
+			baseConfigurationReference = 1843F86C52CDC19AE25AAF3D /* Pods-AppDaHora-AppDaHoraTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = AppClienteDaHoraTests/Info.plist;
+				INFOPLIST_FILE = AppDaHoraTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -717,13 +717,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppClienteDaHora.app/AppClienteDaHora";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppDaHora.app/AppDaHora";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 089CB4A23912795657F5D45C /* Pods-AppClienteDaHora.debug.xcconfig */;
+			baseConfigurationReference = 4AAAA6924D3664741D785BD8 /* Pods-AppDaHora.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -733,7 +733,7 @@
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = AppClienteDaHora/Info.plist;
+				INFOPLIST_FILE = AppDaHora/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -741,7 +741,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = AppClienteDaHora;
+				PRODUCT_NAME = AppDaHora;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -750,12 +750,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A17B58BF21DB7E3DCEF7B0CB /* Pods-AppClienteDaHora.release.xcconfig */;
+			baseConfigurationReference = 5DEC335F4F416C6753B123CA /* Pods-AppDaHora.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = AppClienteDaHora/Info.plist;
+				INFOPLIST_FILE = AppDaHora/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -763,7 +763,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = AppClienteDaHora;
+				PRODUCT_NAME = AppDaHora;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -771,7 +771,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3E08BB96B0F853EEBD40CA2 /* Pods-AppClienteDaHora-tvOS.debug.xcconfig */;
+			baseConfigurationReference = E4BD20A4924D6C1E6C542156 /* Pods-AppDaHora-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -782,14 +782,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AppClienteDaHora-tvOS/Info.plist";
+				INFOPLIST_FILE = "AppDaHora-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.AppClienteDaHora-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.AppDaHora-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -799,7 +799,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 272F3DDACC72E9F7888A3BF7 /* Pods-AppClienteDaHora-tvOS.release.xcconfig */;
+			baseConfigurationReference = 45139621EC6BE7BD742734BE /* Pods-AppDaHora-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -810,14 +810,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AppClienteDaHora-tvOS/Info.plist";
+				INFOPLIST_FILE = "AppDaHora-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.AppClienteDaHora-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.AppDaHora-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -827,7 +827,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D94D28F6CB50B0CACCA8606 /* Pods-AppClienteDaHora-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 02B0F7FCE99D0EC0A55D44F7 /* Pods-AppDaHora-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -837,24 +837,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AppClienteDaHora-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "AppDaHora-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.AppClienteDaHora-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.AppDaHora-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppClienteDaHora-tvOS.app/AppClienteDaHora-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppDaHora-tvOS.app/AppDaHora-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D3A725D353ADBA32919576D /* Pods-AppClienteDaHora-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 68A7166D6EDB1C9F062A76F3 /* Pods-AppDaHora-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -864,17 +864,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AppClienteDaHora-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "AppDaHora-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.AppClienteDaHora-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.AppDaHora-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppClienteDaHora-tvOS.app/AppClienteDaHora-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppDaHora-tvOS.app/AppDaHora-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -995,7 +995,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AppClienteDaHoraTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AppDaHoraTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1004,7 +1004,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AppClienteDaHora" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AppDaHora" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1013,7 +1013,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppClienteDaHora-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppDaHora-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1022,7 +1022,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppClienteDaHora-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppDaHora-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1031,7 +1031,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "AppClienteDaHora" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "AppDaHora" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

@@ -12,18 +12,20 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import Lottie from 'lottie-react-native';
 import api from '~/services/api';
 import {BoxIcon} from '~/components/icons';
+
 import {Container, Title, Insidebox, AwardsView} from './styles';
 import lazyload from '~/assets/lazyload';
 
 import Background from '~/components/Background';
 import Qrcode from '~/components/Qrcode';
+import {storeAwardsRequest} from '~/store/modules/user/actions';
 
 const initialLayout = {width: Dimensions.get('window').width};
 
@@ -32,8 +34,11 @@ Icon.loadFont();
 export default function Dashboard() {
   const user = useSelector((state) => state.user.profile);
   const access_token = useSelector((state) => state.auth.token.access_token);
+  const user_rescue = useSelector((state) => state.user.rescue.data);
 
-  const [isModalVisibleRescue, setModalVisibleRescue] = useState(false);
+  const dispatch = useDispatch();
+
+  // const [isModalVisibleRescue, setModalVisibleRescue] = useState(false);
 
   const [isModalVisibleQr, setModalVisibleQr] = useState(false);
   const [modalTitle, setModalTitle] = useState('nao mudou');
@@ -42,6 +47,7 @@ export default function Dashboard() {
   const [modalPoints, setModalPoints] = useState('Modal points');
   const [modalThumbnail, setModalThumbnail] = useState('Modal thumbnail');
   const [modalButton, setModalButton] = useState(null);
+  const [modalId, setModalId] = useState(null);
 
   const toggleModalQr = () => {
     setModalVisibleQr(!isModalVisibleQr);
@@ -59,19 +65,17 @@ export default function Dashboard() {
     loadItems();
   }, []);
 
-  const [itemsClientsAwardsHistories, setClientsAwardsHistories] = useState([]);
+  // useEffect(() => {
+  //   async function loadClientsAwardsHistories() {
+  //     const response = await api.get('/clients/awards', {
+  //       headers: {Authorization: `Bearer ${access_token}`},
+  //     });
 
-  useEffect(() => {
-    async function loadClientsAwardsHistories() {
-      const response = await api.get('/clients/awards/histories', {
-        headers: {Authorization: `Bearer ${access_token}`},
-      });
+  //     setBeginRescue(response.data);
+  //   }
 
-      setClientsAwardsHistories(response.data);
-    }
-
-    loadClientsAwardsHistories();
-  }, []);
+  //   loadClientsAwardsHistories();
+  // }, []);
 
   const FirstRoute = () => (
     <>
@@ -107,6 +111,7 @@ export default function Dashboard() {
                 <TouchableOpacity
                   onLoad={setApiLoad(true)}
                   onPress={() => {
+                    setModalId(item.id);
                     setModalTitle(item.name);
                     setModalBody(item.body);
                     setModalCode(item.code);
@@ -226,7 +231,7 @@ export default function Dashboard() {
 
   const SecondRoute = () => (
     <>
-      {itemsClientsAwardsHistories.message === '' ? (
+      {user_rescue.message === '' ? (
         <View>
           <AwardsView style={{height: 200}}>
             <BoxIcon fill="#9B9B9B" />
@@ -241,7 +246,7 @@ export default function Dashboard() {
             <FlatList
               style={{marginVertical: 10}}
               legacyImplementation
-              data={itemsClientsAwardsHistories.data}
+              data={user_rescue.data}
               keyExtractor={(item) => item.id}
               renderItem={({item}) => (
                 <TouchableOpacity
@@ -249,6 +254,7 @@ export default function Dashboard() {
                     setModalTitle(item.name);
                     setModalBody(item.body);
                     setModalCode(item.code);
+
                     setModalPoints(item.points);
                     setModalThumbnail(item.thumbnail);
                     setModalButton(item.created_at);
@@ -335,7 +341,7 @@ export default function Dashboard() {
                               fontWeight: 'bold',
                               fontSize: 16,
                             }}>
-                            48
+                            {item.points}
                             <Text style={{fontSize: 12, fontWeight: '700'}}>
                               {' '}
                               P
@@ -366,8 +372,8 @@ export default function Dashboard() {
   });
 
   function rescue() {
+    dispatch(storeAwardsRequest(modalId, access_token));
     setModalVisibleQr(!isModalVisibleQr);
-    setModalVisibleRescue(!isModalVisibleRescue);
   }
 
   return (
@@ -385,6 +391,7 @@ export default function Dashboard() {
             <Title>Seus pontos</Title>
             <Icon name="wifi" size={30} />
           </View>
+
           <ImageBackground
             source={require('../../../assets/card-bg.png')}
             style={{
@@ -513,7 +520,7 @@ export default function Dashboard() {
             </View>
           </Modal>
 
-          <Modal
+          {/* <Modal
             style={{
               marginVertical: 200,
               marginHorizontal: 30,
@@ -548,7 +555,7 @@ export default function Dashboard() {
                 <Text style={{color: '#fff'}}>OK</Text>
               </TouchableOpacity>
             </View>
-          </Modal>
+          </Modal> */}
 
           <View style={{flex: 1, marginTop: 20}}>
             <TabView

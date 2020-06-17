@@ -14,12 +14,15 @@ export function* signIn({payload}) {
 
     const {token, user} = response.data;
 
-    api.defaults.headers.Authorization = `Baerer ${token}`;
+    api.defaults.headers.Authorization = `Bearer ${token.access_token}`;
 
     // yield delay(7000) and also import delay from redux-saga/effects;
 
-    yield put(signInSuccess(token, user));
+    console.tron.log(token.access_token);
 
+    const rescue = yield call(api.get, '/clients/awards');
+
+    yield put(signInSuccess(token, user, rescue));
     navigate('Dashboard');
   } catch (err) {
     Alert.alert(
@@ -27,6 +30,23 @@ export function* signIn({payload}) {
       'Houve um erro no login, verifique seu cpf/senha',
     );
     yield put(signFailure());
+  }
+}
+
+export function* forgotRequest({payload}) {
+  try {
+    const {email} = payload;
+
+    yield call(api.post, '/auth/forgot-password', {
+      email,
+    });
+    Alert.alert(
+      'Esqueci a senha',
+      'Uma nova senha foi enviado para o seu email!',
+    );
+    navigate('SignIn');
+  } catch (err) {
+    Alert.alert('Falha ao recuperar senha', 'verifique seu email');
   }
 }
 
@@ -60,4 +80,5 @@ export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
+  takeLatest('@auth/FORGOT_REQUEST', forgotRequest),
 ]);
