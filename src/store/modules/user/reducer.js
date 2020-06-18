@@ -3,6 +3,7 @@ import produce from 'immer';
 const INITIAL_STATE = {
   profile: null,
   rescue: null,
+  load: false,
 };
 
 export default function user(state = INITIAL_STATE, action) {
@@ -23,6 +24,18 @@ export default function user(state = INITIAL_STATE, action) {
       }
       case '@user/UPDATE_RESCUE_SUCCESS': {
         draft.rescue = action.payload.rescue;
+        break;
+      }
+      case '@user/STORE_AWARDS_REQUEST': {
+        draft.load = true;
+        break;
+      }
+      case '@user/STORE_AWARDS_SUCCESS': {
+        draft.load = false;
+        break;
+      }
+      case '@user/STORE_AWARDS_FAILURE': {
+        draft.load = false;
         break;
       }
       case '@auth/SIGN_OUT': {

@@ -1,7 +1,12 @@
 import {takeLatest, call, put, all} from 'redux-saga/effects';
 import {Alert} from 'react-native';
 import api from '~/services/api';
-import {signInSuccess, signFailure} from './actions';
+import {
+  signInSuccess,
+  signFailure,
+  signUpSuccess,
+  signUpFailure,
+} from './actions';
 import {navigate} from '~/services/navigationService';
 
 export function* signIn({payload}) {
@@ -18,7 +23,7 @@ export function* signIn({payload}) {
 
     // yield delay(7000) and also import delay from redux-saga/effects;
 
-    console.tron.log(token.access_token);
+    // console.tron.log(token.access_token);
 
     const rescue = yield call(api.get, '/clients/awards');
 
@@ -60,11 +65,12 @@ export function* signUp({payload}) {
       ...rest,
     });
     Alert.alert('Cadastro de Usuário', 'Cadastradado com sucesso!');
+    yield put(signUpSuccess());
     navigate('SignIn');
   } catch (err) {
     console.tron.log('erro no cadastro', err);
     Alert.alert('Falha no cadastro', 'verifique seus dados');
-    yield put(signFailure());
+    yield put(signUpFailure());
   }
 }
 

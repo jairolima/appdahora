@@ -12,6 +12,12 @@ export function signInSuccess(token, user, rescue) {
   };
 }
 
+export function signFailure() {
+  return {
+    type: '@auth/SIGN_IN_FAILURE',
+  };
+}
+
 export function signUpRequest(values) {
   return {
     type: '@auth/SIGN_UP_REQUEST',
@@ -21,9 +27,15 @@ export function signUpRequest(values) {
   };
 }
 
-export function signFailure() {
+export function signUpSuccess() {
   return {
-    type: '@auth/SIGN_IN_FAILURE',
+    type: '@auth/SIGN_UP_SUCCESS',
+  };
+}
+
+export function signUpFailure() {
+  return {
+    type: '@auth/SIGN_UP_FAILURE',
   };
 }
 

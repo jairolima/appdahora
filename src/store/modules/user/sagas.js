@@ -6,6 +6,8 @@ import {
   updateProfilefailure,
   updateAwardsSuccess,
   updateRescueSuccess,
+  storeAwardsSuccess,
+  storeAwardsFailure,
 } from './actions';
 import {navigate} from '~/services/navigationService';
 
@@ -43,12 +45,8 @@ export function* storeAwardsRequest({payload}) {
     const {modalId} = payload;
 
     yield call(api.post, `/awards/redeem/${modalId}`);
-    // const rescue = yield call(api.get, `/clients/awards`);
-    // yield put(storeAwardsSuccess(rescue));
 
-    // const {response} = yield call(api.get, `/me`);
-    // yield put(storeAwardsSuccess());
-
+    yield put(storeAwardsSuccess());
     Alert.alert('Resgate', 'Resgate efetuado com sucesso!');
 
     try {
@@ -72,6 +70,7 @@ export function* storeAwardsRequest({payload}) {
     }
   } catch (err) {
     console.tron.log('erro no resgate', err);
+    yield put(storeAwardsFailure());
     Alert.alert('Falha no resgate', 'Problema no resgate');
   }
 }

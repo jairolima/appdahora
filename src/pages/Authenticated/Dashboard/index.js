@@ -19,6 +19,7 @@ import Modal from 'react-native-modal';
 import Lottie from 'lottie-react-native';
 import api from '~/services/api';
 import {BoxIcon} from '~/components/icons';
+import loadingjson from '~/assets/loadingjson';
 
 import {Container, Title, Insidebox, AwardsView} from './styles';
 import lazyload from '~/assets/lazyload';
@@ -32,6 +33,7 @@ const initialLayout = {width: Dimensions.get('window').width};
 Icon.loadFont();
 
 export default function Dashboard() {
+  const load = useSelector((state) => state.user.load);
   const user = useSelector((state) => state.user.profile);
   const access_token = useSelector((state) => state.auth.token.access_token);
   const user_rescue = useSelector((state) => state.user.rescue.data);
@@ -377,150 +379,169 @@ export default function Dashboard() {
   }
 
   return (
-    <Background>
-      <Container>
-        <ScrollView>
-          {/* <Text>{modalTitle}</Text> */}
-          <View
-            style={{
-              alignItems: 'center',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginTop: 20,
-            }}>
-            <Title>Seus pontos</Title>
-            <Icon name="wifi" size={30} />
-          </View>
-
-          <ImageBackground
-            source={require('../../../assets/card-bg.png')}
-            style={{
-              height: 168,
-              borderRadius: 10,
-              flexDirection: 'column',
-              padding: 20,
-              marginTop: 20,
-            }}
-            imageStyle={{borderRadius: 10}}>
-            <Insidebox>
-              <View>
-                <Text style={{fontSize: 44, color: '#fff', fontWeight: 'bold'}}>
-                  {user.salt_points}
-                  <Text style={{fontSize: 16}}>P</Text>
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 12,
-                    color: '#fff',
-                    textTransform: 'uppercase',
-                  }}>
-                  PONTOS ACUMULADOS
-                </Text>
-              </View>
+    <>
+      {load ? (
+        <Background>
+          <Container>
+            <View style={{height: '100%', width: '100%', alignSelf: 'center'}}>
+              <Lottie source={loadingjson} resizeMode="contain" autoPlay loop />
+            </View>
+          </Container>
+        </Background>
+      ) : (
+        <Background>
+          <Container>
+            <ScrollView>
+              {/* <Text>{modalTitle}</Text> */}
               <View
                 style={{
+                  alignItems: 'center',
                   flexDirection: 'row',
-                  alignItems: 'flex-end',
                   justifyContent: 'space-between',
+                  marginTop: 20,
                 }}>
-                <Text
-                  style={{fontSize: 14, color: '#fff8', fontWeight: 'bold'}}>
-                  Válidos até{' '}
-                  <Text style={{fontSize: 14, color: '#fff'}}>14/05/2018</Text>
-                </Text>
-
-                <Qrcode size={30} color="#fff" />
+                <Title>Seus pontos</Title>
+                <Icon name="wifi" size={30} />
               </View>
-            </Insidebox>
-          </ImageBackground>
 
-          <Modal
-            style={{
-              marginVertical: 40,
-            }}
-            isVisible={isModalVisibleQr}>
-            <View
-              style={{
-                flex: 1,
-                borderRadius: 10,
-                backgroundColor: 'white',
-                padding: 20,
-                maxHeight: 600,
-                justifyContent: 'space-between',
-              }}>
-              <View>
-                <View style={{alignItems: 'flex-end'}}>
-                  <TouchableOpacity
-                    onPress={() => setModalVisibleQr(!isModalVisibleQr)}>
-                    <Icon name="close" color="#ccc" size={50} />
-                  </TouchableOpacity>
-                </View>
-                <Image
-                  style={{
-                    width: 250,
-                    height: 250,
-                    alignSelf: 'center',
-                  }}
-                  source={{
-                    uri: `https://clientedahora.com.br${modalThumbnail}`,
-                  }}
-                />
-              </View>
-              <Text style={{fontWeight: 'bold', fontSize: 16}}>
-                {modalTitle}
-              </Text>
-              <Text>{modalBody}</Text>
-
-              <View
+              <ImageBackground
+                source={require('../../../assets/card-bg.png')}
                 style={{
-                  flexDirection: 'row',
-                  alignItems: 'flex-end',
-                  justifyContent: 'space-between',
-                }}>
-                <Text style={{color: '#9b9b9b'}}>Ref. {modalCode}</Text>
-                <Text style={{color: '#e66118', fontWeight: 'bold'}}>
-                  {modalPoints}
-                  <Text
+                  height: 168,
+                  borderRadius: 10,
+                  flexDirection: 'column',
+                  padding: 20,
+                  marginTop: 20,
+                }}
+                imageStyle={{borderRadius: 10}}>
+                <Insidebox>
+                  <View>
+                    <Text
+                      style={{fontSize: 44, color: '#fff', fontWeight: 'bold'}}>
+                      {user.salt_points}
+                      <Text style={{fontSize: 16}}>P</Text>
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 12,
+                        color: '#fff',
+                        textTransform: 'uppercase',
+                      }}>
+                      PONTOS ACUMULADOS
+                    </Text>
+                  </View>
+                  <View
                     style={{
-                      fontSize: 12,
-                      fontWeight: '700',
+                      flexDirection: 'row',
+                      alignItems: 'flex-end',
+                      justifyContent: 'space-between',
                     }}>
-                    P
-                  </Text>
-                </Text>
-              </View>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        color: '#fff8',
+                        fontWeight: 'bold',
+                      }}>
+                      Válidos até{' '}
+                      <Text style={{fontSize: 14, color: '#fff'}}>
+                        14/05/2018
+                      </Text>
+                    </Text>
 
-              {modalButton !== null ? (
+                    <Qrcode size={30} color="#fff" />
+                  </View>
+                </Insidebox>
+              </ImageBackground>
+
+              <Modal
+                style={{
+                  marginVertical: 40,
+                }}
+                isVisible={isModalVisibleQr}>
                 <View
                   style={{
-                    backgroundColor: '#9b9b9b',
-                    alignSelf: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    paddingVertical: 20,
+                    flex: 1,
                     borderRadius: 10,
-                  }}
-                  onPress={rescue}>
-                  <Text style={{color: '#fff'}}>Resgatado {modalButton}</Text>
-                </View>
-              ) : (
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: '#e66118',
-                    alignSelf: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    paddingVertical: 20,
-                    borderRadius: 10,
-                  }}
-                  onPress={rescue}>
-                  <Text style={{color: '#fff'}}>Resgatar</Text>
-                </TouchableOpacity>
-              )}
-            </View>
-          </Modal>
+                    backgroundColor: 'white',
+                    padding: 20,
+                    maxHeight: 600,
+                    justifyContent: 'space-between',
+                  }}>
+                  <View>
+                    <View style={{alignItems: 'flex-end'}}>
+                      <TouchableOpacity
+                        onPress={() => setModalVisibleQr(!isModalVisibleQr)}>
+                        <Icon name="close" color="#ccc" size={50} />
+                      </TouchableOpacity>
+                    </View>
+                    <Image
+                      style={{
+                        width: 250,
+                        height: 250,
+                        alignSelf: 'center',
+                      }}
+                      source={{
+                        uri: `https://clientedahora.com.br${modalThumbnail}`,
+                      }}
+                    />
+                  </View>
+                  <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                    {modalTitle}
+                  </Text>
+                  <Text>{modalBody}</Text>
 
-          {/* <Modal
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'flex-end',
+                      justifyContent: 'space-between',
+                    }}>
+                    <Text style={{color: '#9b9b9b'}}>Ref. {modalCode}</Text>
+                    <Text style={{color: '#e66118', fontWeight: 'bold'}}>
+                      {modalPoints}
+                      <Text
+                        style={{
+                          fontSize: 12,
+                          fontWeight: '700',
+                        }}>
+                        P
+                      </Text>
+                    </Text>
+                  </View>
+
+                  {modalButton !== null ? (
+                    <View
+                      style={{
+                        backgroundColor: '#9b9b9b',
+                        alignSelf: 'center',
+                        alignItems: 'center',
+                        width: '100%',
+                        paddingVertical: 20,
+                        borderRadius: 10,
+                      }}
+                      onPress={rescue}>
+                      <Text style={{color: '#fff'}}>
+                        Resgatado {modalButton}
+                      </Text>
+                    </View>
+                  ) : (
+                    <TouchableOpacity
+                      style={{
+                        backgroundColor: '#e66118',
+                        alignSelf: 'center',
+                        alignItems: 'center',
+                        width: '100%',
+                        paddingVertical: 20,
+                        borderRadius: 10,
+                      }}
+                      onPress={rescue}>
+                      <Text style={{color: '#fff'}}>Resgatar</Text>
+                    </TouchableOpacity>
+                  )}
+                </View>
+              </Modal>
+
+              {/* <Modal
             style={{
               marginVertical: 200,
               marginHorizontal: 30,
@@ -557,38 +578,40 @@ export default function Dashboard() {
             </View>
           </Modal> */}
 
-          <View style={{flex: 1, marginTop: 20}}>
-            <TabView
-              lazy
-              renderLazyPlaceholder={() => <Text>Loading...</Text>}
-              navigationState={{index, routes}}
-              renderScene={renderScene}
-              onIndexChange={setIndex}
-              initialLayout={initialLayout}
-              renderTabBar={(
-                props, // unnecessary, this is the default implementation
-              ) => (
-                <TabBar
-                  {...props}
-                  activeColor="#000"
-                  inactiveColor="#ccc"
-                  indicatorStyle={{
-                    backgroundColor: 'orange',
-                  }}
-                  getLabelText={({route}) => route.title}
-                  labelStyle={{fontWeight: 'bold'}}
-                  style={{
-                    elevation: 0,
-                    shadowOpacity: 0,
-                    borderBottomWidth: 0,
-                    backgroundColor: '#F1F6FC',
-                  }}
+              <View style={{flex: 1, marginTop: 20}}>
+                <TabView
+                  lazy
+                  renderLazyPlaceholder={() => <Text>Loading...</Text>}
+                  navigationState={{index, routes}}
+                  renderScene={renderScene}
+                  onIndexChange={setIndex}
+                  initialLayout={initialLayout}
+                  renderTabBar={(
+                    props, // unnecessary, this is the default implementation
+                  ) => (
+                    <TabBar
+                      {...props}
+                      activeColor="#000"
+                      inactiveColor="#ccc"
+                      indicatorStyle={{
+                        backgroundColor: 'orange',
+                      }}
+                      getLabelText={({route}) => route.title}
+                      labelStyle={{fontWeight: 'bold'}}
+                      style={{
+                        elevation: 0,
+                        shadowOpacity: 0,
+                        borderBottomWidth: 0,
+                        backgroundColor: '#F1F6FC',
+                      }}
+                    />
+                  )}
                 />
-              )}
-            />
-          </View>
-        </ScrollView>
-      </Container>
-    </Background>
+              </View>
+            </ScrollView>
+          </Container>
+        </Background>
+      )}
+    </>
   );
 }

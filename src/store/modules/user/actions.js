@@ -34,6 +34,18 @@ export function storeAwardsRequest(modalId, access_token) {
   };
 }
 
+export function storeAwardsSuccess() {
+  return {
+    type: '@user/STORE_AWARDS_SUCCESS',
+  };
+}
+
+export function storeAwardsFailure() {
+  return {
+    type: '@user/STORE_AWARDS_FAILURE',
+  };
+}
+
 export function updatePasswordRequest(
   password,
   password_confirmation,
