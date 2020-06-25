@@ -2,6 +2,8 @@
 import React from 'react';
 import Svg, {Rect, Path} from 'react-native-svg';
 
+// website where you can convert normal svg into rn svg https://react-svgr.com/playground/?native=true
+
 export const BurguerIcon = ({fill}) => (
   <Svg
     width="20"
@@ -20,6 +22,25 @@ export const BurguerIcon = ({fill}) => (
     />
     <Path
       d="M0 20C0 19.4477 0.447715 19 1 19H17C17.5523 19 18 19.4477 18 20C18 20.5523 17.5523 21 17 21H1C0.447715 21 0 20.5523 0 20Z"
+      fill={fill}
+    />
+  </Svg>
+);
+
+export const ProductIcon = ({fill}) => (
+  <Svg
+    width={23}
+    height={24}
+    viewBox="0 0 23 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <Rect width="23" height="24" fill="none" fill-opacity="0" />
+    <Path
+      d="M3.31 6.859A1 1 0 014.3 6h14.4a1 1 0 01.99.859l2.137 15a1 1 0 01-.99 1.141H2.163a1 1 0 01-.99-1.141l2.137-15z"
+      fill={fill}
+    />
+    <Path
+      d="M8.009 8V5.458S7.642 1 11.591 1c3.95 0 3.38 4.272 3.38 4.272V7.79"
       fill={fill}
     />
   </Svg>

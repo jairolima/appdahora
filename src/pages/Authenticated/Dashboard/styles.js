@@ -50,6 +50,8 @@ export const AwardsView = styled.View`
   margin-top: 20px;
   align-items: center;
   justify-content: center;
+  align-self: center;
+  width: 99%;
 `;
 
 export const Name = styled.Text`

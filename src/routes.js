@@ -8,7 +8,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {useSelector} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {setNavigator} from './services/navigationService';
-import {BurguerIcon, BoxIcon} from '~/components/icons';
+import {BurguerIcon, BoxIcon, ProductIcon} from '~/components/icons';
 
 // starter path
 import SignIn from './pages/Unauthenticated/SignIn';
@@ -29,6 +29,7 @@ import Dashboard from './pages/Authenticated/Dashboard';
 
 // product tab path
 import Product from './pages/Authenticated/Product';
+import Detail from './pages/Authenticated/Product/Detail';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -64,6 +65,7 @@ export default function Routes() {
     return (
       <Stack.Navigator screenOptions={{headerShown: false, tableShown: false}}>
         <Stack.Screen name="Product" component={Product} />
+        <Stack.Screen name="Detail" component={Detail} />
       </Stack.Navigator>
     );
   }
@@ -89,7 +91,7 @@ export default function Routes() {
               }
               if (route.name === 'Product') {
                 iconColor = focused ? '#E66118' : '#E6611866';
-                return <BurguerIcon fill={iconColor} />;
+                return <ProductIcon fill={iconColor} />;
               }
               return false;
             },

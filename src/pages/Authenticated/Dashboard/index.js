@@ -90,7 +90,17 @@ export default function Dashboard() {
         </View>
       ) : (
         <View>
-          <AwardsView>
+          <AwardsView
+            style={{
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 1,
+              },
+              shadowOpacity: 0.07,
+              shadowRadius: 2.84,
+              elevation: 5,
+            }}>
             {apiLoad ? null : (
               <Lottie
                 style={{
@@ -244,7 +254,17 @@ export default function Dashboard() {
         </View>
       ) : (
         <View>
-          <AwardsView>
+          <AwardsView
+            style={{
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 1,
+              },
+              shadowOpacity: 0.07,
+              shadowRadius: 2.84,
+              elevation: 5,
+            }}>
             <FlatList
               style={{marginVertical: 10}}
               legacyImplementation
@@ -594,14 +614,15 @@ export default function Dashboard() {
                       activeColor="#000"
                       inactiveColor="#ccc"
                       indicatorStyle={{
-                        backgroundColor: 'orange',
+                        backgroundColor: '#E55300',
                       }}
                       getLabelText={({route}) => route.title}
                       labelStyle={{fontWeight: 'bold'}}
                       style={{
+                        borderBottomWidth: 1,
+                        borderColor: '#ccc',
                         elevation: 0,
                         shadowOpacity: 0,
-                        borderBottomWidth: 0,
                         backgroundColor: '#F1F6FC',
                       }}
                     />
