@@ -27,6 +27,9 @@ import UserRecoveryPassword from './pages/Authenticated/Profile/UserRecoveryPass
 // dashboard tab path
 import Dashboard from './pages/Authenticated/Dashboard';
 
+// product tab path
+import Product from './pages/Authenticated/Product';
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -57,6 +60,14 @@ export default function Routes() {
     );
   }
 
+  function StackProduct() {
+    return (
+      <Stack.Navigator screenOptions={{headerShown: false, tableShown: false}}>
+        <Stack.Screen name="Product" component={Product} />
+      </Stack.Navigator>
+    );
+  }
+
   return (
     <NavigationContainer ref={setNavigator}>
       {SignedIn ? (
@@ -76,6 +87,10 @@ export default function Routes() {
                 iconColor = focused ? '#E66118' : '#E6611866';
                 return <BurguerIcon fill={iconColor} />;
               }
+              if (route.name === 'Product') {
+                iconColor = focused ? '#E66118' : '#E6611866';
+                return <BurguerIcon fill={iconColor} />;
+              }
               return false;
             },
           })}>
@@ -84,6 +99,14 @@ export default function Routes() {
             component={StackDashboard}
             // options={{
             //   tabBarIcon: () => <BoxIcon fill="#E66118" />,
+            // }}
+          />
+          <Tab.Screen
+            name="Product"
+            component={StackProduct}
+            tabBarOptions={{showLabel: false}}
+            // options={{
+            //   tabBarIcon: () => <BurguerIcon />,
             // }}
           />
           <Tab.Screen
