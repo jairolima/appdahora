@@ -19,12 +19,12 @@ export const Header = styled.View`
 `;
 
 export const Adress = styled.View`
-  padding-top: 50px;
-  padding-horizontal: 20px;
   height: 100px;
   background-color: #fff;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  padding-horizontal: 20px;
 `;
 
 export const Hr = styled.View`

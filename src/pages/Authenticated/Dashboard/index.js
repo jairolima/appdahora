@@ -99,7 +99,7 @@ export default function Dashboard() {
               },
               shadowOpacity: 0.07,
               shadowRadius: 2.84,
-              elevation: 5,
+              elevation: 1,
             }}>
             {apiLoad ? null : (
               <Lottie

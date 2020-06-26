@@ -198,7 +198,7 @@ export default function Product() {
                   },
                   shadowOpacity: 0.05,
                   shadowRadius: 2.84,
-                  elevation: 5,
+                  elevation: 1,
                   marginTop: 5,
                   marginBottom: 5,
                 }}>
@@ -279,7 +279,7 @@ export default function Product() {
                 },
                 shadowOpacity: 0.05,
                 shadowRadius: 2.84,
-                elevation: 5,
+                elevation: 1,
                 marginTop: 5,
                 marginBottom: 5,
               }}>
@@ -359,7 +359,7 @@ export default function Product() {
                 },
                 shadowOpacity: 0.05,
                 shadowRadius: 2.84,
-                elevation: 5,
+                elevation: 1,
                 marginTop: 5,
                 marginBottom: 5,
               }}>

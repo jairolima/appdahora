@@ -20,6 +20,7 @@ const Detail = ({route}) => {
   const {item} = route.params;
   const [sum, setSum] = useState(0);
   const [total, setTotal] = useState(item.price);
+  const [itemid, setItemId] = useState(0);
 
   const types = item.type;
 
@@ -39,6 +40,16 @@ const Detail = ({route}) => {
     setSum(sum + 1);
   }
 
+  function optionFunc(par1, par2, par3) {
+    if (par3 === true) {
+      setItemId(par1);
+      setTotal(par2);
+    } else {
+      setItemId(0);
+      setTotal(0);
+    }
+  }
+
   return (
     <Background>
       <Container>
@@ -55,12 +66,16 @@ const Detail = ({route}) => {
           <LinearGradient
             colors={['#fcf6f3', '#ebe5e1', '#dbd4d1']}
             style={{flex: 1, height: 200, margin: 0, width: '100%'}}>
-            <View style={{height: 200, width: '100%'}}>
+            <View
+              style={{
+                height: 200,
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flex: 1,
+              }}>
               <Image
-                style={{
-                  width: '100%',
-                  height: '100%',
-                }}
+                style={{width: '100%', height: '100%'}}
                 source={{
                   uri: `${item.picture}`,
                 }}
@@ -129,7 +144,10 @@ const Detail = ({route}) => {
                 keyExtractor={(type) => String(type.id)}
                 renderItem={({item: type}) => (
                   <>
-                    <TouchableOpacity onPress={() => setTotal(type.price)}>
+                    <TouchableOpacity
+                      onPress={() =>
+                        optionFunc(type.id, type.price, type.available)
+                      }>
                       <View
                         style={{
                           height: 80,
@@ -140,14 +158,32 @@ const Detail = ({route}) => {
                         }}>
                         <View
                           style={{flexDirection: 'row', alignItems: 'center'}}>
-                          <MaterialCommunityIcons
-                            reverseColor
-                            name="radiobox-blank"
-                            color="#ccc"
-                            type="font-awesome"
-                            size={30}
-                          />
-                          <Text style={{marginLeft: 20}}>{type.name}</Text>
+                          {type.id === itemid ? (
+                            <MaterialCommunityIcons
+                              ref={type.id}
+                              reverseColor
+                              name="radiobox-marked"
+                              color="#e55300"
+                              type="font-awesome"
+                              size={30}
+                            />
+                          ) : (
+                            <MaterialCommunityIcons
+                              ref={type.id}
+                              reverseColor
+                              name="radiobox-blank"
+                              color="#ccc"
+                              type="font-awesome"
+                              size={30}
+                            />
+                          )}
+                          {type.available === true ? (
+                            <Text style={{marginLeft: 20}}>{type.name}</Text>
+                          ) : (
+                            <Text style={{marginLeft: 20, color: '#9b9b9b'}}>
+                              {type.name}
+                            </Text>
+                          )}
                         </View>
 
                         {type.available ? (
@@ -264,7 +300,7 @@ const Detail = ({route}) => {
           </View>
         </ScrollView>
 
-        {sum > 0 ? (
+        {sum > 0 && total !== 0 ? (
           <View
             id="cart"
             style={{
