@@ -25,4 +25,6 @@ export const Header = styled.View`
 export const Hr = styled.View`
   height: 1px;
   background-color: #ccc;
+  align-self: center;
+  width: 90%;
 `;
