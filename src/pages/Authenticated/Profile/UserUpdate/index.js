@@ -121,27 +121,6 @@ export default function UserUpdate() {
             visible={false}>
             Sobrenome invalido
           </HelperText>
-          {/* <TextInput
-            label="NASCIMENTO"
-            style={{
-              paddingHorizontal: 0,
-              backgroundColor: 'none',
-            }}
-            theme={{colors: {primary: '#e66118'}}}
-            returnKeyType="next"
-            onSubmitEditing={() => emailRef.current.focus()}
-            placeholder={user.birthday}
-            disabled
-            onChangeText={setBirthday}
-          />
-          <HelperText
-            style={{
-              paddingHorizontal: 0,
-            }}
-            type="error"
-            visible={false}>
-            Email invalido
-          </HelperText> */}
           <TextInput
             label="EMAIL"
             style={{

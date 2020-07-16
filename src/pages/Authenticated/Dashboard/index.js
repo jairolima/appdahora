@@ -13,10 +13,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+import {TabView, TabBar} from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import Lottie from 'lottie-react-native';
+import PropTypes from 'prop-types';
 import api from '~/services/api';
 import {BoxIcon} from '~/components/icons';
 import loadingjson from '~/assets/loadingjson';
@@ -33,14 +34,12 @@ const initialLayout = {width: Dimensions.get('window').width};
 Icon.loadFont();
 
 export default function Dashboard() {
-  const load = useSelector((state) => state.user.load);
+  const rescueload = useSelector((state) => state.user.rescueload);
   const user = useSelector((state) => state.user.profile);
   const access_token = useSelector((state) => state.auth.token.access_token);
   const user_rescue = useSelector((state) => state.user.rescue.data);
 
   const dispatch = useDispatch();
-
-  // const [isModalVisibleRescue, setModalVisibleRescue] = useState(false);
 
   const [isModalVisibleQr, setModalVisibleQr] = useState(false);
   const [modalTitle, setModalTitle] = useState('nao mudou');
@@ -67,317 +66,324 @@ export default function Dashboard() {
     loadItems();
   }, []);
 
-  // useEffect(() => {
-  //   async function loadClientsAwardsHistories() {
-  //     const response = await api.get('/clients/awards', {
-  //       headers: {Authorization: `Bearer ${access_token}`},
-  //     });
-
-  //     setBeginRescue(response.data);
-  //   }
-
-  //   loadClientsAwardsHistories();
-  // }, []);
-
-  const FirstRoute = () => (
+  const FirstRoute = ({isActiveTab}) => (
     <>
-      {items.message === 'Requisição feita com sucesso!' ? (
+      {isActiveTab ? (
         <View>
-          <AwardsView style={{height: 200}}>
-            <BoxIcon fill="#E66118" />
-            <Text style={{marginTop: 20}}>Não há prêmios cadastrados</Text>
-          </AwardsView>
-        </View>
-      ) : (
-        <View>
-          <AwardsView
-            style={{
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 1,
-              },
-              shadowOpacity: 0.07,
-              shadowRadius: 2.84,
-              elevation: 1,
-            }}>
-            {apiLoad ? null : (
-              <Lottie
+          {items.message === 'empty' ? (
+            <View>
+              <AwardsView style={{height: 200}}>
+                <BoxIcon fill="#E66118" />
+                <Text style={{marginTop: 20}}>Não há prêmios cadastrados</Text>
+              </AwardsView>
+            </View>
+          ) : (
+            <View>
+              <AwardsView
                 style={{
-                  marginTop: -40,
-                  width: '160%',
-                  alignSelf: 'center',
-                }}
-                source={lazyload}
-                resizeMode="contain"
-                autoPlay
-                loop
-              />
-            )}
-            <FlatList
-              style={{marginVertical: 10}}
-              legacyImplementation
-              data={items.data}
-              keyExtractor={(item) => item.id}
-              renderItem={({item}) => (
-                <TouchableOpacity
-                  onLoad={setApiLoad(true)}
-                  onPress={() => {
-                    setModalId(item.id);
-                    setModalTitle(item.name);
-                    setModalBody(item.body);
-                    setModalCode(item.code);
-                    setModalPoints(item.points);
-                    setModalThumbnail(item.thumbnail);
-                    setModalButton(null);
-
-                    toggleModalQr();
-                  }}>
-                  <View
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 1,
+                  },
+                  shadowOpacity: 0.07,
+                  shadowRadius: 2.84,
+                  elevation: 1,
+                }}>
+                {apiLoad ? null : (
+                  <Lottie
                     style={{
-                      height: 80,
-                      marginVertical: 3,
-                    }}>
-                    <View
-                      style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        padding: 0,
-                        height: 80,
-                        margin: 0,
+                      marginTop: -40,
+                      width: '160%',
+                      alignSelf: 'center',
+                    }}
+                    source={lazyload}
+                    resizeMode="contain"
+                    autoPlay
+                    loop
+                  />
+                )}
+                <FlatList
+                  style={{marginVertical: 10}}
+                  legacyImplementation
+                  data={items.data}
+                  keyExtractor={(item) => item.id}
+                  renderItem={({item}) => (
+                    <TouchableOpacity
+                      onLoad={setApiLoad(true)}
+                      onPress={() => {
+                        setModalId(item.id);
+                        setModalTitle(item.name);
+                        setModalBody(item.body);
+                        setModalCode(item.code);
+                        setModalPoints(item.points);
+                        setModalThumbnail(item.thumbnail);
+                        setModalButton(null);
+
+                        toggleModalQr();
                       }}>
                       <View
                         style={{
-                          width: '25%',
                           height: 80,
-                          borderRadius: 10,
-                          alignItems: 'center',
-                          justifyContent: 'center',
+                          marginVertical: 3,
                         }}>
                         <View
                           style={{
-                            width: 74,
-                            height: 74,
-                          }}>
-                          <Image
-                            style={{
-                              width: '100%',
-                              height: '100%',
-                              borderRadius: 10,
-                              borderWidth: 1.3,
-                              borderColor: '#f5f5f5',
-                            }}
-                            source={{
-                              uri: `https://clientedahora.com.br${item.thumbnail}`,
-                            }}
-                          />
-                        </View>
-                      </View>
-
-                      <View
-                        style={{
-                          width: '55%',
-                          flexDirection: 'column',
-                          justifyContent: 'space-between',
-                          paddingHorizontal: 15,
-                          paddingVertical: 5,
-                        }}>
-                        <Text
-                          adjustsFontSizeToFit
-                          numberOfLines={2}
-                          style={{
-                            fontWeight: '700',
-                            color: '#303030',
-                            fontSize: 18,
-                          }}>
-                          {item.name}
-                        </Text>
-                        <Text style={{color: '#9b9b9b'}}>Ref: {item.code}</Text>
-                      </View>
-
-                      <View
-                        style={{
-                          width: '20%',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}>
-                        <View
-                          style={{
-                            backgroundColor: '#E66221',
                             flex: 1,
-                            width: 50,
-                            maxHeight: 25,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            borderRadius: 6,
+                            flexDirection: 'row',
+                            padding: 0,
+                            height: 80,
+                            margin: 0,
                           }}>
-                          <Text
+                          <View
                             style={{
-                              color: '#fff',
-                              fontWeight: '700',
-                              fontSize: 16,
+                              width: '25%',
+                              height: 80,
+                              borderRadius: 10,
+                              alignItems: 'center',
+                              justifyContent: 'center',
                             }}>
-                            {item.points}
-                            <Text
+                            <View
                               style={{
-                                fontSize: 12,
-                                fontWeight: '700',
+                                width: 74,
+                                height: 74,
                               }}>
-                              P
+                              <Image
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                  borderRadius: 10,
+                                  borderWidth: 1.3,
+                                  borderColor: '#f5f5f5',
+                                }}
+                                source={{
+                                  uri: `https://clientedahora.com.br${item.thumbnail}`,
+                                }}
+                              />
+                            </View>
+                          </View>
+
+                          <View
+                            style={{
+                              width: '55%',
+                              flexDirection: 'column',
+                              justifyContent: 'space-between',
+                              paddingHorizontal: 15,
+                              paddingVertical: 5,
+                            }}>
+                            <Text
+                              adjustsFontSizeToFit
+                              numberOfLines={2}
+                              style={{
+                                fontWeight: '700',
+                                color: '#303030',
+                                fontSize: 18,
+                              }}>
+                              {item.name}
                             </Text>
-                          </Text>
+                            <Text style={{color: '#9b9b9b'}}>
+                              Ref: {item.code}
+                            </Text>
+                          </View>
+
+                          <View
+                            style={{
+                              width: '20%',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}>
+                            <View
+                              style={{
+                                backgroundColor: '#E66221',
+                                flex: 1,
+                                width: 50,
+                                maxHeight: 25,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: 6,
+                              }}>
+                              <Text
+                                style={{
+                                  color: '#fff',
+                                  fontWeight: '700',
+                                  fontSize: 16,
+                                }}>
+                                {item.points}
+                                <Text
+                                  style={{
+                                    fontSize: 12,
+                                    fontWeight: '700',
+                                  }}>
+                                  P
+                                </Text>
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              )}
-              // https://github.com/filipemerker/flatlist-performance-tips
-              // Performance settings
-            />
-          </AwardsView>
+                    </TouchableOpacity>
+                  )}
+                  // https://github.com/filipemerker/flatlist-performance-tips
+                  // Performance settings
+                />
+              </AwardsView>
+            </View>
+          )}
         </View>
+      ) : (
+        <View />
       )}
     </>
   );
 
-  const SecondRoute = () => (
+  const SecondRoute = ({isActiveTab}) => (
     <>
-      {user_rescue.message === '' ? (
+      {isActiveTab ? (
         <View>
-          <AwardsView style={{height: 200}}>
-            <BoxIcon fill="#9B9B9B" />
-            <Text style={{marginTop: 20}}>
-              Você ainda não resgatou nenhum prêmio
-            </Text>
-          </AwardsView>
-        </View>
-      ) : (
-        <View>
-          <AwardsView
-            style={{
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 1,
-              },
-              shadowOpacity: 0.07,
-              shadowRadius: 2.84,
-              elevation: 5,
-            }}>
-            <FlatList
-              style={{marginVertical: 10}}
-              legacyImplementation
-              data={user_rescue.data}
-              keyExtractor={(item) => item.id}
-              renderItem={({item}) => (
-                <TouchableOpacity
-                  onPress={() => {
-                    setModalTitle(item.name);
-                    setModalBody(item.body);
-                    setModalCode(item.code);
+          {user_rescue.message === 'empty' ? (
+            <View>
+              <AwardsView style={{height: 200}}>
+                <BoxIcon fill="#9B9B9B" />
+                <Text style={{marginTop: 20}}>
+                  Você ainda não resgatou nenhum prêmio
+                </Text>
+              </AwardsView>
+            </View>
+          ) : (
+            <View>
+              <AwardsView
+                style={{
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 1,
+                  },
+                  shadowOpacity: 0.07,
+                  shadowRadius: 2.84,
+                  elevation: 1,
+                }}>
+                <FlatList
+                  style={{marginVertical: 10}}
+                  legacyImplementation
+                  data={user_rescue.data}
+                  keyExtractor={(item) => item.id}
+                  renderItem={({item}) => (
+                    <TouchableOpacity
+                      onPress={() => {
+                        setModalTitle(item.name);
+                        setModalBody(item.body);
+                        setModalCode(item.code);
 
-                    setModalPoints(item.points);
-                    setModalThumbnail(item.thumbnail);
-                    setModalButton(item.created_at);
-                    toggleModalQr();
-                  }}>
-                  <View
-                    style={{
-                      height: 80,
-                      marginVertical: 3,
-                    }}>
-                    <View
-                      style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        padding: 0,
-                        height: 80,
-                        margin: 0,
+                        setModalPoints(item.points);
+                        setModalThumbnail(item.thumbnail);
+                        setModalButton(item.created_at);
+                        toggleModalQr();
                       }}>
                       <View
                         style={{
-                          width: '25%',
                           height: 80,
-                          borderRadius: 10,
-                          alignItems: 'center',
-                          justifyContent: 'center',
+                          marginVertical: 3,
                         }}>
                         <View
                           style={{
-                            width: 74,
-                            height: 74,
+                            flex: 1,
+                            flexDirection: 'row',
+                            padding: 0,
+                            height: 80,
+                            margin: 0,
                           }}>
-                          <Image
+                          <View
                             style={{
-                              width: '100%',
-                              height: '100%',
+                              width: '25%',
+                              height: 80,
                               borderRadius: 10,
-                              borderWidth: 1.3,
-                              borderColor: '#f5f5f5',
-                            }}
-                            source={{
-                              uri: `https://clientedahora.com.br${item.thumbnail}`,
-                            }}
-                          />
-                        </View>
-                      </View>
-
-                      <View
-                        style={{
-                          width: '55%',
-                          flexDirection: 'column',
-                          justifyContent: 'space-between',
-                          paddingHorizontal: 15,
-                          paddingVertical: 5,
-                        }}>
-                        <Text
-                          adjustsFontSizeToFit
-                          numberOfLines={2}
-                          style={{
-                            fontWeight: 'bold',
-                            color: '#303030',
-                            fontSize: 18,
-                          }}>
-                          {item.name}
-                        </Text>
-                        <Text style={{color: '#9b9b9b'}}>Ref: {item.code}</Text>
-                      </View>
-
-                      <View
-                        style={{
-                          width: '20%',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}>
-                        <View
-                          style={{
-                            backgroundColor: '#9b9b9b',
-                            paddingHorizontal: 12,
-                            paddingVertical: 3,
-                            borderRadius: 6,
-                          }}>
-                          <Text
-                            style={{
-                              color: '#fff',
-                              fontWeight: 'bold',
-                              fontSize: 16,
+                              alignItems: 'center',
+                              justifyContent: 'center',
                             }}>
-                            {item.points}
-                            <Text style={{fontSize: 12, fontWeight: '700'}}>
-                              {' '}
-                              P
+                            <View
+                              style={{
+                                width: 74,
+                                height: 74,
+                              }}>
+                              <Image
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                  borderRadius: 10,
+                                  borderWidth: 1.3,
+                                  borderColor: '#f5f5f5',
+                                }}
+                                source={{
+                                  uri: `https://clientedahora.com.br${item.thumbnail}`,
+                                }}
+                              />
+                            </View>
+                          </View>
+
+                          <View
+                            style={{
+                              width: '55%',
+                              flexDirection: 'column',
+                              justifyContent: 'space-between',
+                              paddingHorizontal: 15,
+                              paddingVertical: 5,
+                            }}>
+                            <Text
+                              adjustsFontSizeToFit
+                              numberOfLines={2}
+                              style={{
+                                fontWeight: 'bold',
+                                color: '#303030',
+                                fontSize: 18,
+                              }}>
+                              {item.name}
                             </Text>
-                          </Text>
+                            <Text style={{color: '#9b9b9b'}}>
+                              Ref: {item.code}
+                            </Text>
+                          </View>
+
+                          <View
+                            style={{
+                              width: '20%',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}>
+                            <View
+                              style={{
+                                backgroundColor: '#9b9b9b',
+                                flex: 1,
+                                width: 50,
+                                maxHeight: 25,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: 6,
+                              }}>
+                              <Text
+                                style={{
+                                  color: '#fff',
+                                  fontWeight: 'bold',
+                                  fontSize: 16,
+                                }}>
+                                {item.points}
+                                <Text style={{fontSize: 12, fontWeight: '700'}}>
+                                  {' '}
+                                  P
+                                </Text>
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              )}
-            />
-          </AwardsView>
+                    </TouchableOpacity>
+                  )}
+                />
+              </AwardsView>
+            </View>
+          )}
         </View>
+      ) : (
+        <View />
       )}
     </>
   );
@@ -388,11 +394,6 @@ export default function Dashboard() {
     {key: 'second', title: 'Resgatados'},
   ]);
 
-  const renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
-  });
-
   function rescue() {
     dispatch(storeAwardsRequest(modalId, access_token));
     setModalVisibleQr(!isModalVisibleQr);
@@ -400,7 +401,7 @@ export default function Dashboard() {
 
   return (
     <>
-      {load ? (
+      {rescueload ? (
         <Background>
           <Container>
             <View style={{height: '100%', width: '100%', alignSelf: 'center'}}>
@@ -477,6 +478,8 @@ export default function Dashboard() {
                 style={{
                   marginVertical: 40,
                 }}
+                onSwipeComplete={() => setModalVisibleQr(!isModalVisibleQr)}
+                swipeDirection={['up', 'left', 'right', 'down']}
                 isVisible={isModalVisibleQr}>
                 <View
                   style={{
@@ -603,7 +606,16 @@ export default function Dashboard() {
                   lazy
                   renderLazyPlaceholder={() => <Text>Loading...</Text>}
                   navigationState={{index, routes}}
-                  renderScene={renderScene}
+                  renderScene={({route}) => {
+                    switch (route.key) {
+                      case 'first':
+                        return FirstRoute({isActiveTab: index === 0});
+                      case 'second':
+                        return SecondRoute({isActiveTab: index === 1});
+                      default:
+                        return null;
+                    }
+                  }}
                   onIndexChange={setIndex}
                   initialLayout={initialLayout}
                   renderTabBar={(
@@ -614,6 +626,8 @@ export default function Dashboard() {
                       activeColor="#000"
                       inactiveColor="#ccc"
                       indicatorStyle={{
+                        marginBottom: -1,
+                        height: 2,
                         backgroundColor: '#E55300',
                       }}
                       getLabelText={({route}) => route.title}
@@ -636,3 +650,11 @@ export default function Dashboard() {
     </>
   );
 }
+
+Dashboard.propTypes = {
+  isActiveTab: PropTypes.string,
+};
+
+Dashboard.defaultProps = {
+  isActiveTab: 0,
+};

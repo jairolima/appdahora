@@ -68,8 +68,7 @@ export function* signUp({payload}) {
     yield put(signUpSuccess());
     navigate('SignIn');
   } catch (err) {
-    console.tron.log('erro no cadastro', err);
-    Alert.alert('Falha no cadastro', 'verifique seus dados');
+    Alert.alert('Cadastro de Usuário', 'Erro no cadastro!');
     yield put(signUpFailure());
   }
 }

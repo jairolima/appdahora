@@ -19,7 +19,7 @@ export const Header = styled.View`
 `;
 
 export const Adress = styled.View`
-  height: 100px;
+  height: 60px;
   background-color: #fff;
   flex-direction: row;
   justify-content: space-between;

@@ -9,23 +9,6 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   behavior: 'padding',
 })`
   flex: 1;
-`;
-
-export const Header = styled.View`
-  height: 60px;
-  padding-horizontal: 20px;
-  background-color: #fff;
-  border-color: #ccc;
-  border-bottom-width: 1px;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding-horizontal: 20px;
-`;
-
-export const Hr = styled.View`
-  height: 1px;
-  background-color: #ccc;
-  align-self: center;
-  width: 90%;
 `;

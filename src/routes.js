@@ -8,7 +8,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {useSelector} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {setNavigator} from './services/navigationService';
-import {BurguerIcon, BoxIcon, ProductIcon} from '~/components/icons';
+import {
+  BurguerIcon,
+  BoxIcon,
+  CouponIcon,
+  ProductIcon,
+} from '~/components/icons';
 
 // starter path
 import SignIn from './pages/Unauthenticated/SignIn';
@@ -18,14 +23,17 @@ import Forgot from './pages/Unauthenticated/Forgot';
 import Privacy from './pages/Unauthenticated/SignUp/Read/Privacy';
 import Terms from './pages/Unauthenticated/SignUp/Read/Terms';
 
+// dashboard tab path
+import Dashboard from './pages/Authenticated/Dashboard';
+
 // profile tab path
 import Menu from './pages/Authenticated/Profile';
 import UserUpdate from './pages/Authenticated/Profile/UserUpdate';
 import UserPointsHistory from './pages/Authenticated/Profile/UserPointsHistory';
 import UserRecoveryPassword from './pages/Authenticated/Profile/UserRecoveryPassword';
 
-// dashboard tab path
-import Dashboard from './pages/Authenticated/Dashboard';
+// coupon tab path
+import Coupon from './pages/Authenticated/Coupon';
 
 // product tab path
 import Product from './pages/Authenticated/Product';
@@ -70,6 +78,14 @@ export default function Routes() {
     );
   }
 
+  function StackCoupon() {
+    return (
+      <Stack.Navigator screenOptions={{headerShown: false, tableShown: false}}>
+        <Stack.Screen name="Coupon" component={Coupon} />
+      </Stack.Navigator>
+    );
+  }
+
   return (
     <NavigationContainer ref={setNavigator}>
       {SignedIn ? (
@@ -89,6 +105,10 @@ export default function Routes() {
                 iconColor = focused ? '#E66118' : '#E6611866';
                 return <BurguerIcon fill={iconColor} />;
               }
+              if (route.name === 'Coupon') {
+                iconColor = focused ? '#E66118' : '#E6611866';
+                return <CouponIcon fill={iconColor} />;
+              }
               if (route.name === 'Product') {
                 iconColor = focused ? '#E66118' : '#E6611866';
                 return <ProductIcon fill={iconColor} />;
@@ -106,6 +126,14 @@ export default function Routes() {
           <Tab.Screen
             name="Product"
             component={StackProduct}
+            tabBarOptions={{showLabel: false}}
+            // options={{
+            //   tabBarIcon: () => <BurguerIcon />,
+            // }}
+          />
+          <Tab.Screen
+            name="Coupon"
+            component={StackCoupon}
             tabBarOptions={{showLabel: false}}
             // options={{
             //   tabBarIcon: () => <BurguerIcon />,

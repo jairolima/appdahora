@@ -42,7 +42,7 @@ import {
 
 export default function SignUp() {
   const navigation = useNavigation();
-  const loading = useSelector((state) => state.auth.loading);
+  const registerload = useSelector((state) => state.auth.registerload);
   const dispatch = useDispatch();
   const birthdayRef = useRef(null);
   const last_nameRef = useRef(null);
@@ -88,6 +88,7 @@ export default function SignUp() {
       .min(8, 'Digite pelo menos 8 caracteres'),
     email: Yup.string()
       .required('Campo obrigatório')
+      .email('Digite um email válido')
       .min(4, 'Digite pelo menos 4 caracteres'),
     phone: Yup.string()
       .required('Campo obrigatório')
@@ -139,7 +140,7 @@ export default function SignUp() {
 
   return (
     <>
-      {loading ? (
+      {registerload ? (
         <Background>
           <Container>
             <View style={{height: '100%', width: '100%', alignSelf: 'center'}}>

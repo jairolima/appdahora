@@ -69,7 +69,6 @@ export function* storeAwardsRequest({payload}) {
       Alert.alert('Erro!', 'Historico nao atualizado');
     }
   } catch (err) {
-    console.tron.log('erro no resgate', err);
     yield put(storeAwardsFailure());
     Alert.alert('Falha no resgate', 'Problema no resgate');
   }

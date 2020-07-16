@@ -9,14 +9,14 @@ import {
   ScrollView,
   FlatList,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {useNavigation} from '@react-navigation/native';
 import Lottie from 'lottie-react-native';
-import api from '~/services/api';
+// import api from '~/services/api';
 import Background from '~/components/Background';
 import lazyload from '~/assets/lazyload';
-
 import {Container, Adress, Hr, ProductsView} from './styles';
 
 export default function Product() {
@@ -26,91 +26,98 @@ export default function Product() {
 
   useEffect(() => {
     async function loadItems() {
-      const response = await api.get('/awards');
-      console.tron.log(response.data);
-      setItems({
-        data: [
-          {
-            id: 1,
-            slug: 'macbook-air',
-            name: 'Refrigerante KS',
-            quantity: '225ml',
-            type: [
+      try {
+        // const response = await api.get('/awards');
+        // console.tron.log(response.data);
+        setTimeout(() => {
+          setItems({
+            data: [
               {
                 id: 1,
-                name: 'Coca-Cola',
-                price: '3.50',
-                available: true,
-                selected: false,
+                slug: 'macbook-air',
+                name: 'Refrigerante KS',
+                quantity: '225ml',
+                type: [
+                  {
+                    id: 1,
+                    name: 'Coca-Cola',
+                    price: '3.50',
+                    available: true,
+                    selected: false,
+                  },
+                  {
+                    id: 2,
+                    name: 'Coca-Cola Zero',
+                    price: '3.50',
+                    available: true,
+                    selected: false,
+                  },
+                  {
+                    id: 3,
+                    name: 'Fanta Laranja',
+                    price: '2.50',
+                    available: true,
+                    selected: false,
+                  },
+                  {
+                    id: 4,
+                    name: 'Fanta Uva',
+                    price: '2.50',
+                    available: true,
+                    selected: false,
+                  },
+                  {
+                    id: 5,
+                    name: 'Guaraná',
+                    price: '3.50',
+                    available: false,
+                    selected: false,
+                  },
+                ],
+                body: 'Refrigerante gelado, tamanho ideal para o seu lanche.',
+                price: '2.50',
+                thumbnail: 'https://i.ibb.co/BPs0zsx/coca-cola.png',
+                picture: 'https://i.ibb.co/tBHzd9B/coca2cola.png',
               },
               {
                 id: 2,
-                name: 'Coca-Cola Zero',
+                slug: 'macbook-air',
+                name: 'Adoçante Diétetico Líquido Stevia 100%',
+                quantity: '60ml',
+                body:
+                  'A estévia/ stevia é um adoçante natural, obtida através de uma planta, muito bem tolerado pelo público diabético, e serve como um substituto saudável para o açucar e para os adoçantes artificiais.',
                 price: '3.50',
-                available: true,
-                selected: false,
+                thumbnail: 'https://i.ibb.co/jy4zxDR/stevia.png',
+                picture: 'https://i.ibb.co/0C1CyXH/pack-linea.png',
               },
               {
                 id: 3,
-                name: 'Fanta Laranja',
-                price: '2.50',
-                available: true,
-                selected: false,
+                slug: 'macbook-air',
+                name: 'Salgadinho Cheetos Onda Parmesão',
+                quantity: '225g',
+                body: 'Refrigerante KS',
+                price: '7.00',
+                thumbnail: 'https://i.ibb.co/5cwGySB/cheetos-parmesao.png',
+                picture: 'https://i.ibb.co/5cwGySB/cheetos-parmesao.png',
               },
               {
                 id: 4,
-                name: 'Fanta Uva',
-                price: '2.50',
-                available: true,
-                selected: false,
-              },
-              {
-                id: 5,
-                name: 'Guaraná',
-                price: '3.50',
-                available: false,
-                selected: false,
+                slug: 'macbook-air',
+                name: 'Salgadinho Cheetos Lua Parmesão',
+                quantity: '225ml',
+                body: 'Refrigerante KS',
+                price: '7.00',
+                thumbnail: 'https://i.ibb.co/Qnj8wv1/cheetos.png',
+                picture: 'https://i.ibb.co/Qnj8wv1/cheetos.png',
               },
             ],
-            body: 'Refrigerante gelado, tamanho ideal para o seu lanche.',
-            price: '2.50',
-            thumbnail: 'https://i.ibb.co/BPs0zsx/coca-cola.png',
-            picture: 'https://i.ibb.co/4RWjLrq/coca-cola-2.png',
-          },
-          {
-            id: 2,
-            slug: 'macbook-air',
-            name: 'Adoçante Diétetico Líquido Stevia 100%',
-            quantity: '60ml',
-            body:
-              'A estévia/ stevia é um adoçante natural, obtida através de uma planta, muito bem tolerado pelo público diabético, e serve como um substituto saudável para o açucar e para os adoçantes artificiais.',
-            price: '3.50',
-            thumbnail: 'https://i.ibb.co/jy4zxDR/stevia.png',
-            picture: 'https://i.ibb.co/0C1CyXH/pack-linea.png',
-          },
-          {
-            id: 3,
-            slug: 'macbook-air',
-            name: 'Salgadinho Cheetos Onda Parmesão',
-            quantity: '225g',
-            body: 'Refrigerante KS',
-            price: '7.00',
-            thumbnail: 'https://i.ibb.co/5cwGySB/cheetos-parmesao.png',
-            picture: 'https://i.ibb.co/5cwGySB/cheetos-parmesao.png',
-          },
-          {
-            id: 4,
-            slug: 'macbook-air',
-            name: 'Salgadinho Cheetos Lua Parmesão',
-            quantity: '225ml',
-            body: 'Refrigerante KS',
-            price: '7.00',
-            thumbnail: 'https://i.ibb.co/Qnj8wv1/cheetos.png',
-            picture: 'https://i.ibb.co/Qnj8wv1/cheetos.png',
-          },
-        ],
-        message: 'Requisição feita com sucesso',
-      });
+            message: 'Requisição feita com sucesso',
+          });
+        }, 2000);
+      } catch (err) {
+        console.tron.log(err);
+        Alert.alert('ERRO');
+      }
     }
     loadItems();
   }, []);
@@ -270,64 +277,67 @@ export default function Product() {
           data={snacks.data}
           keyExtractor={(item) => item.id}
           renderItem={({item}) => (
-            <ProductsView
-              style={{
-                shadowColor: '#000',
-                shadowOffset: {
-                  width: 0,
-                  height: 1,
-                },
-                shadowOpacity: 0.05,
-                shadowRadius: 2.84,
-                elevation: 1,
-                marginTop: 5,
-                marginBottom: 5,
-              }}>
-              <View
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Detail', {item})}>
+              <ProductsView
                 style={{
-                  width: '25%',
-                  height: 80,
-
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 1,
+                  },
+                  shadowOpacity: 0.05,
+                  shadowRadius: 2.84,
+                  elevation: 1,
+                  marginTop: 5,
+                  marginBottom: 5,
                 }}>
                 <View
                   style={{
-                    width: 74,
-                    height: 74,
+                    width: '25%',
+                    height: 80,
+
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                  <Image
+                  <View
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: 10,
-                      borderWidth: 1.3,
-                      borderColor: '#ccc',
-                    }}
-                    source={{
-                      uri: `${item.thumbnail}`,
-                    }}
-                  />
+                      width: 74,
+                      height: 74,
+                    }}>
+                    <Image
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: 10,
+                        borderWidth: 1.3,
+                        borderColor: '#ccc',
+                      }}
+                      source={{
+                        uri: `${item.thumbnail}`,
+                      }}
+                    />
+                  </View>
                 </View>
-              </View>
-              <View style={{backgroundColor: 'transparent', width: '50%'}}>
-                <Text numberOfLines={2} style={{fontWeight: 'bold'}}>
-                  {item.name}
-                </Text>
-                <Text style={{marginTop: 15}}>{item.quantity}</Text>
-              </View>
-              <View
-                style={{
-                  marginTop: 25,
-                  width: '25%',
-                  backgroundColor: 'transparent',
-                  alignItems: 'center',
-                }}>
-                <Text style={{fontWeight: 'bold', color: '#E55300'}}>
-                  R${item.price}
-                </Text>
-              </View>
-            </ProductsView>
+                <View style={{backgroundColor: 'transparent', width: '50%'}}>
+                  <Text numberOfLines={2} style={{fontWeight: 'bold'}}>
+                    {item.name}
+                  </Text>
+                  <Text style={{marginTop: 15}}>{item.quantity}</Text>
+                </View>
+                <View
+                  style={{
+                    marginTop: 25,
+                    width: '25%',
+                    backgroundColor: 'transparent',
+                    alignItems: 'center',
+                  }}>
+                  <Text style={{fontWeight: 'bold', color: '#E55300'}}>
+                    R${item.price}
+                  </Text>
+                </View>
+              </ProductsView>
+            </TouchableOpacity>
           )}
         />
       </View>
@@ -350,64 +360,67 @@ export default function Product() {
           data={sodas.data}
           keyExtractor={(item) => item.id}
           renderItem={({item}) => (
-            <ProductsView
-              style={{
-                shadowColor: '#000',
-                shadowOffset: {
-                  width: 0,
-                  height: 1,
-                },
-                shadowOpacity: 0.05,
-                shadowRadius: 2.84,
-                elevation: 1,
-                marginTop: 5,
-                marginBottom: 5,
-              }}>
-              <View
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Detail', {item})}>
+              <ProductsView
                 style={{
-                  width: '25%',
-                  height: 80,
-
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 1,
+                  },
+                  shadowOpacity: 0.05,
+                  shadowRadius: 2.84,
+                  elevation: 1,
+                  marginTop: 5,
+                  marginBottom: 5,
                 }}>
                 <View
                   style={{
-                    width: 74,
-                    height: 74,
+                    width: '25%',
+                    height: 80,
+
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                  <Image
+                  <View
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: 10,
-                      borderWidth: 1.3,
-                      borderColor: '#ccc',
-                    }}
-                    source={{
-                      uri: `${item.thumbnail}`,
-                    }}
-                  />
+                      width: 74,
+                      height: 74,
+                    }}>
+                    <Image
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: 10,
+                        borderWidth: 1.3,
+                        borderColor: '#ccc',
+                      }}
+                      source={{
+                        uri: `${item.thumbnail}`,
+                      }}
+                    />
+                  </View>
                 </View>
-              </View>
-              <View style={{backgroundColor: 'transparent', width: '50%'}}>
-                <Text numberOfLines={2} style={{fontWeight: 'bold'}}>
-                  {item.name}
-                </Text>
-                <Text style={{marginTop: 15}}>{item.quantity}</Text>
-              </View>
-              <View
-                style={{
-                  marginTop: 25,
-                  width: '25%',
-                  backgroundColor: 'transparent',
-                  alignItems: 'center',
-                }}>
-                <Text style={{fontWeight: 'bold', color: '#E55300'}}>
-                  R${item.price}
-                </Text>
-              </View>
-            </ProductsView>
+                <View style={{backgroundColor: 'transparent', width: '50%'}}>
+                  <Text numberOfLines={2} style={{fontWeight: 'bold'}}>
+                    {item.name}
+                  </Text>
+                  <Text style={{marginTop: 15}}>{item.quantity}</Text>
+                </View>
+                <View
+                  style={{
+                    marginTop: 25,
+                    width: '25%',
+                    backgroundColor: 'transparent',
+                    alignItems: 'center',
+                  }}>
+                  <Text style={{fontWeight: 'bold', color: '#E55300'}}>
+                    R${item.price}
+                  </Text>
+                </View>
+              </ProductsView>
+            </TouchableOpacity>
           )}
         />
       </View>
@@ -452,6 +465,7 @@ export default function Product() {
                 inactiveColor="#ccc"
                 indicatorStyle={{
                   height: 3,
+                  marginBottom: -1,
                   backgroundColor: '#E55300',
                 }}
                 getLabelText={({route}) => route.title}
