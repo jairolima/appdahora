@@ -17,7 +17,7 @@
     "@react-navigation/stack": "^5.2.10",
     "axios": "^0.19.2",
     "formik": "^2.1.4",
-    "immer": "^6.0.3",
+    "immer": "^9.0.6",
     "lottie-react-native": "^3.4.0",
     "prop-types": "^15.7.2",
     "react": "16.11.0",
